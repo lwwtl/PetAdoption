@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.pet.demo.dao.AdminDao">
-<!--    <select id="findAll" resultType="Admin">-->
-<!--        select * from t_admin-->
-<!--    </select>-->
+    <select id="findAll" resultType="Admin">
+        select * from t_admin
+    </select>
     <!--保存员工-->
     <insert id="save" parameterType="Admin">
         insert into t_admin values(#{adminId},#{adminAccount},#{adminPassword},#{adminName},#{adminAge},#{adminSex},#{adminTelephone},#{adminEmail})
     </insert>
-<!--    <delete id="delete" parameterType="String">-->
-<!--        delete from t_admin where adminId=#{adminId}-->
-<!--    </delete>-->
-<!--    <select id="findOne" parameterType="String" resultType="Admin">-->
-<!--            select adminId,adminAccount,adminPassword,adminName,adminAge,adminSex,adminTelephone,adminEmail from t_admin-->
-<!--             where adminId=#{adminId}-->
-<!--    </select>-->
-<!--    <update id="update" parameterType="Admin" >-->
-<!--        update t_admin set adminId=#{adminId},adminAccount=#{adminAccount},adminPassword=#{adminPassword},adminName=#{adminName},adminAge=#{adminAge},adminSex=#{adminSex},adminTelephone=#{adminTelephone},adminEmail=#{adminEmail}}-->
-<!--        where adminId=#{adminId}-->
-<!--    </update>-->
-<!--    &lt;!&ndash;根据Name模糊查找&ndash;&gt;-->
-<!--    <select id="findByName" parameterType="String" resultType="Admin">-->
-<!--         select * from t_admin where adminName like #{adminName};-->
-<!--&#45;&#45;         select * from t_user where userName like '%${username}%';-->
-<!--    </select>-->
+    <delete id="delete" parameterType="String">
+        delete from t_admin where adminId=#{adminId}
+    </delete>
+    <select id="findOne" parameterType="String" resultType="Admin">
+            select adminId,adminAccount,adminPassword,adminName,adminAge,adminSex,adminTelephone,adminEmail from t_admin
+             where adminId=#{adminId}
+    </select>
+    <update id="update" parameterType="Admin" >
+        update t_admin set adminId=#{adminId},adminAccount=#{adminAccount},adminPassword=#{adminPassword},adminName=#{adminName},adminAge=#{adminAge},adminSex=#{adminSex},adminTelephone=#{adminTelephone},adminEmail=#{adminEmail}
+         where adminId=#{adminId}
+    </update>
+    <!--根据Name模糊查找-->
+    <select id="findByName" parameterType="String" resultType="Admin">
+         select * from t_admin where adminName like #{adminName};
+--         select * from t_user where userName like '%${username}%';
+    </select>
 </mapper>

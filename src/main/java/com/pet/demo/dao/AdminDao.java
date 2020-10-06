@@ -9,11 +9,9 @@ import java.util.List;
 @Repository
 public interface AdminDao {
     //CURD
+    List<Admin> findAll();
     void save(Admin admin);
     void delete(String id);
     void update(Admin admin);
-    List<Admin> findAll();
     Admin findOne(String id);
-    //根据名称模糊查询
-    List<Admin> findByName(String adminname);
 }

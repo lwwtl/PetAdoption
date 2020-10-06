@@ -2,46 +2,40 @@ package com.pet.demo.service.Impl;
 
 import com.pet.demo.dao.AdminDao;
 import com.pet.demo.entity.Admin;
+import com.pet.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@Transactional
-public class AdminServiceImpl implements AdminDao {
+public class AdminServiceImpl implements AdminService {
 
     @Autowired
-    private AdminDao adminDao;
+    private AdminDao adminDAO;
+
+    @Override
+    public List<Admin> findAll() {
+        return adminDAO.findAll();
+    }
 
     @Override
     public void save(Admin admin) {
-        adminDao.save(admin);
+        adminDAO.save(admin);
     }
 
     @Override
     public void delete(String id) {
-        adminDao.delete(id);
+        adminDAO.delete(id);
     }
 
     @Override
     public void update(Admin admin) {
-        adminDao.update(admin);
-    }
-
-    @Override
-    public List<Admin> findAll() {
-        return adminDao.findAll();
+        adminDAO.update(admin);
     }
 
     @Override
     public Admin findOne(String id) {
-        return adminDao.findOne(id);
-    }
-
-    @Override
-    public List<Admin> findByName(String adminname) {
-        return adminDao.findByName(adminname);
+        return adminDAO.findOne(id);
     }
 }

@@ -4,11 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Data
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Admin {
     private String adminId;
     private String adminAccount;

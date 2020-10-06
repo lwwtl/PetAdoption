@@ -1,15 +1,13 @@
 package com.pet.demo.controller;
 
-import com.pet.demo.dao.AdminDao;
 import com.pet.demo.entity.Admin;
 import com.pet.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.rmi.server.UID;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,63 +18,54 @@ public class AdminTestController {
     @Autowired
     private AdminService adminService;
 
-//    @GetMapping("/findAll")
-//    public String findAll( Model model){
-//        List<Admin> admins=adminService.findAll();
-//        for(Admin admin:admins){
-//            System.out.println(admin);
-//        }
-//        return "pet/success";
-//    }
+    @GetMapping("/findAll")
+    public String findAll(){
+        List<Admin> admins=adminService.findAll();
+        for(Admin admin:admins){
+            System.out.println(admin);
+        }
+        return "pet/success";
+    }
 
     @GetMapping("/save")
     public String save(){
         Admin admin=new Admin();
         admin.setAdminId(UUID.randomUUID().toString());
-        admin.setAdminAccount("test");
-        admin.setAdminPassword("test");
-        admin.setAdminName("test");
-        admin.setAdminAge(1);
-        admin.setAdminSex("test");
-        admin.setAdminTelephone("test");
-        admin.setAdminEmail("test");
+        admin.setAdminAccount("777");
+        admin.setAdminPassword("777");
+        admin.setAdminName("777");
+        admin.setAdminAge(777);
+        admin.setAdminSex("777");
+        admin.setAdminTelephone("777");
+        admin.setAdminEmail("777");
         adminService.save(admin);
         return "pet/success";
     }
 
-//    @GetMapping("/findone")
-//    public String findone( Model model){
-//        Admin admin=adminService.findOne();
-//        System.out.println(admin);
-//        return "pet/success";
-//    }
+    @GetMapping("/findOne")
+    public String findOne(){
+        Admin admin=adminService.findOne("1");
+        System.out.println(admin);
+        return "pet/success";
+    }
 
-//    @GetMapping("/update")
-//    public String update( Model model){
-//        Admin admin=adminService.findOne("fe7bdb28-dafb-4ea9-9add-9ba1210e8895");
-//        admin.setAdminAccount("test");
-//        admin.setAdminPassword("test");
-//        admin.setAdminName("test");
-//        admin.setAdminAge(1);
-//        admin.setAdminSex("test");
-//        admin.setAdminTelephone("test");
-//        admin.setAdminEmail("test");
-//        adminService.update(admin);
-//        return "pet/success";
-//    }
+    @GetMapping("/update")
+    public String update(){
+        Admin admin=adminService.findOne("2");
+        admin.setAdminAccount("888");
+        admin.setAdminPassword("888");
+        admin.setAdminName("888");
+        admin.setAdminAge(888);
+        admin.setAdminSex("888");
+        admin.setAdminTelephone("888");
+        admin.setAdminEmail("888");
+        adminService.update(admin);
+        return "pet/success";
+    }
 
-//    @GetMapping("/findByName")
-//    public String findByName( Model model){
-//        List<Admin> admins=adminService.findByName("%t%");
-//        for(Admin admin:admins){
-//            System.out.println(admin);
-//        }
-//        return "pet/success";
-//    }
-//
-//    @GetMapping("/delete")
-//    public String delete( Model model){
-//        adminService.delete("fe6f3471-715d-43db-9a33-f5ebda7a3f1b");
-//        return "pet/success";
-//    }
+    @GetMapping("/delete")
+    public String findByName(){
+        adminService.delete("1");
+        return "pet/success";
+    }
 }

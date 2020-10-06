@@ -5,11 +5,9 @@ import com.pet.demo.entity.Admin;
 import java.util.List;
 
 public interface AdminService {
+    List<Admin> findAll();
     void save(Admin admin);
     void delete(String id);
     void update(Admin admin);
-    List<Admin> findAll();
     Admin findOne(String id);
-    //根据名称模糊查询
-    List<Admin> findByName(String adminname);
 }
