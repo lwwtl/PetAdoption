@@ -59,19 +59,17 @@
                 <ul class="nav" id="main-menu">
 
 
-
-					
 					<li>
-					    <a href="admin.html" class="active-menu"><i class="fa fa-edit"></i>管理员信息管理 </a>
+					    <a href="admin.html"><i class="fa fa-edit"></i>管理员信息管理 </a>
 					</li>
 					<li>
 					    <a href="user.html"><i class="fa fa-edit"></i>用户信息管理 </a>
 					</li>
 					<li>
-					    <a href="pet.html"><i class="fa fa-edit"></i>宠物信息管理</a>
+					    <a href="pet.html" class="active-menu"><i class="fa fa-edit"></i>宠物信息管理</a>
 					</li>
 					<li>
-					    <a href="apply.html" ><i class="fa fa-list-ul"></i>领养信息审核</a>
+					    <a href="apply.html"><i class="fa fa-list-ul"></i>领养信息审核</a>
 					</li>
 					<li>
 					    <a href="agree.html" ><i class="fa fa-check"></i>领养审核通过</a>
@@ -97,7 +95,7 @@
                 </div> 
                  <!-- /. ROW  -->
 				 <!--  Modals-->
-				 <!-- 管理员信息添加 -->
+				 
 				 	<div class="panel-body">
 				 		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
 				 			添加
@@ -108,36 +106,36 @@
 				 				<div class="modal-content">
 				 					<div class="modal-header">
 				 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				 						<h4 class="modal-title" id="myModalLabel">新增管理员</h4>
+				 						<h4 class="modal-title" id="myModalLabel">新增宠物</h4>
 				 					</div>
 				 					<div class="modal-body">
 				 						
 				 						<div class="form-group">
-				 							<label>帐号</label>
+				 							<label>宠物名</label>
 				 							<input class="form-control" placeholder="Enter text">
 				 						</div>
 				 						<div class="form-group">
-				 							<label>密码</label>
+				 							<label>宠物性别</label>
 				 							<input class="form-control" placeholder="Enter text">
 				 						</div>
 				 						<div class="form-group">
-				 							<label>姓名</label>
+				 							<label>宠物科目</label>
 				 							<input class="form-control" placeholder="Enter text">
 				 						</div>
 				 						<div class="form-group">
-				 							<label>年龄</label>
+				 							<label>宠物种类</label>
 				 							<input class="form-control" placeholder="Enter text">
 				 						</div>
 				 						<div class="form-group">
-				 							<label>性别</label>
+				 							<label>宠物出生年月</label>
 				 							<input class="form-control" placeholder="Enter text">
 				 						</div>
 				 						<div class="form-group">
-				 							<label>电话</label>
+				 							<label>宠物介绍</label>
 				 							<input class="form-control" placeholder="Enter text">
 				 						</div>
 				 						<div class="form-group">
-				 							<label>邮箱</label>
+				 							<label>宠物照片</label>
 				 							<input class="form-control" placeholder="Enter text">
 				 						</div>
 				 
@@ -158,77 +156,75 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            	 管理员信息表		
+                            	 宠物信息表		
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>管理员账户</th>                                  
-                                            <th>管理员姓名</th>
-                                            <th>年龄</th>
-											<th>性别</th>
-                                            <th>联系方式</th>
-                                            <th>邮箱</th>
-                                            <th>操作</th>
-                                          
+                                            <th>宠物名</th>
+                                            <th>宠物性别</th>
+                                            <th>宠物科目</th>
+                                            <th>宠物种类</th>
+                                            <th>宠物出生年月</th>
+											<th>宠物介绍</th>
+											<th>宠物照片</th>
+											<th>是否被领养</th>
+											<th>操作</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr class="gradeC">                                           
-                                            <td>CLH 520</td>
-											<td>小筱良</td>
-                                            <td class="center">18</td>
-                                            <td class="center">男</td>											
-                                            <td>123456789</td>
-                                            <td class="center">123456@qq.com</td>
-                                            <td class="center">
-												<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-												</td>
-                                        </tr>
-                                        <tr class="gradeU">                                            
-                                           <td>RLW 520</td>
-                                           <td>小立伟</td>
-                                           <td class="center">18</td>
-                                           <td class="center">男</td>											
+                                    <tbody>                                       
+                                        <tr class="gradeU">
+                                           <td>小萨</td>
+                                           <td>雄性</td>
+                                           <td class="center">犬科</td>
+                                           <td class="center">萨摩耶</td>											
                                            <td>123456789</td>
-                                           <td class="center">123456@qq.com</td>
+                                           <td class="center">活泼又可爱</td>
+                                           <td><img src="../assets/img/宠物照片/timg%20(1).jpg" width="120px"></td>
+                                           <td>未领养</td>
                                            <td class="center">
-                                           	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
+                                           	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
+                                           	</td>
+                                        </tr>
+                                        <tr class="gradeU">
+                                           <td>驴驴</td>
+                                           <td>雌性</td>
+                                           <td class="center">马科</td>
+                                           <td class="center">驴</td>											
+                                           <td>123456789</td>
+                                           <td class="center">好吃懒做</td>
+                                           <td><img src="../assets/img/宠物照片/u=725537184,2587341539&fm=26&gp=0.jpg" width="120px" ></td>
+                                           <td>已领养</td>
+                                           <td class="center">
+                                           	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
                                            	</td>
                                         </tr>
 										<tr class="gradeU">
-										   <td>FJN 150</td>
-										   <td>老付</td>
-										   <td class="center">18</td>
-										   <td class="center">女</td>											
+										   <td>哔哩</td>
+										   <td>雌性</td>
+										   <td class="center">犬科</td>
+										   <td class="center">金毛</td>											
 										   <td>123456789</td>
-										   <td class="center">123456@qq.com</td>
+										   <td class="center">聪明帅气</td>
+										   <td><img src="../assets/img/宠物照片/QQ图片20201006105904.jpg" width="120px"></td>
+										   <td>未领养</td>
 										   <td class="center">
-										   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
+										   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
 										   	</td>
-										</tr>
+										</tr> 
 										<tr class="gradeU">
-										   <td>LMQ 150</td>
-										   <td>老驴</td>
-										   <td class="center">18</td>
-										   <td class="center">女</td>											
+										   <td>可乐</td>
+										   <td>雌性</td>
+										   <td class="center">猫科</td>
+										   <td class="center">英短</td>											
 										   <td>123456789</td>
-										   <td class="center">123456@qq.com</td>
+										   <td class="center">温柔可爱</td>
+										   <td><img src="../assets/img/宠物照片/u=1157302870,3297681233&fm=26&gp=0.jpg" width="120px" ></td>
+										   <td>已领养</td>
 										   <td class="center">
-										   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-										   	</td>
-										</tr>
-										<tr class="gradeU">
-										   <td>CSX 520</td>
-										   <td>小菜</td>
-										   <td class="center">18</td>
-										   <td class="center">男</td>											
-										   <td>123456789</td>
-										   <td class="center">123456@qq.com</td>
-										   <td class="center">
-										   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
+										   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
 										   	</td>
 										</tr>
                                     </tbody>

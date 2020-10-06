@@ -60,9 +60,8 @@
 
 
 
-					
 					<li>
-					    <a href="admin.html" class="active-menu"><i class="fa fa-edit"></i>管理员信息管理 </a>
+					    <a href="admin.html"><i class="fa fa-edit"></i>管理员信息管理 </a>
 					</li>
 					<li>
 					    <a href="user.html"><i class="fa fa-edit"></i>用户信息管理 </a>
@@ -71,7 +70,7 @@
 					    <a href="pet.html"><i class="fa fa-edit"></i>宠物信息管理</a>
 					</li>
 					<li>
-					    <a href="apply.html" ><i class="fa fa-list-ul"></i>领养信息审核</a>
+					    <a href="apply.html" class="active-menu"><i class="fa fa-list-ul"></i>领养信息审核</a>
 					</li>
 					<li>
 					    <a href="agree.html" ><i class="fa fa-check"></i>领养审核通过</a>
@@ -96,61 +95,7 @@
                     </div>
                 </div> 
                  <!-- /. ROW  -->
-				 <!--  Modals-->
-				 <!-- 管理员信息添加 -->
-				 	<div class="panel-body">
-				 		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-				 			添加
-				 		</button>
-				 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-				 		 style="display: none;">
-				 			<div class="modal-dialog">
-				 				<div class="modal-content">
-				 					<div class="modal-header">
-				 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				 						<h4 class="modal-title" id="myModalLabel">新增管理员</h4>
-				 					</div>
-				 					<div class="modal-body">
-				 						
-				 						<div class="form-group">
-				 							<label>帐号</label>
-				 							<input class="form-control" placeholder="Enter text">
-				 						</div>
-				 						<div class="form-group">
-				 							<label>密码</label>
-				 							<input class="form-control" placeholder="Enter text">
-				 						</div>
-				 						<div class="form-group">
-				 							<label>姓名</label>
-				 							<input class="form-control" placeholder="Enter text">
-				 						</div>
-				 						<div class="form-group">
-				 							<label>年龄</label>
-				 							<input class="form-control" placeholder="Enter text">
-				 						</div>
-				 						<div class="form-group">
-				 							<label>性别</label>
-				 							<input class="form-control" placeholder="Enter text">
-				 						</div>
-				 						<div class="form-group">
-				 							<label>电话</label>
-				 							<input class="form-control" placeholder="Enter text">
-				 						</div>
-				 						<div class="form-group">
-				 							<label>邮箱</label>
-				 							<input class="form-control" placeholder="Enter text">
-				 						</div>
-				 
-				 					</div>
-				 					<div class="modal-footer">
-				 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				 						<button type="button" class="btn btn-primary">Save changes</button>
-				 					</div>
-				 				</div>
-				 			</div>
-				 		</div>
-				 	</div>
-				 
+				 <!--  Modals-->												 
 				 <!-- End Modals-->
                
             <div class="row">
@@ -158,79 +103,41 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            	 管理员信息表		
+                            	 领养信息审核		
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>管理员账户</th>                                  
-                                            <th>管理员姓名</th>
-                                            <th>年龄</th>
-											<th>性别</th>
-                                            <th>联系方式</th>
-                                            <th>邮箱</th>
-                                            <th>操作</th>
-                                          
+                                            <th>领养用户名</th>
+                                            <th>领养宠物名</th>
+                                            <th>用户性别</th>
+                                            <th>用户所在地</th>
+                                            <th>用户联系方式</th>
+											<th>用户领养情况</th>
+											<th>领养时间</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="gradeC">                                           
-                                            <td>CLH 520</td>
-											<td>小筱良</td>
-                                            <td class="center">18</td>
-                                            <td class="center">男</td>											
+                                        <tr class="gradeC">
+                                            <td>小陈</td>
+                                            <td>可乐</td>
+                                            <td>男</td>
+                                            <td class="center">123456789</td>
+                                            <td class="center">123456789</td>
+											<td>123456789</td>
+											<td>123456789</td>
+                                        </tr>
+                                        <tr class="gradeU">
+                                            <td>小明</td>
+                                            <td>驴驴</td>
+                                            <td>男</td>
+                                            <td class="center">123456789</td>
+                                            <td class="center">123456789</td>
                                             <td>123456789</td>
-                                            <td class="center">123456@qq.com</td>
-                                            <td class="center">
-												<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-												</td>
+                                            <td>123456789</td>
                                         </tr>
-                                        <tr class="gradeU">                                            
-                                           <td>RLW 520</td>
-                                           <td>小立伟</td>
-                                           <td class="center">18</td>
-                                           <td class="center">男</td>											
-                                           <td>123456789</td>
-                                           <td class="center">123456@qq.com</td>
-                                           <td class="center">
-                                           	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-                                           	</td>
-                                        </tr>
-										<tr class="gradeU">
-										   <td>FJN 150</td>
-										   <td>老付</td>
-										   <td class="center">18</td>
-										   <td class="center">女</td>											
-										   <td>123456789</td>
-										   <td class="center">123456@qq.com</td>
-										   <td class="center">
-										   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-										   	</td>
-										</tr>
-										<tr class="gradeU">
-										   <td>LMQ 150</td>
-										   <td>老驴</td>
-										   <td class="center">18</td>
-										   <td class="center">女</td>											
-										   <td>123456789</td>
-										   <td class="center">123456@qq.com</td>
-										   <td class="center">
-										   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-										   	</td>
-										</tr>
-										<tr class="gradeU">
-										   <td>CSX 520</td>
-										   <td>小菜</td>
-										   <td class="center">18</td>
-										   <td class="center">男</td>											
-										   <td>123456789</td>
-										   <td class="center">123456@qq.com</td>
-										   <td class="center">
-										   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-										   	</td>
-										</tr>
                                     </tbody>
                                 </table>
                             </div>

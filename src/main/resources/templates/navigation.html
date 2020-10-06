@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../assets/css/bootstrap-theme.min.css"/>
+    <script src="../assets/js/jquery-1.10.2.js" type="application/javascript"></script>
+    <script src="../assets/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+<!--导航条-->
+<div th:fragment="nav">
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only"></span>
+            </button>
+			<!-- 网站名字 -->
+            <a class="navbar-brand" href="/searchBook">宠物</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                        <a href="/searchBook">宠物知识</a>
+                </li>
+                <li>
+                        <a href="/userList">领养中心</a>
+                </li>
+                <li>
+                        <a href="#">关于我们</a>
+                </li>
+            </ul>
+<!--            <ul class="nav navbar-nav navbar-right">-->
+<!--                <li class="dropdown" th:if="${session.username != null}">-->
+<!--                    &lt;!&ndash;          如果登录成功显示用户名&ndash;&gt;-->
+<!--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"-->
+<!--                       aria-expanded="false">-->
+<!--                        <span  th:text="${session.username}"></span>-->
+<!--                        <span class="caret"></span>-->
+<!--                    </a>-->
+<!--                    <ul class="dropdown-menu">-->
+<!--                        <li><a th:href="@{/findUser(userid=${session.userId})}"-->
+<!--                        >个人资料</a></li>-->
+<!--                        <li><a href="/logout">退出登录</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--                &lt;!&ndash;    未登录显示登录&ndash;&gt;-->
+<!--                <li th:if="${session.username == null}">-->
+<!--                    <a href="/login">登录</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+        </div>
+    </div>
+
+</nav>
+
+</div>
+</body>
+</html>
