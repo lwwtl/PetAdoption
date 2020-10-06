@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.rmi.server.UID;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,7 +23,7 @@ public class AdminTestController {
         for(Admin admin:admins){
             System.out.println(admin);
         }
-        return "pet/success";
+        return "success";
     }
 
     @GetMapping("/save")
@@ -39,14 +38,14 @@ public class AdminTestController {
         admin.setAdminTelephone("777");
         admin.setAdminEmail("777");
         adminService.save(admin);
-        return "pet/success";
+        return "success";
     }
 
     @GetMapping("/findOne")
     public String findOne(){
         Admin admin=adminService.findOne("1");
         System.out.println(admin);
-        return "pet/success";
+        return "success";
     }
 
     @GetMapping("/update")
@@ -60,12 +59,12 @@ public class AdminTestController {
         admin.setAdminTelephone("888");
         admin.setAdminEmail("888");
         adminService.update(admin);
-        return "pet/success";
+        return "success";
     }
 
     @GetMapping("/delete")
     public String findByName(){
         adminService.delete("1");
-        return "pet/success";
+        return "success";
     }
 }

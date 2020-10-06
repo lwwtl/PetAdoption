@@ -1,20 +1,18 @@
 package com.pet.demo.controller;
 
-import com.pet.demo.dao.UserDao;
 import com.pet.demo.entity.User;
 import com.pet.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/test")
+@RequestMapping("/user")
 public class UserTestController {
     @Autowired
     private UserService userService;
@@ -25,7 +23,7 @@ public class UserTestController {
         for(User user:users){
             System.out.println(user);
         }
-        return "pet/success";
+        return "success";
     }
 
     @GetMapping("/save")
@@ -42,14 +40,14 @@ public class UserTestController {
         user.setUserAddress("test");
         user.setUserState("付狗妮");
         userService.save(user);
-        return "pet/success";
+        return "success";
     }
 
     @GetMapping("/findone")
     public String findone( Model model){
         User user=userService.findOne("fe7bdb28-dafb-4ea9-9add-9ba1210e8895");
         System.out.println(user);
-        return "pet/success";
+        return "success";
     }
 
     @GetMapping("/update")
@@ -65,7 +63,7 @@ public class UserTestController {
         user.setUserAddress("44444444");
         user.setUserState("1111");
         userService.update(user);
-        return "pet/success";
+        return "success";
     }
 
     @GetMapping("/findByName")
@@ -74,12 +72,12 @@ public class UserTestController {
         for(User user:users){
             System.out.println(user);
         }
-        return "pet/success";
+        return "success";
     }
 
     @GetMapping("/delete")
     public String delete( Model model){
         userService.delete("fe6f3471-715d-43db-9a33-f5ebda7a3f1b");
-        return "pet/success";
+        return "success";
     }
 }
