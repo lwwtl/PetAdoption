@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+	<!-- Bootstrap Styles-->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+     <!-- FontAwesome Styles-->
+    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+     <!-- Morris Chart Styles-->
+        <!-- Custom Styles-->
+    <link href="../assets/css/custom-styles.css" rel="stylesheet" />
+     <!-- Google Fonts-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+     <!-- TABLE STYLES-->
+    <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><strong>宠物领养后台管理 </strong></a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+                    <!-- /.dropdown-tasks -->
+
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+
+                    <li>
+                        <a href="table.html" class="active-menu"><i class="fa fa-table"></i> Responsive Tables</a>
+                    </li>
+                    <li>
+                        <a href="form.html"><i class="fa fa-edit"></i> Forms </a>
+                    </li>
+
+
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Second Level Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Second Level Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+			 <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                             <small></small>
+                        </h1>
+                    </div>
+                </div> 
+                 <!-- /. ROW  -->
+				 <!--  Modals-->
+				 
+				 	<div class="panel-body">
+				 		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+				 			添加
+				 		</button>
+				 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+				 		 style="display: none;">
+				 			<div class="modal-dialog">
+				 				<div class="modal-content">
+				 					<div class="modal-header">
+				 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				 						<h4 class="modal-title" id="myModalLabel">新增管理员</h4>
+				 					</div>
+				 					<div class="modal-body">
+				 						
+				 						<div class="form-group">
+				 							<label>帐号</label>
+				 							<input class="form-control" placeholder="Enter text">
+				 						</div>
+				 						<div class="form-group">
+				 							<label>密码</label>
+				 							<input class="form-control" placeholder="Enter text">
+				 						</div>
+				 						<div class="form-group">
+				 							<label>姓名</label>
+				 							<input class="form-control" placeholder="Enter text">
+				 						</div>
+				 						<div class="form-group">
+				 							<label>年龄</label>
+				 							<input class="form-control" placeholder="Enter text">
+				 						</div>
+				 						<div class="form-group">
+				 							<label>性别</label>
+				 							<input class="form-control" placeholder="Enter text">
+				 						</div>
+				 						<div class="form-group">
+				 							<label>电话</label>
+				 							<input class="form-control" placeholder="Enter text">
+				 						</div>
+				 						<div class="form-group">
+				 							<label>邮箱</label>
+				 							<input class="form-control" placeholder="Enter text">
+				 						</div>
+				 
+				 					</div>
+				 					<div class="modal-footer">
+				 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				 						<button type="button" class="btn btn-primary">Save changes</button>
+				 					</div>
+				 				</div>
+				 			</div>
+				 		</div>
+				 	</div>
+				 
+				 <!-- End Modals-->
+               
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            	 管理员信息表		
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Rendering engine</th>
+                                            <th>Browser</th>
+                                            <th>Platform(s)</th>
+                                            <th>Engine version</th>
+                                            <th>CSS grade</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="gradeC">
+                                            <td>Misc</td>
+                                            <td>PSP browser</td>
+                                            <td>PSP</td>
+                                            <td class="center">-</td>
+                                            <td class="center">C</td>
+                                        </tr>
+                                        <tr class="gradeU">
+                                            <td>Other browsers</td>
+                                            <td>All others</td>
+                                            <td>-</td>
+                                            <td class="center">-</td>
+                                            <td class="center">U</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+                <!-- /. ROW  -->
+
+        </div>
+               <footer><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p></footer>
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="../assets/js/jquery-1.10.2.js"></script>
+      <!-- Bootstrap Js -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+    <script src="../assets/js/jquery.metisMenu.js"></script>
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="../assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#dataTables-example').dataTable({
+					"ordering": false,
+					"searching": false
+				});
+			});
+		</script>
+         <!-- Custom Js -->
+    <script src="../assets/js/custom-scripts.js"></script>
+    
+   
+</body>
+</html>
