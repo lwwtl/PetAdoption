@@ -15,7 +15,7 @@ public class Admin {
     private String adminAccount;
     private String adminPassword;
     private String adminName;
-    private Integer adminAge;
+    private String adminAge;
     private String adminSex;
     private String adminTelephone;
     private String adminEmail;

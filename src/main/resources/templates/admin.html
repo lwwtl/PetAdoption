@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
 	<!-- Bootstrap Styles-->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
-    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="/css/font-awesome.css" rel="stylesheet" />
      <!-- Morris Chart Styles-->
         <!-- Custom Styles-->
-    <link href="../assets/css/custom-styles.css" rel="stylesheet" />
+    <link href="/css/custom-styles.css" rel="stylesheet" />
      <!-- Google Fonts-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
      <!-- TABLE STYLES-->
-    <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div id="wrapper">
@@ -102,6 +103,7 @@
 				 		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
 				 			添加
 				 		</button>
+						<form method="post" th:action="@{/backstage/save}" class="form-horizontal" role="form" id="myForm" onsubmit="return ">
 				 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 				 		 style="display: none;">
 				 			<div class="modal-dialog">
@@ -111,44 +113,55 @@
 				 						<h4 class="modal-title" id="myModalLabel">新增管理员</h4>
 				 					</div>
 				 					<div class="modal-body">
-				 						
-				 						<div class="form-group">
+										<!--  模态框内容，我在此处添加一个表单 -->
+										<form class="form-horizontal" role="form">
+                                            <!--用于修改时判断id是否存在-->
+				 							<input type="hidden" class="form-control" name="adminId" id="edit_adminId">
+
+                                            <div class="form-group">
 				 							<label>帐号</label>
-				 							<input class="form-control" placeholder="Enter text">
+				 							<input type="text" class="form-control" name="adminAccount" id="edit_account">
 				 						</div>
 				 						<div class="form-group">
 				 							<label>密码</label>
-				 							<input class="form-control" placeholder="Enter text">
+				 							<input type="text" class="form-control" name="adminPassword" id="edit_password">
 				 						</div>
 				 						<div class="form-group">
 				 							<label>姓名</label>
-				 							<input class="form-control" placeholder="Enter text">
+				 							<input type="text" class="form-control" name="adminName" id="edit_name">
 				 						</div>
 				 						<div class="form-group">
 				 							<label>年龄</label>
-				 							<input class="form-control" placeholder="Enter text">
+				 							<input type="text" class="form-control" name="adminAge" id="edit_age">
 				 						</div>
 				 						<div class="form-group">
 				 							<label>性别</label>
-				 							<input class="form-control" placeholder="Enter text">
+<!--											<label class="radio-inline">-->
+<!--												<input type="radio" name="adminSex" id="inlineRadio1" value="男">男-->
+<!--											</label>-->
+<!--											<label class="radio-inline">-->
+<!--												<input type="radio" name="adminSex" id="inlineRadio2" value="女">女-->
+<!--											</label>-->
+				 							<input type="text" class="form-control" name="adminSex" id="edit_sex">
 				 						</div>
 				 						<div class="form-group">
 				 							<label>电话</label>
-				 							<input class="form-control" placeholder="Enter text">
+				 							<input type="text" class="form-control" name="adminTelephone" id="edit_telephone">
 				 						</div>
 				 						<div class="form-group">
 				 							<label>邮箱</label>
-				 							<input class="form-control" placeholder="Enter text">
+				 							<input type="text" class="form-control" name="adminEmail" id="edit_email">
 				 						</div>
-				 
+										</form>
 				 					</div>
 				 					<div class="modal-footer">
-				 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				 						<button type="button" class="btn btn-primary">Save changes</button>
+				 						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				 						<button type="submit" class="btn btn-primary">确定</button>
 				 					</div>
 				 				</div>
 				 			</div>
 				 		</div>
+						</form>
 				 	</div>
 				 
 				 <!-- End Modals-->
@@ -176,61 +189,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="gradeC">                                           
-                                            <td>CLH 520</td>
-											<td>小筱良</td>
-                                            <td class="center">18</td>
-                                            <td class="center">男</td>											
-                                            <td>123456789</td>
-                                            <td class="center">123456@qq.com</td>
-                                            <td class="center">
-												<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-												</td>
+                                        <tr th:each="admin:${admins}">
+                                            <td><span th:text="${admin.adminAccount}"></span></td>
+											<td><span th:text="${admin.adminName}"></span></td>
+                                            <td><span th:text="${admin.adminAge}"></span></td>
+                                            <td><span th:text="${admin.adminSex}"></span></td>
+                                            <td><span th:text="${admin.adminTelephone}"></span></td>
+                                            <td><span th:text="${admin.adminEmail}"></span></td>
+                                            <td style="display: none"><span th:text="${admin.adminId}"></span></td>
+                                            <td>
+												<button class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="edit_admin(this)">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
+											</td>
                                         </tr>
-                                        <tr class="gradeU">                                            
-                                           <td>RLW 520</td>
-                                           <td>小立伟</td>
-                                           <td class="center">18</td>
-                                           <td class="center">男</td>											
-                                           <td>123456789</td>
-                                           <td class="center">123456@qq.com</td>
-                                           <td class="center">
-                                           	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-                                           	</td>
-                                        </tr>
-										<tr class="gradeU">
-										   <td>FJN 150</td>
-										   <td>老付</td>
-										   <td class="center">18</td>
-										   <td class="center">女</td>											
-										   <td>123456789</td>
-										   <td class="center">123456@qq.com</td>
-										   <td class="center">
-										   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-										   	</td>
-										</tr>
-										<tr class="gradeU">
-										   <td>LMQ 150</td>
-										   <td>老驴</td>
-										   <td class="center">18</td>
-										   <td class="center">女</td>											
-										   <td>123456789</td>
-										   <td class="center">123456@qq.com</td>
-										   <td class="center">
-										   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-										   	</td>
-										</tr>
-										<tr class="gradeU">
-										   <td>CSX 520</td>
-										   <td>小菜</td>
-										   <td class="center">18</td>
-										   <td class="center">男</td>											
-										   <td>123456789</td>
-										   <td class="center">123456@qq.com</td>
-										   <td class="center">
-										   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-										   	</td>
-										</tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -251,14 +221,14 @@
      <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
-    <script src="../assets/js/jquery-1.10.2.js"></script>
+    <script src="/js/jquery-1.10.2.js"></script>
       <!-- Bootstrap Js -->
-    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->
-    <script src="../assets/js/jquery.metisMenu.js"></script>
+    <script src="/js/jquery.metisMenu.js"></script>
      <!-- DATA TABLE SCRIPTS -->
-    <script src="../assets/js/dataTables/jquery.dataTables.js"></script>
-    <script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="/js/dataTables/jquery.dataTables.js"></script>
+    <script src="/js/dataTables/dataTables.bootstrap.js"></script>
 		<script>
 			$(document).ready(function() {
 				$('#dataTables-example').dataTable({
@@ -266,9 +236,29 @@
 					"searching": false
 				});
 			});
+			function edit_admin(obj){
+                var $td= $(obj).parents('tr').children('td');
+                var td_account = $td.eq(0).text();
+                var td_name = $td.eq(1).text();
+                var td_age = $td.eq(2).text();
+                var td_sex = $td.eq(3).text();
+                var td_telephone = $td.eq(4).text();
+                var td_email = $td.eq(5).text();
+                var td_id = $td.eq(6).text();
+
+                $("#edit_account").val(td_account);
+                $("#edit_name").val(td_name);
+                $("#edit_age").val(td_age);
+                $("#edit_sex").val(td_sex);
+                $("#edit_telephone").val(td_telephone);
+                $("#edit_email").val(td_email);
+                $("#edit_adminId").val(td_id);
+
+            }
+
 		</script>
          <!-- Custom Js -->
-    <script src="../assets/js/custom-scripts.js"></script>
+    <script src="/js/custom-scripts.js"></script>
     
    
 </body>

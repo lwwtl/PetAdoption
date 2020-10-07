@@ -4,41 +4,46 @@ import com.pet.demo.entity.Admin;
 import com.pet.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/backstage")
 public class AdminTestController {
 
     @Autowired
     private AdminService adminService;
 
-    @GetMapping("/findAll")
-    public String findAll(){
+
+    @GetMapping("/admin")
+    public String findAll(Model model){
         List<Admin> admins=adminService.findAll();
-        for(Admin admin:admins){
-            System.out.println(admin);
-        }
-        return "success";
+//        for(Admin admin:admins){
+//            System.out.println(admin);
+//        }
+        model.addAttribute("admins",admins);
+        return "admin";
     }
 
-    @GetMapping("/save")
-    public String save(){
+    @PostMapping("/save")
+    public String save(HttpServletRequest request){
         Admin admin=new Admin();
         admin.setAdminId(UUID.randomUUID().toString());
-        admin.setAdminAccount("777");
-        admin.setAdminPassword("777");
-        admin.setAdminName("777");
-        admin.setAdminAge(777);
-        admin.setAdminSex("777");
-        admin.setAdminTelephone("777");
-        admin.setAdminEmail("777");
+        admin.setAdminAccount(request.getParameter("adminAccount"));
+        admin.setAdminPassword(request.getParameter("adminPassword"));
+        admin.setAdminName(request.getParameter("adminName"));
+        admin.setAdminAge(request.getParameter("adminAge"));
+        admin.setAdminSex(request.getParameter("adminSex"));
+        admin.setAdminTelephone(request.getParameter("adminTelephone"));
+        admin.setAdminEmail(request.getParameter("adminEmail"));
         adminService.save(admin);
-        return "success";
+        return "redirect:/backstage/admin";
     }
 
     @GetMapping("/findOne")
@@ -54,7 +59,7 @@ public class AdminTestController {
         admin.setAdminAccount("888");
         admin.setAdminPassword("888");
         admin.setAdminName("888");
-        admin.setAdminAge(888);
+        admin.setAdminAge("888");
         admin.setAdminSex("888");
         admin.setAdminTelephone("888");
         admin.setAdminEmail("888");

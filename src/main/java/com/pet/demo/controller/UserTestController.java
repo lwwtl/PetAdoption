@@ -33,7 +33,7 @@ public class UserTestController {
         user.setUserAccount("test");
         user.setUserPassword("test");
         user.setUserName("付狗妮");
-        user.setUserAge(22);
+        user.setUserAge("22");
         user.setUserSex("test");
         user.setUserTelephone("test");
         user.setUserEmail("test");
@@ -56,7 +56,7 @@ public class UserTestController {
         user.setUserAccount("4444444444");
         user.setUserPassword("444444444");
         user.setUserName("4444444");
-        user.setUserAge(22);
+        user.setUserAge("22");
         user.setUserSex("4444444");
         user.setUserTelephone("44");
         user.setUserEmail("444444444");

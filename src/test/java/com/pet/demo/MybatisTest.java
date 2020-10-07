@@ -56,7 +56,7 @@ public class MybatisTest {
         user.setUserName("付狗妮");
         user.setUserAccount("test");
         user.setUserName("test");
-        user.setUserAge(22);
+        user.setUserAge("22");
         user.setUserSex("test");
         user.setUserTelephone("test");
         user.setUserEmail("test");
