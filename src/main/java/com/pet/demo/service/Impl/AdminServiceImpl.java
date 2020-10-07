@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -21,6 +22,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void save(Admin admin) {
+        admin.setAdminId(UUID.randomUUID().toString());
         adminDAO.save(admin);
     }
 
