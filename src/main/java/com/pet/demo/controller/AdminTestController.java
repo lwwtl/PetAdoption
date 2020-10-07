@@ -23,7 +23,7 @@ public class AdminTestController {
         for(Admin admin:admins){
             System.out.println(admin);
         }
-        return "success";
+        return "pet/success";
     }
 
     @GetMapping("/save")
@@ -38,14 +38,14 @@ public class AdminTestController {
         admin.setAdminTelephone("777");
         admin.setAdminEmail("777");
         adminService.save(admin);
-        return "success";
+        return "pet/success";
     }
 
     @GetMapping("/findOne")
     public String findOne(){
         Admin admin=adminService.findOne("1");
         System.out.println(admin);
-        return "success";
+        return "pet/success";
     }
 
     @GetMapping("/update")
@@ -59,12 +59,12 @@ public class AdminTestController {
         admin.setAdminTelephone("888");
         admin.setAdminEmail("888");
         adminService.update(admin);
-        return "success";
+        return "pet/success";
     }
 
     @GetMapping("/delete")
     public String findByName(){
         adminService.delete("1");
-        return "success";
+        return "pet/success";
     }
 }

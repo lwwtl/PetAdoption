@@ -23,7 +23,7 @@ public class UserTestController {
         for(User user:users){
             System.out.println(user);
         }
-        return "success";
+        return "pet/success";
     }
 
     @GetMapping("/save")
@@ -40,14 +40,14 @@ public class UserTestController {
         user.setUserAddress("test");
         user.setUserState("付狗妮");
         userService.save(user);
-        return "success";
+        return "pet/success";
     }
 
     @GetMapping("/findone")
     public String findone( Model model){
         User user=userService.findOne("fe7bdb28-dafb-4ea9-9add-9ba1210e8895");
         System.out.println(user);
-        return "success";
+        return "pet/success";
     }
 
     @GetMapping("/update")
@@ -63,7 +63,7 @@ public class UserTestController {
         user.setUserAddress("44444444");
         user.setUserState("1111");
         userService.update(user);
-        return "success";
+        return "pet/success";
     }
 
     @GetMapping("/findByName")
@@ -72,12 +72,12 @@ public class UserTestController {
         for(User user:users){
             System.out.println(user);
         }
-        return "success";
+        return "pet/success";
     }
 
     @GetMapping("/delete")
     public String delete( Model model){
         userService.delete("fe6f3471-715d-43db-9a33-f5ebda7a3f1b");
-        return "success";
+        return "pet/success";
     }
 }
