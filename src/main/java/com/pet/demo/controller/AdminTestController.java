@@ -24,24 +24,14 @@ public class AdminTestController {
     @GetMapping("/admin")
     public String findAll(Model model){
         List<Admin> admins=adminService.findAll();
-
-//        for(Admin admin:admins){
-//            System.out.println(admin);
-//        }
         model.addAttribute("admins",admins);
         return "admin";
 
     }
-
+//保存和修改用户
     @PostMapping("/save")
-    public String save(HttpServletRequest request,Admin admin){
-        admin.setAdminAccount(request.getParameter("adminAccount"));
-        admin.setAdminPassword(request.getParameter("adminPassword"));
-        admin.setAdminName(request.getParameter("adminName"));
-        admin.setAdminAge(request.getParameter("adminAge"));
-        admin.setAdminSex(request.getParameter("adminSex"));
-        admin.setAdminTelephone(request.getParameter("adminTelephone"));
-        admin.setAdminEmail(request.getParameter("adminEmail"));
+    public String save(Admin admin){
+
 //        判断添加还是修改操作
         if(StringUtils.isEmpty(admin.getAdminId())){
             adminService.save(admin);
@@ -73,6 +63,7 @@ public class AdminTestController {
 //        return "pet/success";
 //    }
 
+//根据id删除用户
     @GetMapping("/delete")
     public String findByName(String adminId){
         adminService.delete(adminId);
