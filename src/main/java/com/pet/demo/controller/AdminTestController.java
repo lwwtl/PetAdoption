@@ -24,11 +24,13 @@ public class AdminTestController {
     @GetMapping("/admin")
     public String findAll(Model model){
         List<Admin> admins=adminService.findAll();
+
 //        for(Admin admin:admins){
 //            System.out.println(admin);
 //        }
         model.addAttribute("admins",admins);
         return "admin";
+
     }
 
     @PostMapping("/save")
@@ -43,14 +45,16 @@ public class AdminTestController {
         admin.setAdminTelephone(request.getParameter("adminTelephone"));
         admin.setAdminEmail(request.getParameter("adminEmail"));
         adminService.save(admin);
+
         return "redirect:/backstage/admin";
+
     }
 
     @GetMapping("/findOne")
     public String findOne(){
         Admin admin=adminService.findOne("1");
         System.out.println(admin);
-        return "success";
+        return "pet/success";
     }
 
     @GetMapping("/update")
@@ -64,12 +68,12 @@ public class AdminTestController {
         admin.setAdminTelephone("888");
         admin.setAdminEmail("888");
         adminService.update(admin);
-        return "success";
+        return "pet/success";
     }
 
     @GetMapping("/delete")
     public String findByName(){
         adminService.delete("1");
-        return "success";
+        return "pet/success";
     }
 }
