@@ -2,60 +2,51 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" href="../static/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css"/>
-    <script src="../static/js/jquery-1.10.2.js" type="application/javascript"></script>
-    <script src="../static/js/bootstrap.min.js" type="application/javascript"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
 <!--导航条-->
 <div th:fragment="nav">
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only"></span>
+    <nav class="navbar navbar-expand-lg navbar-light  sticky-top" style="background: #cad5e1c2">
+        <div class="container">
+            <a href="" class="navbar-brand">
+<!--                <img src="/img/slider/1.jpg" alt="" width="30" height="30" class="d-inline-block align-top">-->
+                宠物
+            </a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
             </button>
-			<!-- 网站名字 -->
-            <a class="navbar-brand" href="/searchBook">宠物</a>
-        </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li>
-                        <a href="/searchBook">宠物知识</a>
-                </li>
-                <li>
-                        <a href="/userList">领养中心</a>
-                </li>
-                <li>
-                        <a href="#">关于我们</a>
-                </li>
-            </ul>
-<!--            <ul class="nav navbar-nav navbar-right">-->
-<!--                <li class="dropdown" th:if="${session.username != null}">-->
-<!--                    &lt;!&ndash;          如果登录成功显示用户名&ndash;&gt;-->
-<!--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"-->
-<!--                       aria-expanded="false">-->
-<!--                        <span  th:text="${session.username}"></span>-->
-<!--                        <span class="caret"></span>-->
-<!--                    </a>-->
-<!--                    <ul class="dropdown-menu">-->
-<!--                        <li><a th:href="@{/findUser(userid=${session.userId})}"-->
-<!--                        >个人资料</a></li>-->
-<!--                        <li><a href="/logout">退出登录</a></li>-->
-<!--                    </ul>-->
-<!--                </li>-->
-<!--                &lt;!&ndash;    未登录显示登录&ndash;&gt;-->
-<!--                <li th:if="${session.username == null}">-->
-<!--                    <a href="/login">登录</a>-->
-<!--                </li>-->
-<!--            </ul>-->
-        </div>
-    </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">宠物知识</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">领养宠物</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">登录</a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">个人资料</a>
+                            <a href="#" class="dropdown-item">退出登录</a>
+                        </div>
+                    </li>
+                </ul>
+                <!--<form action="" class="form-inline my-2 my-md-0">
+                    <input type="text" class="form-control mr-sm-2" placeholder="请输入关键字">
+                    <button class="btn btn-outline-success my-2 my-md-0">搜索</button>
+                </form>-->
 
-</nav>
+            </div>
+        </div>
+    </nav>
 
 </div>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
