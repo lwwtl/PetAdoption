@@ -11,4 +11,5 @@ public interface PetService {
     void delete(String id);
     void update(Pet pet);
     Pet findOne(String id);
+    List<Pet> findByName(String petName);
 }

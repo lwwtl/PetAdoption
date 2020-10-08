@@ -75,4 +75,6 @@ public class UserTestController {
         userService.delete(userId);
         return "redirect:/front/user";
     }
+
+
 }

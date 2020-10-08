@@ -4,10 +4,12 @@ import com.pet.demo.dao.PetDao;
 import com.pet.demo.entity.Pet;
 import com.pet.demo.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class PetServiceImpl implements PetService {
     @Autowired
     private PetDao petDao;
@@ -38,4 +40,11 @@ public class PetServiceImpl implements PetService {
     public Pet findOne(String id) {
         return petDao.findOne(id);
     }
+
+    @Override
+    public List<Pet> findByName(String petName) {
+        return petDao.findByName(petName);
+    }
+
+
 }

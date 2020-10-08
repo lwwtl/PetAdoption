@@ -1,13 +1,17 @@
 package com.pet.demo.dao;
 
 import com.pet.demo.entity.Pet;
+import com.pet.demo.entity.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface PetDao {
     List<Pet> findAll();
     void save(Pet pet);
     void delete(String id);
     void update(Pet pet);
     Pet findOne(String id);
+    List<Pet> findByName(String username);
 }

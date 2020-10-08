@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pet.demo.dao.ApplyDao">
+    <select id="findAll" resultType="Apply">
+        select * from t_apply
+    </select>
+    <insert id="save" parameterType="Apply">
+        insert into t_apply values(#{applyId},#{applyUserName},#{applyPetName},#{applyUserSex},#{applyUserAddress},#{applyUserTelephone},#{applyUserState},#{applyTime})
+    </insert>
+    <delete id="delete" parameterType="String">
+        delete from t_apply where applyId=#{applyId}
+    </delete>
+    <select id="findOne" parameterType="String" resultType="Apply">
+            select applyId,applyUserName,applyPetName,applyUserSex,applyUserAddress,applyUserTelephone,applyUserState,applyTime from t_apply
+             where applyId=#{applyId}
+    </select>
+    <update id="update" parameterType="Apply" >
+        update t_apply set applyId=#{applyId},applyUserName=#{applyUserName},applyPetName=#{applyPetName},applyUserSex=#{applyUserSex},applyUserAddress=#{applyUserAddress},applyUserTelephone=#{applyUserTelephone},applyUserState=#{applyUserState},applyTime=#{applyTime}
+         where applyId=#{applyId}
+    </update>
+
+</mapper>
