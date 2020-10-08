@@ -5,16 +5,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title></title>
 		<!-- Bootstrap Styles-->
-		<link href="../static/css/bootstrap.css" rel="stylesheet" />
+		<link href="/css/bootstrap.css" rel="stylesheet" />
 		<!-- FontAwesome Styles-->
-		<link href="../static/css/font-awesome.css" rel="stylesheet" />
+		<link href="/css/font-awesome.css" rel="stylesheet" />
 		<!-- Morris Chart Styles-->
 		<!-- Custom Styles-->
-		<link href="../static/css/custom-styles.css" rel="stylesheet" />
+		<link href="/css/custom-styles.css" rel="stylesheet" />
 		<!-- Google Fonts-->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 		<!-- TABLE STYLES-->
-		<link href="../static/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+		<link href="/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 	</head>
 	<body>
 		<div id="wrapper">
@@ -109,34 +109,42 @@
 										<h4 class="modal-title" id="myModalLabel">新增用户</h4>
 									</div>
 									<div class="modal-body">
-
+										<input type="hidden" class="form-control" name="userId" id="edit_userId">
 										<div class="form-group">
 											<label>帐号</label>
-											<input class="form-control" placeholder="Enter text">
+											<input type="text" class="form-control" name="userAccount" id="edit_account">
 										</div>
 										<div class="form-group">
 											<label>密码</label>
-											<input class="form-control" placeholder="Enter text">
+											<input class="form-control" type="text" name="userPassword" id="edit_password">
 										</div>
 										<div class="form-group">
 											<label>姓名</label>
-											<input class="form-control" placeholder="Enter text">
+											<input class="form-control" type="text" name="userName" id="edit_name">
 										</div>
 										<div class="form-group">
 											<label>年龄</label>
-											<input class="form-control" placeholder="Enter text">
+											<input class="form-control" type="text" name="userAge" id="edit_age">
 										</div>
 										<div class="form-group">
 											<label>性别</label>
-											<input class="form-control" placeholder="Enter text">
+											<input class="form-control" type="text" name="" id="">
 										</div>
 										<div class="form-group">
 											<label>电话</label>
-											<input class="form-control" placeholder="Enter text">
+											<input class="form-control" type="text" name="" id="">
 										</div>
 										<div class="form-group">
 											<label>邮箱</label>
-											<input class="form-control" placeholder="Enter text">
+											<input class="form-control" type="text" name="" id="">
+										</div>
+										<div class="form-group">
+											<label>住址</label>
+											<input class="form-control" type="text" name="" id="">
+										</div>
+										<div class="form-group">
+											<label>领养经历</label>
+											<input class="form-control" type="text" name="" id="">
 										</div>
 
 									</div>
@@ -262,14 +270,14 @@
 		<!-- /. WRAPPER  -->
 		<!-- JS Scripts-->
 		<!-- jQuery Js -->
-		<script src="../static/js/jquery-1.10.2.js"></script>
+		<script src="/js/jquery-1.10.2.js"></script>
 		<!-- Bootstrap Js -->
-		<script src="../static/js/bootstrap.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
 		<!-- Metis Menu Js -->
-		<script src="../static/js/jquery.metisMenu.js"></script>
+		<script src="/js/jquery.metisMenu.js"></script>
 		<!-- DATA TABLE SCRIPTS -->
-		<script src="../static/js/dataTables/jquery.dataTables.js"></script>
-		<script src="../static/js/dataTables/dataTables.bootstrap.js"></script>
+		<script src="/js/dataTables/jquery.dataTables.js"></script>
+		<script src="/js/dataTables/dataTables.bootstrap.js"></script>
 		<script>
 			$(document).ready(function() {
 				$('#dataTables-example').dataTable({
@@ -279,7 +287,7 @@
 			});
 		</script>
 		<!-- Custom Js -->
-		<script src="../static/js/custom-scripts.js"></script>
+		<script src="/js/custom-scripts.js"></script>
 
 
 	</body>

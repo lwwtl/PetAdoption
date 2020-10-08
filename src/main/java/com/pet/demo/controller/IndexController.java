@@ -9,6 +9,10 @@ public class IndexController {
     public String index(){
         return "index";
     }
+    @GetMapping("/manage")
+    public String manage(){
+        return "manage";
+    }
     @GetMapping("/navigation")
     public String nav(){
         return "navigation";

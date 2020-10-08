@@ -5,6 +5,7 @@ import com.pet.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,35 +13,28 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/front")
 public class UserTestController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/findAll")
+
+    @GetMapping("/user")
     public String findAll(Model model){
         List<User> users=userService.findAll();
-        for(User user:users){
-            System.out.println(user);
-        }
-        return "pet/success";
+        model.addAttribute("users",users);
+        return "user";
     }
 
     @GetMapping("/save")
-    public String save( Model model){
-        User user=new User();
-        user.setUserId(UUID.randomUUID().toString());
-        user.setUserAccount("test");
-        user.setUserPassword("test");
-        user.setUserName("付狗妮");
-        user.setUserAge("22");
-        user.setUserSex("test");
-        user.setUserTelephone("test");
-        user.setUserEmail("test");
-        user.setUserAddress("test");
-        user.setUserState("付狗妮");
-        userService.save(user);
-        return "pet/success";
+    public String save( User user){
+        //        判断添加还是修改操作
+        if(StringUtils.isEmpty(user.getUserId())){
+            userService.save(user);
+        }else {
+            userService.update(user);
+        }
+        return "redirect:/front/user";
     }
 
     @GetMapping("/findone")
@@ -50,21 +44,21 @@ public class UserTestController {
         return "pet/success";
     }
 
-    @GetMapping("/update")
-    public String update( Model model){
-        User user=userService.findOne("fe7bdb28-dafb-4ea9-9add-9ba1210e8895");
-        user.setUserAccount("4444444444");
-        user.setUserPassword("444444444");
-        user.setUserName("4444444");
-        user.setUserAge("22");
-        user.setUserSex("4444444");
-        user.setUserTelephone("44");
-        user.setUserEmail("444444444");
-        user.setUserAddress("44444444");
-        user.setUserState("1111");
-        userService.update(user);
-        return "pet/success";
-    }
+//    @GetMapping("/update")
+//    public String update( Model model){
+//        User user=userService.findOne("fe7bdb28-dafb-4ea9-9add-9ba1210e8895");
+//        user.setUserAccount("4444444444");
+//        user.setUserPassword("444444444");
+//        user.setUserName("4444444");
+//        user.setUserAge("22");
+//        user.setUserSex("4444444");
+//        user.setUserTelephone("44");
+//        user.setUserEmail("444444444");
+//        user.setUserAddress("44444444");
+//        user.setUserState("1111");
+//        userService.update(user);
+//        return "pet/success";
+//    }
 
     @GetMapping("/findByName")
     public String findByName( Model model){
@@ -76,8 +70,8 @@ public class UserTestController {
     }
 
     @GetMapping("/delete")
-    public String delete( Model model){
-        userService.delete("fe6f3471-715d-43db-9a33-f5ebda7a3f1b");
-        return "pet/success";
+    public String delete( String userId){
+        userService.delete(userId);
+        return "redirect:/front/user";
     }
 }
