@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pet.demo.dao.PetDao">
+    <select id="findAll" resultType="Pet">
+        select * from t_pet
+    </select>
+
+<!--    <insert id="save" parameterType="Pet">-->
+<!--        insert into t_pet values(#{petId},#{adminAccount},#{adminPassword},#{adminName},#{adminAge},#{adminSex},#{adminTelephone},#{adminEmail})-->
+<!--    </insert>-->
+<!--    <delete id="delete" parameterType="String">-->
+<!--        delete from t_admin where adminId=#{adminId}-->
+<!--    </delete>-->
+<!--    <select id="findOne" parameterType="String" resultType="Admin">-->
+<!--            select adminId,adminAccount,adminPassword,adminName,adminAge,adminSex,adminTelephone,adminEmail from t_admin-->
+<!--             where adminId=#{adminId}-->
+<!--    </select>-->
+<!--    <update id="update" parameterType="Admin" >-->
+<!--        update t_admin set adminId=#{adminId},adminAccount=#{adminAccount},adminPassword=#{adminPassword},adminName=#{adminName},adminAge=#{adminAge},adminSex=#{adminSex},adminTelephone=#{adminTelephone},adminEmail=#{adminEmail}-->
+<!--         where adminId=#{adminId}-->
+<!--    </update>-->
+
+</mapper>

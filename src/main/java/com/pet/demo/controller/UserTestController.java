@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class UserTestController {
         return "user";
     }
 
-    @GetMapping("/save")
+    @PostMapping("/save")
     public String save( User user){
         //        判断添加还是修改操作
         if(StringUtils.isEmpty(user.getUserId())){

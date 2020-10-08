@@ -63,10 +63,10 @@
 
 					
 					<li>
-					    <a href="admin.html" class="active-menu"><i class="fa fa-edit"></i>管理员信息管理 </a>
+					    <a href="/backstage/admin" class="active-menu"><i class="fa fa-edit"></i>管理员信息管理 </a>
 					</li>
 					<li>
-					    <a href="user.html"><i class="fa fa-edit"></i>用户信息管理 </a>
+					    <a href="/front/user"><i class="fa fa-edit"></i>用户信息管理 </a>
 					</li>
 					<li>
 					    <a href="pet.html"><i class="fa fa-edit"></i>宠物信息管理</a>
@@ -113,7 +113,8 @@
 				 						<h4 class="modal-title" id="myModalLabel">新增管理员</h4>
 				 					</div>
 				 					<div class="modal-body">
-										<!--  模态框内容，我在此处添加一个表单 -->
+                                        <div class="row" style=" position:relative;left:60px;">
+                                        <!--  模态框内容，我在此处添加一个表单 -->
 										<form class="form-horizontal" role="form">
                                             <!--用于修改时判断id是否存在-->
 				 							<input type="hidden" class="form-control" name="adminId" id="edit_adminId">
@@ -153,15 +154,17 @@
 				 							<input type="text" class="form-control" name="adminEmail" id="edit_email">
 				 						</div>
 										</form>
+                                        </div>
 				 					</div>
-				 					<div class="modal-footer">
-				 						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <div style="padding: 20px;position: relative;left: 420px;">
+				 						<button type="reset" class="btn btn-default">重置</button>
 				 						<button type="submit" class="btn btn-primary">确定</button>
 				 					</div>
 				 				</div>
 				 			</div>
 				 		</div>
 						</form>
+
 				 	</div>
 				 
 				 <!-- End Modals-->
@@ -197,6 +200,7 @@
                                             <td><span th:text="${admin.adminTelephone}"></span></td>
                                             <td><span th:text="${admin.adminEmail}"></span></td>
                                             <td style="display: none"><span th:text="${admin.adminId}"></span></td>
+                                            <td style="display: none"><span th:text="${admin.adminPassword}"></span></td>
                                             <td>
 												<button class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="edit_admin(this)">修改</button>
                                                 <button class="btn btn-danger">
@@ -248,6 +252,7 @@
                 var td_telephone = $td.eq(4).text();
                 var td_email = $td.eq(5).text();
                 var td_id = $td.eq(6).text();
+                var td_pwd = $td.eq(7).text();
 
                 $("#edit_account").val(td_account);
                 $("#edit_name").val(td_name);
@@ -256,6 +261,7 @@
                 $("#edit_telephone").val(td_telephone);
                 $("#edit_email").val(td_email);
                 $("#edit_adminId").val(td_id);
+                $("#edit_password").val(td_pwd);
 
             }
 

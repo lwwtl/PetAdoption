@@ -1,11 +1,10 @@
-package com.pet.demo.service;
+package com.pet.demo.dao;
 
-import com.pet.demo.entity.Admin;
 import com.pet.demo.entity.Pet;
 
 import java.util.List;
 
-public interface PetService {
+public interface PetDao {
     List<Pet> findAll();
     void save(Pet pet);
     void delete(String id);

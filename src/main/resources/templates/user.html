@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
+
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -60,10 +62,10 @@
 
 
 						<li>
-							<a href="admin.html"><i class="fa fa-edit"></i>管理员信息管理 </a>
+							<a href="/backstage/admin"><i class="fa fa-edit"></i>管理员信息管理 </a>
 						</li>
 						<li>
-							<a href="user.html" class="active-menu"><i class="fa fa-edit"></i>用户信息管理 </a>
+							<a href="/front/user" class="active-menu"><i class="fa fa-edit"></i>用户信息管理 </a>
 						</li>
 						<li>
 							<a href="pet.html"><i class="fa fa-edit"></i>宠物信息管理</a>
@@ -100,6 +102,7 @@
 						<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
 							添加
 						</button>
+						<form method="post" th:action="@{/front/save}" class="form-horizontal" role="form" id="myForm" onsubmit="return ">
 						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 						 style="display: none;">
 							<div class="modal-dialog">
@@ -109,6 +112,8 @@
 										<h4 class="modal-title" id="myModalLabel">新增用户</h4>
 									</div>
 									<div class="modal-body">
+										<div class="row" style=" position:relative;left:60px;">
+										<form class="form-horizontal" role="form">
 										<input type="hidden" class="form-control" name="userId" id="edit_userId">
 										<div class="form-group">
 											<label>帐号</label>
@@ -128,33 +133,35 @@
 										</div>
 										<div class="form-group">
 											<label>性别</label>
-											<input class="form-control" type="text" name="" id="">
+											<input class="form-control" type="text" name="userSex" id="edit_sex">
 										</div>
 										<div class="form-group">
 											<label>电话</label>
-											<input class="form-control" type="text" name="" id="">
+											<input class="form-control" type="text" name="userTelephone" id="edit_telephone">
 										</div>
 										<div class="form-group">
 											<label>邮箱</label>
-											<input class="form-control" type="text" name="" id="">
+											<input class="form-control" type="text" name="userEmail" id="edit_email">
 										</div>
 										<div class="form-group">
 											<label>住址</label>
-											<input class="form-control" type="text" name="" id="">
+											<input class="form-control" type="text" name="userAddress" id="edit_Address">
 										</div>
 										<div class="form-group">
 											<label>领养经历</label>
-											<input class="form-control" type="text" name="" id="">
+											<input class="form-control" type="text" name="userState" id="edit_state">
 										</div>
-
+										</form>
+										</div>
 									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Save changes</button>
+									<div style="padding: 20px;position: relative;left: 420px;">
+										<button type="reset" class="btn btn-default">重置</button>
+										<button type="submit" class="btn btn-primary">保存</button>
 									</div>
 								</div>
 							</div>
 						</div>
+						</form>
 					</div>
 
 					<!-- End Modals-->
@@ -183,70 +190,23 @@
 												</tr>
 											</thead>
 											<tbody>
-												<tr class="gradeC">
-												    <td>C520</td>
-													<td>小陈</td>
-												    <td class="center">18</td>
-												    <td class="center">男</td>											
-												    <td>123456789</td>
-												    <td class="center">123456@qq.com</td>
-													<td>123456789</td>
-													<td>123456789</td>
-												    <td class="center">
-														<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-														</td>
-												</tr>
-												<tr class="gradeU">                                            
-												   <td>R520</td>
-												   <td>小伟</td>
-												   <td class="center">18</td>
-												   <td class="center">男</td>											
-												   <td>123456789</td>
-												   <td class="center">123456@qq.com</td>
-												   <td>123456789</td>
-												   <td>123456789</td>
-												   <td class="center">
-												   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-												   	</td>
-												</tr>
-												<tr class="gradeU">
-												   <td>F150</td>
-												   <td>狗妮</td>
-												   <td class="center">18</td>
-												   <td class="center">女</td>											
-												   <td>123456789</td>
-												   <td class="center">123456@qq.com</td>
-												   <td>123456789</td>
-												   <td>123456789</td>
-												   <td class="center">
-												   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-												   	</td>
-												</tr>
-												<tr class="gradeU">
-												   <td>L150</td>
-												   <td>驴驴</td>
-												   <td class="center">18</td>
-												   <td class="center">女</td>											
-												   <td>123456789</td>
-												   <td class="center">123456@qq.com</td>
-												   <td>123456789</td>
-												   <td>123456789</td>
-												   <td class="center">
-												   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-												   	</td>
-												</tr>
-												<tr class="gradeU">
-												   <td>C520</td>
-												   <td>小明</td>
-												   <td class="center">18</td>
-												   <td class="center">男</td>											
-												   <td>123456789</td>
-												   <td class="center">123456@qq.com</td>
-												   <td>123456789</td>
-												   <td>123456789</td>
-												   <td class="center">
-												   	<button class="btn btn-primary">修改</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger">删除</button>
-												   	</td>
+												<tr th:each="user:${users}">
+												    <td><span th:text="${user.userAccount}"></span></td>
+													<td><span th:text="${user.userName}"></span></td>
+													<td><span th:text="${user.userAge}"></span></td>
+												    <td><span th:text="${user.userSex}"></span></td>
+												    <td><span th:text="${user.userTelephone}"></span></td>
+												    <td><span th:text="${user.userEmail}"></span></td>
+												    <td><span th:text="${user.userAddress}"></span></td>
+													<td><span th:text="${user.userState}"></span></td>
+													<td style="display: none"><span th:text="${user.userId}"></span></td>
+													<td style="display: none"><span th:text="${user.userPassword}"></span></td>
+												    <td>
+														<button class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="edit_user(this)">修改</button>
+														<button class="btn btn-danger">
+															<a th:href="@{/front/delete(userId=${user.userId})}" style="text-decoration-line: none;color: white">删除</a>
+														</button>
+													</td>
 												</tr>
 											</tbody>
 										</table>
@@ -285,6 +245,30 @@
 					"searching": false
 				});
 			});
+			function edit_user(obj){
+				var $td= $(obj).parents('tr').children('td');
+				var td_account = $td.eq(0).text();
+				var td_name = $td.eq(1).text();
+				var td_age = $td.eq(2).text();
+				var td_sex = $td.eq(3).text();
+				var td_telephone = $td.eq(4).text();
+				var td_email = $td.eq(5).text();
+				var td_Address = $td.eq(6).text();
+				var td_State=$td.eq(7).text();
+				var td_id=$td.eq(8).text();
+				var td_pwd=$td.eq(9).text();
+
+				$("#edit_account").val(td_account);
+				$("#edit_name").val(td_name);
+				$("#edit_age").val(td_age);
+				$("#edit_sex").val(td_sex);
+				$("#edit_telephone").val(td_telephone);
+				$("#edit_email").val(td_email);
+				$("#edit_Address").val(td_Address);
+				$("#edit_state").val(td_State);
+				$("#edit_userId").val(td_id);
+				$("#edit_password").val(td_pwd);
+			}
 		</script>
 		<!-- Custom Js -->
 		<script src="/js/custom-scripts.js"></script>
