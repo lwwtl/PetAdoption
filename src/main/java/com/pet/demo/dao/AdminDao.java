@@ -13,5 +13,5 @@ public interface AdminDao {
     void save(Admin admin);
     void delete(String id);
     void update(Admin admin);
-    Admin findOne(String id);
+    List<Admin> findByName(String id);
 }

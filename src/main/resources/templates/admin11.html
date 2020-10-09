@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+	<!-- Bootstrap Styles-->
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+     <!-- FontAwesome Styles-->
+    <link href="/css/font-awesome.css" rel="stylesheet" />
+     <!-- Morris Chart Styles-->
+        <!-- Custom Styles-->
+    <link href="/css/custom-styles.css" rel="stylesheet" />
+     <!-- Google Fonts-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+     <!-- TABLE STYLES-->
+    <link href="/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="manage.html"><strong>宠物领养后台管理 </strong></a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+                    <!-- /.dropdown-tasks -->
+
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+
+
+					
+					<li>
+					    <a href="/backstage/admin" class="active-menu"><i class="fa fa-edit"></i>管理员信息管理 </a>
+					</li>
+					<li>
+					    <a href="/front/user"><i class="fa fa-edit"></i>用户信息管理 </a>
+					</li>
+					<li>
+					    <a href="pet.html"><i class="fa fa-edit"></i>宠物信息管理</a>
+					</li>
+					<li>
+					    <a href="apply.html" ><i class="fa fa-list-ul"></i>领养信息审核</a>
+					</li>
+					<li>
+					    <a href="agree.html" ><i class="fa fa-check"></i>领养审核通过</a>
+					</li>
+					<li>
+					    <a href="disagree.html"><i class="fa fa-ban"></i>领养审核未通过</a>
+					</li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+			 <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                             <small></small>
+                        </h1>
+                    </div>
+                </div> 
+                 <!-- /. ROW  -->
+				 <!--  Modals-->
+				 <!-- 管理员信息添加 -->
+
+				 
+				 <!-- End Modals-->
+               
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div>
+                                <form method="get" th:action="@{/front/user}" style="display: inline">
+                                    <span style="margin-right: 50px;">管理员信息表</span>
+                                    <input type="text" class="form-control"  name="searchName" id="searchName" placeholder="输入姓名搜索" style="display: inline;width: 20%">
+                                    <button type="submit" class="btn btn-info">搜索</button>
+                                </form>
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                        添加
+                                    </button>
+                                    <form method="post" th:action="@{/backstage/save}" class="form-horizontal" role="form" id="myForm" onsubmit="return ">
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+                                             style="display: none;">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myModalLabel">新增管理员</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row" style=" position:relative;left:60px;">
+                                                            <!--  模态框内容，我在此处添加一个表单 -->
+                                                            <form class="form-horizontal" role="form">
+                                                                <!--用于修改时判断id是否存在-->
+                                                                <input type="hidden" class="form-control" name="adminId" id="edit_adminId">
+
+                                                                <div class="form-group">
+                                                                    <label>帐号</label>
+                                                                    <input type="text" class="form-control" name="adminAccount" id="edit_account">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>密码</label>
+                                                                    <input type="text" class="form-control" name="adminPassword" id="edit_password">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>姓名</label>
+                                                                    <input type="text" class="form-control" name="adminName" id="edit_name">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>年龄</label>
+                                                                    <input type="text" class="form-control" name="adminAge" id="edit_age">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>性别</label>
+                                                                    <!--											<label class="radio-inline">-->
+                                                                    <!--												<input type="radio" name="adminSex" id="inlineRadio1" value="男">男-->
+                                                                    <!--											</label>-->
+                                                                    <!--											<label class="radio-inline">-->
+                                                                    <!--												<input type="radio" name="adminSex" id="inlineRadio2" value="女">女-->
+                                                                    <!--											</label>-->
+                                                                    <input type="text" class="form-control" name="adminSex" id="edit_sex">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>电话</label>
+                                                                    <input type="text" class="form-control" name="adminTelephone" id="edit_telephone">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>邮箱</label>
+                                                                    <input type="text" class="form-control" name="adminEmail" id="edit_email">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div style="padding: 20px;position: relative;left: 420px;">
+                                                        <button type="reset" class="btn btn-default">重置</button>
+                                                        <button type="submit" class="btn btn-primary">确定</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>管理员账户</th>                                  
+                                            <th>管理员姓名</th>
+                                            <th>年龄</th>
+											<th>性别</th>
+                                            <th>联系方式</th>
+                                            <th>邮箱</th>
+                                            <th>操作</th>
+                                          
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="admin:${admins}">
+                                            <td><span th:text="${admin.adminAccount}"></span></td>
+											<td><span th:text="${admin.adminName}"></span></td>
+                                            <td><span th:text="${admin.adminAge}"></span></td>
+                                            <td><span th:text="${admin.adminSex}"></span></td>
+                                            <td><span th:text="${admin.adminTelephone}"></span></td>
+                                            <td><span th:text="${admin.adminEmail}"></span></td>
+                                            <td style="display: none"><span th:text="${admin.adminId}"></span></td>
+                                            <td style="display: none"><span th:text="${admin.adminPassword}"></span></td>
+                                            <td>
+												<button class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="edit_admin(this)">修改</button>
+                                                <button class="btn btn-danger">
+                                                    <a th:href="@{/backstage/delete(adminId=${admin.adminId})}" style="text-decoration-line: none;color: white">删除</a>
+                                                </button>
+											</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+                <!-- /. ROW  -->
+
+        </div>
+               <footer><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p></footer>
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="/js/jquery-1.10.2.js"></script>
+      <!-- Bootstrap Js -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+    <script src="/js/jquery.metisMenu.js"></script>
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="/js/dataTables/jquery.dataTables.js"></script>
+    <script src="/js/dataTables/dataTables.bootstrap.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#dataTables-example').dataTable({
+					"ordering": false,
+					"searching": false
+				});
+			});
+			function edit_admin(obj){
+                var $td= $(obj).parents('tr').children('td');
+                var td_account = $td.eq(0).text();
+                var td_name = $td.eq(1).text();
+                var td_age = $td.eq(2).text();
+                var td_sex = $td.eq(3).text();
+                var td_telephone = $td.eq(4).text();
+                var td_email = $td.eq(5).text();
+                var td_id = $td.eq(6).text();
+                var td_pwd = $td.eq(7).text();
+
+                $("#edit_account").val(td_account);
+                $("#edit_name").val(td_name);
+                $("#edit_age").val(td_age);
+                $("#edit_sex").val(td_sex);
+                $("#edit_telephone").val(td_telephone);
+                $("#edit_email").val(td_email);
+                $("#edit_adminId").val(td_id);
+                $("#edit_password").val(td_pwd);
+
+            }
+
+		</script>
+         <!-- Custom Js -->
+    <script src="/js/custom-scripts.js"></script>
+    
+   
+</body>
+</html>

@@ -1,6 +1,9 @@
 package com.pet.demo.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.pet.demo.entity.Admin;
+import com.pet.demo.entity.User;
 import com.pet.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.yaml.snakeyaml.events.Event;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -21,10 +26,13 @@ public class AdminTestController {
     @Autowired
     private AdminService adminService;
 
+
     @GetMapping("/admin")
     public String findAll(Model model){
+//        PageHelper.startPage(pageNum,5);
         List<Admin> admins=adminService.findAll();
-
+//        PageInfo<Admin> pageInfo = new PageInfo<>(admins);
+//        model.addAttribute("admins",pageInfo);
         model.addAttribute("admins",admins);
         return "admin";
 
@@ -49,14 +57,14 @@ public class AdminTestController {
 
     }
 
-    @GetMapping("/findOne")
-    public String findOne(){
-        Admin admin=adminService.findOne("1");
-        System.out.println(admin);
-        return "pet/success";
+
+    @GetMapping("/findByName")
+    public String findByName(Model model,@RequestParam(name = "searchName",required = false) String searchName){
+        String name='%'+searchName+'%';
+        List<Admin> admins=adminService.findByName(name);
+        model.addAttribute("admins",admins);
+        return "admin";
     }
-
-
     @GetMapping("/delete")
     public String findByName(String adminId){
         adminService.delete(adminId);

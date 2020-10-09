@@ -37,7 +37,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Admin findOne(String id) {
-        return adminDAO.findOne(id);
+    public List<Admin> findByName(String id){
+        return adminDAO.findByName(id);
     }
 }

@@ -1,6 +1,5 @@
 package com.pet.demo.controller;
 
-
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.pet.demo.entity.User;
@@ -8,7 +7,6 @@ import com.pet.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,14 +48,32 @@ public class UserTestController {
     public String save( User user){
         //        判断添加还是修改操作
         if(StringUtils.isEmpty(user.getUserId())){
-            userService.save(user);
+                userService.save(user);
         }else {
             userService.update(user);
         }
         return "redirect:/front/user";
     }
 
+//    @GetMapping("/findone")
+//    public String findone( Model model){
+//        User user=userService.findOne("fe7bdb28-dafb-4ea9-9add-9ba1210e8895");
+//        System.out.println(user);
+//        return "pet/success";
+//    }
 
+
+    @GetMapping("/findByName")
+    public String findByName( Model model, @RequestParam(defaultValue = "1") Integer pageNum,
+            @RequestParam(name = "searchName",required = false) String searchName){
+        String name="%"+searchName+"%";
+        PageHelper.startPage(pageNum,5);
+        List<User> users=userService.findByName(name);
+        PageInfo<User> pageInfo = new PageInfo<>(users);
+        model.addAttribute("users",pageInfo);
+        return "user";
+
+    }
 
     @GetMapping("/delete")
     public String delete( String userId){
