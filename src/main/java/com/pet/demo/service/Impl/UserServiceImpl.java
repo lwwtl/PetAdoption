@@ -39,10 +39,10 @@ public class UserServiceImpl implements UserService {
         return userDao.findAll();
     }
 
-    @Override
-    public User findOne(String id) {
-        return userDao.findOne(id);
-    }
+//    @Override
+//    public User findOne(String id) {
+//        return userDao.findOne(id);
+//    }
 
     @Override
     public List<User> findByName(String userName) {

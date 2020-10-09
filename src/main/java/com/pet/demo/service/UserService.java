@@ -9,6 +9,6 @@ public interface UserService {
     void delete(String id);
     void update(User user);
     List<User> findAll();
-    User findOne(String id);
+//    User findOne(String id);
     List<User> findByName(String userName);
 }

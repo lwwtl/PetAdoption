@@ -12,10 +12,10 @@
     <delete id="delete" parameterType="String">
         delete from t_user where userId=#{userId}
     </delete>
-    <select id="findOne" parameterType="String" resultType="User">
-            select userId,userAccount,userName,userAge,userSex,userTelephone,userEmail,userAddress,userState from t_user
-             where userId=#{userId}
-    </select>
+<!--    <select id="findOne" parameterType="String" resultType="User">-->
+<!--            select userId,userAccount,userName,userAge,userSex,userTelephone,userEmail,userAddress,userState from t_user-->
+<!--             where userId=#{userId}-->
+<!--    </select>-->
     <update id="update" parameterType="User" >
         update t_user set userId=#{userId},userAccount=#{userAccount},userName=#{userName},userAge=#{userAge},userSex=#{userSex},userTelephone=#{userTelephone},userEmail=#{userEmail},userAddress=#{userAddress},userState=#{userState}
         where userId=#{userId}

@@ -23,6 +23,7 @@ public class UserTestController {
     private UserService userService;
 
 
+
     @GetMapping("/user")
     public String findAll(Model model, @RequestParam(defaultValue = "1") Integer pageNum){
         PageHelper.startPage(pageNum,5);
@@ -43,21 +44,24 @@ public class UserTestController {
         return "redirect:/front/user";
     }
 
-    @GetMapping("/findone")
-    public String findone( Model model){
-        User user=userService.findOne("fe7bdb28-dafb-4ea9-9add-9ba1210e8895");
-        System.out.println(user);
-        return "pet/success";
-    }
+//    @GetMapping("/findone")
+//    public String findone( Model model){
+//        User user=userService.findOne("fe7bdb28-dafb-4ea9-9add-9ba1210e8895");
+//        System.out.println(user);
+//        return "pet/success";
+//    }
 
 
     @GetMapping("/findByName")
-    public String findByName( Model model){
-        List<User> users=userService.findByName("%狗%");
-        for(User user:users){
-            System.out.println(user);
-        }
-        return "pet/success";
+    public String findByName( Model model, @RequestParam(defaultValue = "1") Integer pageNum,
+            @RequestParam(name = "searchName",required = false) String searchName){
+        String name="%"+searchName+"%";
+        PageHelper.startPage(pageNum,5);
+        List<User> users=userService.findByName(name);
+        PageInfo<User> pageInfo = new PageInfo<>(users);
+        model.addAttribute("users",pageInfo);
+        return "user";
+
     }
 
     @GetMapping("/delete")

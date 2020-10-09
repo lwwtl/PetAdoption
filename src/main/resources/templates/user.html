@@ -99,9 +99,10 @@
 					<!--  Modals-->
 
 					<div class="panel-body">
-						<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-							添加
-						</button>
+
+
+
+
 						<form method="post" th:action="@{/front/save}" class="form-horizontal" role="form" id="myForm" onsubmit="return ">
 						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 						 style="display: none;">
@@ -170,8 +171,16 @@
 						<div class="col-md-12">
 							<!-- Advanced Tables -->
 							<div class="panel panel-default">
-								<div class="panel-heading">
-									用户信息表
+<!--								<div class="panel-heading">-->
+<!--									用户信息表-->
+<!--								</div>-->
+								<div>
+									<form method="get" th:action="@{/front/findByName}">
+										<input type="text" class="form-control"  name="searchName" id="searchName" placeholder="输入姓名搜索" style="display: inline;width: 20%">
+										<button type="submit" class="btn btn-info">搜索</button>
+									</form>
+
+									<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">添加用户</button>
 								</div>
 								<div class="panel-body">
 									<div class="table-responsive">
