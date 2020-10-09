@@ -25,9 +25,6 @@ public class AdminTestController {
     public String findAll(Model model){
         List<Admin> admins=adminService.findAll();
 
-//        for(Admin admin:admins){
-//            System.out.println(admin);
-//        }
         model.addAttribute("admins",admins);
         return "admin";
 
@@ -59,19 +56,6 @@ public class AdminTestController {
         return "pet/success";
     }
 
-//    @GetMapping("/update")
-//    public String update(){
-//        Admin admin=adminService.findOne("2");
-//        admin.setAdminAccount("888");
-//        admin.setAdminPassword("888");
-//        admin.setAdminName("888");
-//        admin.setAdminAge("888");
-//        admin.setAdminSex("888");
-//        admin.setAdminTelephone("888");
-//        admin.setAdminEmail("888");
-//        adminService.update(admin);
-//        return "pet/success";
-//    }
 
     @GetMapping("/delete")
     public String findByName(String adminId){

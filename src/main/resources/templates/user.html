@@ -37,15 +37,10 @@
 					<!-- /.dropdown -->
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-							<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+							<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>用户名
 						</a>
 						<ul class="dropdown-menu dropdown-user">
-							<li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-							</li>
-							<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-							</li>
-							<li class="divider"></li>
-							<li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+							<li><a href="#"><i class="fa fa-sign-out fa-fw"></i>退出登录</a>
 							</li>
 						</ul>
 						<!-- /.dropdown-user -->
@@ -134,7 +129,11 @@
 										</div>
 										<div class="form-group">
 											<label>性别</label>
-											<input class="form-control" type="text" name="userSex" id="edit_sex">
+											<select class="form-control" name="userSex" id="edit_sex">
+												<option>男</option>
+												<option>女</option>
+											</select>
+<!--											<input class="form-control" type="text" >-->
 										</div>
 										<div class="form-group">
 											<label>电话</label>
@@ -150,7 +149,11 @@
 										</div>
 										<div class="form-group">
 											<label>领养经历</label>
-											<input class="form-control" type="text" name="userState" id="edit_state">
+											<select class="form-control" name="userState" id="edit_state">
+												<option>有</option>
+												<option>无</option>
+											</select>
+<!--											<input class="form-control" type="text" name="userState" id="edit_state">-->
 										</div>
 										</form>
 										</div>
