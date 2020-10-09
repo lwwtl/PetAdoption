@@ -1,5 +1,7 @@
 package com.pet.demo.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.pet.demo.entity.User;
 import com.pet.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,9 +24,11 @@ public class UserTestController {
 
 
     @GetMapping("/user")
-    public String findAll(Model model){
-        List<User> users=userService.findAll();
-        model.addAttribute("users",users);
+    public String findAll(Model model, @RequestParam(defaultValue = "1") Integer pageNum){
+        PageHelper.startPage(pageNum,5);
+        List<User> userList=userService.findAll();
+        PageInfo<User> pageInfo = new PageInfo<>(userList);
+        model.addAttribute("users",pageInfo);
         return "user";
     }
 
@@ -45,21 +50,6 @@ public class UserTestController {
         return "pet/success";
     }
 
-//    @GetMapping("/update")
-//    public String update( Model model){
-//        User user=userService.findOne("fe7bdb28-dafb-4ea9-9add-9ba1210e8895");
-//        user.setUserAccount("4444444444");
-//        user.setUserPassword("444444444");
-//        user.setUserName("4444444");
-//        user.setUserAge("22");
-//        user.setUserSex("4444444");
-//        user.setUserTelephone("44");
-//        user.setUserEmail("444444444");
-//        user.setUserAddress("44444444");
-//        user.setUserState("1111");
-//        userService.update(user);
-//        return "pet/success";
-//    }
 
     @GetMapping("/findByName")
     public String findByName( Model model){
