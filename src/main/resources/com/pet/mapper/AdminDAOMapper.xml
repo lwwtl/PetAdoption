@@ -24,4 +24,8 @@
          select * from t_admin where adminName like #{adminName}
 --         select * from t_user where userName like '%${username}%';
     </select>
+    <select id="loading" resultType="Admin">
+            select adminId,adminAccount,adminPassword,adminName,adminAge,adminSex,adminTelephone,adminEmail from t_admin
+            where adminAccount=#{Account} and adminPassword=#{Password}
+    </select>
 </mapper>

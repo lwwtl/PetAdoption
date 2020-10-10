@@ -18,5 +18,5 @@ public interface UserDao {
 //    User findOne(String id);
     //根据名称模糊查询
     List<User> findByName(String username);
-    User login(@Param("userAccount")String userAccount, @Param("userPassword")String userPassword);
+    User login(@Param("Account")String userAccount, @Param("Password")String userPassword);
 }

@@ -34,26 +34,34 @@ public class LoginController {
 
     @PostMapping("/login")
     public String userLogin(String code, HttpSession session,
-                            @RequestParam("userAccount") String Account,
-                            @RequestParam("userPassword") String Password,
+                            @RequestParam("Account") String Account,
+                            @RequestParam("Password") String Password,
                             @RequestParam("role") String role,
                             Model model){
         String sessionCode = (String) session.getAttribute("code");
-        System.out.println(role);
         if(sessionCode.equalsIgnoreCase(code)){
-//            if(role=="管理员"){
-//                Admin login = adminService.login(Account,Password);
-//            }
-//            else{
+            if(role.equals("管理员")){
+
+                Admin loading = adminService.loading(Account,Password);
+                if(loading!=null){
+                    session.setAttribute("Name",loading.getAdminName());
+                    session.setAttribute("Id",loading.getAdminId());
+                    return "redirect:/manage";
+                }else {
+                    model.addAttribute("error","用户名或密码错误，请检查后重试");
+                    return "/login";
+                }
+            }
+            else{
                 User login = userService.login(Account,Password);
                 if(login!=null){
-                    session.setAttribute("userName",login.getUserName());
-                    session.setAttribute("userId",login.getUserId());
+                    session.setAttribute("Name",login.getUserName());
+                    session.setAttribute("Id",login.getUserId());
                     return "redirect:/index";
                 }else {
                     model.addAttribute("error","用户名或密码错误，请检查后重试");
                     return "/login";
-//                }
+                }
             }
 
 
@@ -66,7 +74,7 @@ public class LoginController {
 
     @GetMapping("logout")
     private String logout(HttpSession session){
-        session.removeAttribute("userName");
+        session.removeAttribute("Name");
         return "redirect:/index";
     }
 

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -34,17 +35,12 @@
 
 
                 <!-- /.dropdown -->
-                <li class="dropdown">
+                <li class="dropdown"  th:if="${session.Name != null}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -94,7 +90,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            欢迎登录 <small>Summary of your App</small>
+                            欢迎登录 <small><span  th:text="${session.Name}"></span> </small>
                         </h1>
 
                     </div>
@@ -153,23 +149,23 @@
     <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
-    <script src="../static/js/jquery-1.10.2.js"></script>
+    <script src="/js/jquery-1.10.2.js"></script>
     <!-- Bootstrap Js -->
-    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 	 
     <!-- Metis Menu Js -->
-    <script src="../static/js/jquery.metisMenu.js"></script>
+    <script src="/js/jquery.metisMenu.js"></script>
     <!-- Morris Chart Js -->
-    <script src="../static/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="../static/js/morris/morris.js"></script>
+    <script src="/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="/js/morris/morris.js"></script>
 	
 	
-	<script src="../static/js/easypiechart.js"></script>
-	<script src="../static/js/easypiechart-data.js"></script>
+	<script src="/js/easypiechart.js"></script>
+	<script src="/js/easypiechart-data.js"></script>
 	
 	
     <!-- Custom Js -->
-    <script src="../static/js/custom-scripts.js"></script>
+    <script src="/js/custom-scripts.js"></script>
 
 
 </body>

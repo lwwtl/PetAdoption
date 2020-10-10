@@ -2,6 +2,7 @@ package com.pet.demo.service.Impl;
 
 import com.pet.demo.dao.AdminDao;
 import com.pet.demo.entity.Admin;
+import com.pet.demo.entity.User;
 import com.pet.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,4 +41,11 @@ public class AdminServiceImpl implements AdminService {
     public List<Admin> findByName(String id){
         return adminDAO.findByName(id);
     }
+
+    @Override
+    public Admin loading(String adminAccount, String adminPassword) {
+        return adminDAO.loading(adminAccount, adminPassword);
+    }
+
+
 }

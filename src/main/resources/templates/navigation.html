@@ -32,16 +32,16 @@
 
                 </ul>
                 <ul class="navbar-nav mr-5">
-                    <li class="nav-item dropdown"  th:if="${session.userName != null}">
+                    <li class="nav-item dropdown"  th:if="${session.Name != null}">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            <span  th:text="${session.userName}"></span>
+                            <span  th:text="${session.Name}"></span>
                         </a>
                         <div class="dropdown-menu">
                             <a href="#" class="dropdown-item">个人资料</a>
                             <a href="/logout" class="dropdown-item">退出登录</a>
                         </div>
                     </li>
-                    <li class="nav-item" th:if="${session.userName == null}">
+                    <li class="nav-item" th:if="${session.Name == null}">
                         <a href="/login" class="nav-link">登录</a>
                     </li>
                 </ul>
