@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>login</title>
+		<link rel="stylesheet" type="text/css" href="/css/login.css" />
+		<script type="text/javascript">
+			window.onload = function(){
+				var item = document.getElementsByClassName("item");
+				var it = item[0].getElementsByTagName("div");
+				
+				var content = document.getElementsByClassName("content");
+				var con = content[0].getElementsByTagName("div");
+				
+				for(let i=0;i<it.length;i++){
+					it[i].onclick = function(){
+						for(let j=0;j<it.length;j++){
+							it[j].className = '';
+							con[j].style.display = "none";
+						}
+						this.className = "active";
+						it[i].index=i;
+						con[i].style.display = "block";
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="control">
+			<div class="item">
+				<div class="active">登录</div><div>注册</div>
+			</div>
+			<div class="content">
+				<div style="display: block;">
+					<form method="post"  th:action="@{/login}" >
+					<input type="text" name="userAccount" placeholder="账号" required="required"/>
+				
+					<input type="password" name="userPassword" placeholder="密码" required="required"/>
+					<br/>
+
+						<a href="javascript:;"
+						   onclick="document.getElementById('num').src = '/code?'+(new Date()).getTime()">
+							<img id="num" th:src="@{/code}" style="position: relative; top: 15px;"/></a>
+						<input type="text"  name="code"  placeholder="验证码，点击图片刷新" required="required" style="width: 74%">
+					<span>
+					<input type="radio" id="user" name="role" value="用户" checked="checked"/>
+					<label for="user">用户</label>
+					<input type="radio" id="admin" name="role" value="管理员" />
+					<label for="admin">管理员</label>
+					</span>
+					
+					<input type="submit" value="登录" />
+						<span  th:text="${error}" th:if="${error}"></span>
+					</form>
+				</div>
+				<div>
+					
+					<input type="text" placeholder="帐号" />
+					
+					<input type="text" placeholder="用户名" />
+					
+					<input type="password" placeholder="密码" />
+					<br/>
+					<input type="submit" value="登录" />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

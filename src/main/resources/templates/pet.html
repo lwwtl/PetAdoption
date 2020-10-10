@@ -2,272 +2,333 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-      <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title></title>
-	<!-- Bootstrap Styles-->
-    <link href="/css/bootstrap.css" rel="stylesheet" />
-     <!-- FontAwesome Styles-->
-    <link href="/css/font-awesome.css" rel="stylesheet" />
-     <!-- Morris Chart Styles-->
-        <!-- Custom Styles-->
-    <link href="/css/custom-styles.css" rel="stylesheet" />
-     <!-- Google Fonts-->
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-     <!-- TABLE STYLES-->
-    <link href="/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap Styles-->
+    <link href="/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <!-- FontAwesome Styles-->
+    <link href="/css/font-awesome.css" rel="stylesheet"/>
+    <!-- Morris Chart Styles-->
+    <!-- Custom Styles-->
+    <link href="/css/custom-styles.css" rel="stylesheet"/>
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <!-- TABLE STYLES-->
+    <link href="/js/dataTables/dataTables.bootstrap.css" rel="stylesheet"/>
+    <style>
+        #ptr .ptd{
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <div id="wrapper">
-        <nav class="navbar navbar-default top-navbar" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="manage.html"><strong>宠物领养后台管理 </strong></a>
-            </div>
+<div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="manage.html"><strong>宠物领养后台管理 </strong></a>
+        </div>
 
-            <ul class="nav navbar-top-links navbar-right">
-
-
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-                    <!-- /.dropdown-tasks -->
-
-        </nav>
-        <!--/. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
+        <ul class="nav navbar-top-links navbar-right">
 
 
-					<li>
-					    <a href="/backstage/admin"><i class="fa fa-edit"></i>管理员信息管理 </a>
-					</li>
-					<li>
-					    <a href="/front/user"><i class="fa fa-edit"></i>用户信息管理 </a>
-					</li>
-					<li>
-					    <a href="/PetTest/pet" class="active-menu"><i class="fa fa-edit"></i>宠物信息管理</a>
-					</li>
-					<li>
-					    <a href="apply.html"><i class="fa fa-list-ul"></i>领养信息审核</a>
-					</li>
-					<li>
-					    <a href="agree.html" ><i class="fa fa-check"></i>领养审核通过</a>
-					</li>
-					<li>
-					    <a href="disagree.html"><i class="fa fa-ban"></i>领养审核未通过</a>
-					</li>
-
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
                 </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.dropdown-tasks -->
 
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+
+
+                <li>
+                    <a href="/backstage/admin"><i class="fa fa-edit"></i>管理员信息管理 </a>
+                </li>
+                <li>
+                    <a href="/front/user"><i class="fa fa-edit"></i>用户信息管理 </a>
+                </li>
+                <li>
+                    <a href="/PetTest/pet" class="active-menu"><i class="fa fa-edit"></i>宠物信息管理</a>
+                </li>
+                <li>
+                    <a href="apply.html"><i class="fa fa-list-ul"></i>领养信息审核</a>
+                </li>
+                <li>
+                    <a href="agree.html"><i class="fa fa-check"></i>领养审核通过</a>
+                </li>
+                <li>
+                    <a href="disagree.html"><i class="fa fa-ban"></i>领养审核未通过</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        <small></small>
+                    </h1>
+                </div>
             </div>
+            <!-- /. ROW  -->
+            <!--  Modals-->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div>
+                                <form method="get" th:action="@{/PetTest/findByName}" style="display: inline">
+                                    <span style="margin-right: 50px;">宠物信息表</span>
+                                    <input type="text" class="form-control" name="searchName" id="searchName"
+                                           placeholder="输入姓名搜索" style="display: inline;width: 20%">
+                                    <button type="submit" class="btn btn-info">搜索</button>
+                                </form>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                    添加宠物
+                                </button>
+                                <form method="post" th:action="@{/PetTest/save}" class="form-horizontal" role="form"
+                                      id="myForm" onsubmit="return "  enctype="multipart/form-data">
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                         aria-labelledby="myModalLabel" aria-hidden="true"
+                                         style="display: none;">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">×
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">新增宠物</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row" style=" position:relative;left:60px;">
+                                                        <form class="form-horizontal" role="form">
+                                                            <input type="hidden" class="form-control" name="petId"
+                                                                   id="edit_petId">
 
-        </nav>
-        <!-- /. NAV SIDE  -->
-        <div id="page-wrapper" >
-            <div id="page-inner">
-			 <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-header">
-                             <small></small>
-                        </h1>
-                    </div>
-                </div> 
-                 <!-- /. ROW  -->
-				 <!--  Modals-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Advanced Tables -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <div>
-                                    <form method="get" th:action="@{/PetTest/findByName}" style="display: inline">
-                                        <span style="margin-right: 50px;">宠物信息表</span>
-                                        <input type="text" class="form-control"  name="searchName" id="searchName" placeholder="输入姓名搜索" style="display: inline;width: 20%">
-                                        <button type="submit" class="btn btn-info">搜索</button>
-                                    </form>
-                                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                        添加
-                                    </button>
-                                    <form method="post" th:action="@{/PetTest/save}" class="form-horizontal" role="form" id="myForm" onsubmit="return ">
-                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-                                             style="display: none;">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        <h4 class="modal-title" id="myModalLabel">新增宠物</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="row" style=" position:relative;left:60px;">
-                                                            <form class="form-horizontal" role="form">
-                                                        <input type="hidden" class="form-control" name="petId" id="edit_petId">
+                                                            <div class="form-group">
+                                                                <label>宠物名</label>
+                                                                <input type="text" class="form-control" name="petName"
+                                                                       id="edit_name">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>宠物性别</label>
+                                                                <select class="form-control" name="petSex"
+                                                                        id="edit_sex">
+                                                                    <option>公</option>
+                                                                    <option>母</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>宠物科目</label>
+                                                                <input type="text" class="form-control" name="petSub"
+                                                                       id="edit_sub">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>宠物种类</label>
+                                                                <input type="text" class="form-control" name="petType"
+                                                                       id="edit_type">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>宠物出生年月</label>
+                                                                <div class='input-group date' id='datetimepicker1'  style="width: 85%">
+                                                                    <input type='text' class="form-control" name="petBir" id="edit_bir"/>
+                                                                    <span class="input-group-addon">
+                                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                                    </span>
+                                                                </div>
+<!--                                                                <input type="text" class="form-control" name="petBir" id="edit_bir">-->
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>宠物介绍</label>
+                                                                <input type="text" class="form-control" name="petDetail"
+                                                                       id="edit_detail">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>宠物照片</label>
+                                                                <input type="file" class="form-control" name="petPic"
+                                                                       id="edit_pic">
+<!--                                                                <input type="text" class="form-control" >-->
+                                                            </div>
 
-                                                        <div class="form-group">
-                                                            <label>宠物名</label>
-                                                            <input type="text" class="form-control" name="petName" id="edit_name">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>宠物性别</label>
-                                                            <input type="text" class="form-control" name="petSex" id="edit_sex">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>宠物科目</label>
-                                                            <input type="text" class="form-control" name="petSub" id="edit_sub">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>宠物种类</label>
-                                                            <input type="text" class="form-control" name="petType" id="edit_type">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>宠物出生年月</label>
-                                                            <input type="text" class="form-control" name="petBir" id="edit_bir">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>宠物介绍</label>
-                                                            <input type="text" class="form-control" name="petDetail" id="edit_detail">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>宠物照片</label>
-                                                            <input type="text" class="form-control" name="petPic" id="edit_pic">
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label>宠物情况</label>
-                                                            <input type="text" class="form-control" name="petState" id="edit_state">
-                                                        </div>
-                                                            </form>
-                                                        </div>
+                                                            <div class="form-group">
+                                                                <label>领养情况</label>
+                                                                <select class="form-control" name="petState"
+                                                                        id="edit_state">
+                                                                    <option>未领养</option>
+                                                                    <option>已领养</option>
+                                                                </select>
+                                                            </div>
+                                                        </form>
                                                     </div>
-                                                    <div style="padding: 20px;position: relative;left: 420px;">
-                                                        <button type="reset" class="btn btn-default">重置</button>
-                                                        <button type="submit" class="btn btn-primary">确定</button>
-                                                    </div>
+                                                </div>
+                                                <div style="padding: 20px;position: relative;left: 420px;">
+                                                    <button type="reset" class="btn btn-default">重置</button>
+                                                    <button type="submit" class="btn btn-primary">确定</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </div>
+                                </form>
 
-                                </div>
                             </div>
+                        </div>
 
-                            <div class="panel-body">
+                        <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example" style="table-layout: fixed;">
                                     <thead>
-                                        <tr>
-                                            <th>宠物名</th>
-                                            <th>宠物性别</th>
-                                            <th>宠物科目</th>
-                                            <th>宠物种类</th>
-                                            <th>宠物出生年月</th>
-											<th>宠物介绍</th>
-											<th>宠物照片</th>
-											<th>是否被领养</th>
-											<th>操作</th>
-                                        </tr>
+                                    <tr>
+                                        <th>宠物名</th>
+                                        <th>宠物性别</th>
+                                        <th>宠物科目</th>
+                                        <th>宠物种类</th>
+                                        <th>宠物出生年月</th>
+                                        <th>宠物介绍</th>
+                                        <th>宠物照片</th>
+                                        <th>是否被领养</th>
+                                        <th>操作</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="pet:${pets}">
-                                        <td><span th:text="${pet.petName}"></span></td>
-                                        <td><span th:text="${pet.petSex}"></span></td>
-                                        <td><span th:text="${pet.petSub}"></span></td>
-                                        <td><span th:text="${pet.petType}"></span></td>
-                                        <td><span th:text="${pet.petBir}"></span></td>
-                                        <td><span th:text="${pet.petDetail}"></span></td>
-                                        <td><span th:text="${pet.petPic}"></span></td>
-                                        <td><span th:text="${pet.petState}"></span></td>
+                                    <tr th:each="pet:${pets}" id="ptr">
+                                        <td class="ptd"><span th:text="${pet.petName}"></span></td>
+                                        <td class="ptd"><span th:text="${pet.petSex}"></span></td>
+                                        <td class="ptd"><span th:text="${pet.petSub}"></span></td>
+                                        <td class="ptd"><span th:text="${pet.petType}"></span></td>
+                                        <td class="ptd"><span th:text="${pet.petBir}"></span></td>
+<!--                                        超出部分隐藏，鼠标悬浮显示-->
+                                        <td class="ptd" style="overflow: hidden; text-overflow: ellipsis;word-break: keep-all;white-space: nowrap;">
+                                            <span th:text="${pet.petDetail}"></span>
+                                        </td>
+                                        <td class="ptd"><span><img th:src="${pet.petPic}" style="width: 50px"/></span></td>
+                                        <td class="ptd"><span th:text="${pet.petState}"></span></td>
                                         <td style="display: none"><span th:text="${pet.petId}"></span></td>
 
                                         <td>
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="edit_pet(this)">修改</button>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+                                                    onclick="edit_pet(this)">修改
+                                            </button>
                                             <button class="btn btn-danger">
-                                                <a th:href="@{/PetTest/delete(petId=${pet.petId})}" style="text-decoration-line: none;color: white">删除</a>
+                                                <a th:href="@{/PetTest/delete(petId=${pet.petId})}"
+                                                   style="text-decoration-line: none;color: white">删除</a>
                                             </button>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            
+
                         </div>
                     </div>
                     <!--End Advanced Tables -->
                 </div>
             </div>
-                <!-- /. ROW  -->
+            <!-- /. ROW  -->
 
         </div>
-               <footer><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p></footer>
-    </div>
-             <!-- /. PAGE INNER  -->
-            </div>
-         <!-- /. PAGE WRAPPER  -->
-     <!-- /. WRAPPER  -->
-    <!-- JS Scripts-->
-    <!-- jQuery Js -->
-    <script src="/js/jquery-1.10.2.js"></script>
-      <!-- Bootstrap Js -->
-    <script src="/js/bootstrap.min.js"></script>
-    <!-- Metis Menu Js -->
-    <script src="/js/jquery.metisMenu.js"></script>
-     <!-- DATA TABLE SCRIPTS -->
-    <script src="/js/dataTables/jquery.dataTables.js"></script>
-    <script src="/js/dataTables/dataTables.bootstrap.js"></script>
-		<script>
-			$(document).ready(function() {
-				$('#dataTables-example').dataTable({
-					"ordering": false,
-					"searching": false
-				});
-			});
-            function edit_pet(obj){
-                var $td= $(obj).parents('tr').children('td');
-                var td_name = $td.eq(0).text();
-                var td_sex = $td.eq(1).text();
-                var td_sub = $td.eq(2).text();
-                var td_type = $td.eq(3).text();
-                var td_bir = $td.eq(4).text();
-                var td_detail = $td.eq(5).text();
-                var td_pic = $td.eq(6).text();
-                var td_state=$td.eq(7).text();
-                var td_petId=$td.eq(8).text();
 
-                $("#edit_name").val(td_name);
-                $("#edit_sex").val(td_sex);
-                $("#edit_sub").val(td_sub);
-                $("#edit_type").val(td_type);
-                $("#edit_bir").val(td_bir);
-                $("#edit_detail").val(td_detail);
-                $("#edit_pic").val(td_pic);
-                $("#edit_state").val(td_state);
-                $("#edit_petId").val(td_petId);
-            }
-		</script>
-         <!-- Custom Js -->
-    <script src="/js/custom-scripts.js"></script>
-    
-   
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+<!-- /. PAGE WRAPPER  -->
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="/js/jquery.metisMenu.js"></script>
+<!-- DATA TABLE SCRIPTS -->
+<script src="/js/dataTables/jquery.dataTables.js"></script>
+<script src="/js/dataTables/dataTables.bootstrap.js"></script>
+<!-- Custom Js -->
+<script src="/js/custom-scripts.js"></script>
+<!--date js-->
+<script src="/js/moment-with-locales.js"></script>
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable({
+            "ordering": false,
+            "searching": false
+        });
+    });
+
+        $('#datetimepicker1').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: moment.locale('zh-cn')
+        });
+
+        $('.table tr td').each(function () {
+            $(this).attr("title", $(this).text());
+            $(this).css("cursor", 'pointer');
+        });
+
+
+
+
+    function edit_pet(obj) {
+        var $td = $(obj).parents('tr').children('td');
+        var td_name = $td.eq(0).text();
+        var td_sex = $td.eq(1).text();
+        var td_sub = $td.eq(2).text();
+        var td_type = $td.eq(3).text();
+        var td_bir = $td.eq(4).text();
+        var td_detail = $td.eq(5).text();
+        var td_pic = $td.eq(6).text();
+        var td_state = $td.eq(7).text();
+        var td_petId = $td.eq(8).text();
+
+        $("#edit_name").val(td_name);
+        $("#edit_sex").val(td_sex);
+        $("#edit_sub").val(td_sub);
+        $("#edit_type").val(td_type);
+        $("#edit_bir").val(td_bir);
+        $("#edit_detail").val(td_detail);
+        $("#edit_pic").val(td_pic);
+        $("#edit_state").val(td_state);
+        $("#edit_petId").val(td_petId);
+    }
+
+
+</script>
+
+
+
 </body>
 </html>

@@ -11,7 +11,7 @@
         <div class="container">
             <a href="" class="navbar-brand">
                 <!--                <img src="/img/slider/1.jpg" alt="" width="30" height="30" class="d-inline-block align-top">-->
-                宠物
+                安妮宠屋
             </a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -28,13 +28,21 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">领养宠物</a>
                     </li>
-                    <li class="nav-item dropdown" style=" position: relative;
-    left: 880px;">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">登录</a>
+
+
+                </ul>
+                <ul class="navbar-nav mr-5">
+                    <li class="nav-item dropdown"  th:if="${session.userName != null}">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                            <span  th:text="${session.userName}"></span>
+                        </a>
                         <div class="dropdown-menu">
                             <a href="#" class="dropdown-item">个人资料</a>
-                            <a href="#" class="dropdown-item">退出登录</a>
+                            <a href="/logout" class="dropdown-item">退出登录</a>
                         </div>
+                    </li>
+                    <li class="nav-item" th:if="${session.userName == null}">
+                        <a href="/login" class="nav-link">登录</a>
                     </li>
                 </ul>
                 <!--<form action="" class="form-inline my-2 my-md-0">

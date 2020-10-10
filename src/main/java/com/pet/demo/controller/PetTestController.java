@@ -10,12 +10,12 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,21 +33,45 @@ public class PetTestController {
     }
 
     @PostMapping("/save")
-    public String save(HttpServletRequest request,Pet pet){
-        if(StringUtils.isEmpty(pet.getPetId())){
+    public String save(@RequestParam(value = "petPic") MultipartFile file,HttpServletRequest request){
+//        if (file.isEmpty()) {
+//            System.out.println("文件为空空");
+//        }
+        String fileName = file.getOriginalFilename();  // 文件名
+        String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
+        String filePath = "E://upload//"; // 上传后的路径
+        fileName = UUID.randomUUID() + suffixName; // 新文件名
+        File dest = new File(filePath + fileName);
+        if (!dest.getParentFile().exists()) {
+            dest.getParentFile().mkdirs();
+        }
+        try {
+            file.transferTo(dest);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String filename = "/upload/" + fileName;
+//        System.out.println(filename);
+        Pet pet = new Pet();
+        pet.setPetName(request.getParameter("petName"));
+        pet.setPetDetail(request.getParameter("petDetail"));
+        pet.setPetSex(request.getParameter("petSex"));
+        pet.setPetState(request.getParameter("petState"));
+        pet.setPetSub(request.getParameter("petSub"));
+        pet.setPetType(request.getParameter("petType"));
+        pet.setPetBir(request.getParameter("petBir"));
+        pet.setPetPic(filename);
+        //判断进行添加还是修改操作
+
+        if(StringUtils.isEmpty(request.getParameter("petId"))){
             petService.save(pet);
         }else {
+            pet.setPetId(request.getParameter("petId"));
             petService.update(pet);
         }
         return "redirect:/PetTest/pet";
     }
 
-//    @GetMapping("/findone")
-//    public String findone( Model model){
-//        Pet pet=petService.findOne("test2");
-//        System.out.println(pet);
-//        return "success";
-//    }
 
     @GetMapping("/delete")
     public String delete(String petId){
@@ -55,20 +79,6 @@ public class PetTestController {
         return "redirect:/PetTest/pet";
     }
 
-//    @GetMapping("update")
-//    public String update(){
-//        Pet pet=petService.findOne("test2");
-//        pet.setPetName("test");
-//        pet.setPetBir("test");
-//        pet.setPetDetail("test");
-//        pet.setPetPic("test");
-//        pet.setPetSex("test");
-//        pet.setPetState("test");
-//        pet.setPetSub("test");
-//        pet.setPetType("test");
-//        petService.update(pet);
-//        return "success";
-//    }
 
     @GetMapping("/findByName")
     public String findByName(Model model,@RequestParam(name = "searchName",required = false) String searchName){

@@ -24,5 +24,10 @@
     <select id="findByName" parameterType="String" resultType="User">
          select * from t_user where userName like #{userName}
     </select>
+    <!--登录-->
+    <select id="login" resultType="User">
+            select userId,userAccount,userPassword,userName,userAge,userSex,userTelephone,userEmail,userAddress,userState from t_user
+            where userAccount=#{userAccount} and userPassword=#{userPassword}
+    </select>
 
 </mapper>

@@ -1,0 +1,81 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	/* background: #f3f3f3; */
+	background: url("../img/login/login-4.jpeg") no-repeat center center fixed;
+	background-size: cover;	
+}
+span{
+	    position: relative;
+	    top: 20px;
+	    left: 100px;
+
+}
+.control{
+	width: 400px;
+	background: #ffffffd4;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 5px;
+}
+.item{
+	width: 400px;
+	height: 60px;
+	background: #eeeeeed4;
+	
+}
+.item div{
+	width: 200px;
+	height: 60px;
+	display: inline-block;
+	color: black;
+	font-size: 18px;
+	text-align: center;
+	line-height: 60px;
+	cursor: pointer;
+	
+}
+.content{
+	width: 100%;
+}
+.content div{
+	margin: 20px 30px;
+	display: none;
+	text-align: left;
+}
+
+.content input[type="text"], .content input[type="password"]{
+	width: 100%;
+	height: 40px;
+	border-radius: 3px;
+	border: 1px solid #adadad;
+	padding: 0 10px;
+	box-sizing: border-box;
+	margin-top: 30px;
+	margin-bottom: 6px;
+}
+.content input[type="submit"]{
+	margin-top: 40px;
+	width: 100%;
+	height: 40px;
+	border-radius: 5px;
+	color: white;
+	border: 1px solid #adadad;
+	background: #00dd60d4;
+	cursor: pointer;
+	letter-spacing: 4px;
+	margin-bottom: 40px;
+}
+.active{
+	background: white;
+}
+.item div:hover{
+	background: #f6f6f6d4;
+}
+
+
+

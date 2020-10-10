@@ -1,6 +1,7 @@
 package com.pet.demo.dao;
 
 import com.pet.demo.entity.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,4 +18,5 @@ public interface UserDao {
 //    User findOne(String id);
     //根据名称模糊查询
     List<User> findByName(String username);
+    User login(@Param("userAccount")String userAccount, @Param("userPassword")String userPassword);
 }
