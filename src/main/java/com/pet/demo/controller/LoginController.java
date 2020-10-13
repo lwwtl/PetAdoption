@@ -41,7 +41,10 @@ public class LoginController {
         String sessionCode = (String) session.getAttribute("code");
         if(sessionCode.equalsIgnoreCase(code)){
             if(role.equals("管理员")){
-
+                if(adminService.loading(Account,Password)==null){
+                    model.addAttribute("error","该用户不存在");
+                    return "/login";
+                }
                 Admin loading = adminService.loading(Account,Password);
                 if(loading!=null){
                     session.setAttribute("Name",loading.getAdminName());
@@ -53,10 +56,15 @@ public class LoginController {
                 }
             }
             else{
+                if(userService.login(Account,Password)==null){
+                    model.addAttribute("error","该用户不存在");
+                    return "/login";
+                }
                 User login = userService.login(Account,Password);
                 if(login!=null){
                     session.setAttribute("Name",login.getUserName());
                     session.setAttribute("Id",login.getUserId());
+                    session.setAttribute("user",login);
                     return "redirect:/index";
                 }else {
                     model.addAttribute("error","用户名或密码错误，请检查后重试");
@@ -76,6 +84,35 @@ public class LoginController {
     private String logout(HttpSession session){
         session.removeAttribute("Name");
         return "redirect:/index";
+    }
+
+    @PostMapping("register")
+    public  String Register(String code, HttpSession session,
+                            @RequestParam("Account") String Account,
+                            @RequestParam("Name") String Name,
+                            @RequestParam("Password") String Password,
+                            User user,
+                            Model model){
+        String sessionCode = (String) session.getAttribute("code");
+        if(sessionCode.equalsIgnoreCase(code)){
+            if(userService.findByAccount(Account)==null){
+                user.setUserAccount(Account);
+                user.setUserName(Name);
+                user.setUserPassword(Password);
+                userService.save(user);
+                session.setAttribute("Name",user.getUserName());
+                session.setAttribute("Id",user.getUserId());
+                session.setAttribute("user",user);
+                return "redirect:/index";
+            }else {
+                model.addAttribute("error","该账号已存在，请重新注册");
+                return "/login";
+            }
+        }
+        else {
+            model.addAttribute("error","验证码错误，请重试");
+            return "/login";
+        }
     }
 
     @GetMapping("/code")

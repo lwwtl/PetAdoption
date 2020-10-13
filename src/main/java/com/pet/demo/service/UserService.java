@@ -10,7 +10,8 @@ public interface UserService {
     void delete(String id);
     void update(User user);
     List<User> findAll();
-//    User findOne(String id);
+    User findOne(String id);
+    User findByAccount(String Account);
     List<User> findByName(String userName);
     User login(String userAccount,String userPassword);
 }

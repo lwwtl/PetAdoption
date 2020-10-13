@@ -9,7 +9,7 @@
 <div th:fragment="nav">
     <nav class="navbar navbar-expand-lg navbar-light  sticky-top" style = "background: #cad5e1c2">
         <div class="container">
-            <a href="" class="navbar-brand">
+            <a href="/index" class="navbar-brand">
                 <!--                <img src="/img/slider/1.jpg" alt="" width="30" height="30" class="d-inline-block align-top">-->
                 安妮宠屋
             </a>
@@ -20,24 +20,24 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">首页</a>
+                        <a href="/index" class="nav-link active">首页</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">宠物知识</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">领养宠物</a>
+                        <a href="/show" class="nav-link">领养宠物</a>
                     </li>
 
 
                 </ul>
                 <ul class="navbar-nav mr-5">
-                    <li class="nav-item dropdown"  th:if="${session.Name != null}">
+                    <li class="nav-item dropdown"   th:if="${session.Name != null}">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                             <span  th:text="${session.Name}"></span>
                         </a>
                         <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">个人资料</a>
+                            <a href="/info" class="dropdown-item">个人资料</a>
                             <a href="/logout" class="dropdown-item">退出登录</a>
                         </div>
                     </li>
@@ -45,10 +45,10 @@
                         <a href="/login" class="nav-link">登录</a>
                     </li>
                 </ul>
-                <!--<form action="" class="form-inline my-2 my-md-0">
-                    <input type="text" class="form-control mr-sm-2" placeholder="请输入关键字">
-                    <button class="btn btn-outline-success my-2 my-md-0">搜索</button>
-                </form>-->
+                <form action="/search" method="get" class="form-inline" style="position: absolute;left: 580px;">
+                    <input class="form-control mr-sm-2" type="search" placeholder="请输入关键字" aria-label="Search" name="searchName">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+                </form>
 
             </div>
         </div>

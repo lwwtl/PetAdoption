@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -59,6 +60,13 @@ public class UserTestController {
             userService.update(user);
         }
         return "redirect:/front/user";
+    }
+    @PostMapping("/infoUpdate")
+    public String infoUpdate(User user, HttpSession session, RedirectAttributes attributes){
+        userService.update(user);
+        session.setAttribute("user",user);
+        attributes.addFlashAttribute("msg","保存成功");
+        return "redirect:/info";
     }
 
 //    @GetMapping("/findone")

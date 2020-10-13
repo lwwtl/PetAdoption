@@ -5,17 +5,17 @@
         select * from t_apply
     </select>
     <insert id="save" parameterType="Apply">
-        insert into t_apply values(#{applyId},#{applyUserName},#{applyPetName},#{applyUserSex},#{applyUserAddress},#{applyUserTelephone},#{applyUserState},#{applyTime})
+        insert into t_apply values(#{applyId},#{applyUserName},#{applyPetName},#{applyUserSex},#{applyUserAddress},#{applyUserTelephone},#{applyUserState},#{applyTime},#{applyState})
     </insert>
     <delete id="delete" parameterType="String">
         delete from t_apply where applyId=#{applyId}
     </delete>
     <select id="findOne" parameterType="String" resultType="Apply">
-            select applyId,applyUserName,applyPetName,applyUserSex,applyUserAddress,applyUserTelephone,applyUserState,applyTime from t_apply
+            select applyId,applyUserName,applyPetName,applyUserSex,applyUserAddress,applyUserTelephone,applyUserState,applyTime,applyState from t_apply
              where applyId=#{applyId}
     </select>
     <update id="update" parameterType="Apply" >
-        update t_apply set applyId=#{applyId},applyUserName=#{applyUserName},applyPetName=#{applyPetName},applyUserSex=#{applyUserSex},applyUserAddress=#{applyUserAddress},applyUserTelephone=#{applyUserTelephone},applyUserState=#{applyUserState},applyTime=#{applyTime}
+        update t_apply set applyId=#{applyId},applyUserName=#{applyUserName},applyPetName=#{applyPetName},applyUserSex=#{applyUserSex},applyUserAddress=#{applyUserAddress},applyUserTelephone=#{applyUserTelephone},applyUserState=#{applyUserState},applyTime=#{applyTime},#{applyState}
          where applyId=#{applyId}
     </update>
 

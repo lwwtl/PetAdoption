@@ -15,8 +15,10 @@ public interface UserDao {
     void delete(String id);
     void update(User user);
     List<User> findAll();
-//    User findOne(String id);
+    User findOne(String id);
     //根据名称模糊查询
     List<User> findByName(String username);
+    User findByAccount(@Param("Account") String Account);
     User login(@Param("Account")String userAccount, @Param("Password")String userPassword);
+
 }

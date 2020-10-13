@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/bootstrap.bundle.min.js"></script>
+		<style type="text/css">
+			body {
+				/* background: #f3f3f3; */
+				background: url("/img/login/login-4.jpeg") no-repeat center center fixed;
+				background-size: cover;
+			}
+		</style>
+	</head>
+	<body>
+	<!--导航条-->
+	<div th:insert="~{navigation::nav}"></div>
+
+	<div class="container">
+		<div class="jumbotron" style="margin-top: 38px;">
+			<h2 class="offset-1">个人资料</h2>
+			<hr>
+			<br>
+			<form  method="post" th:action="@{/front/infoUpdate}">
+			<div class="row">
+				<div class="col-md-4 offset-1">
+					<div class="input-group mb-3" style="display: none;">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="uid">id</span>
+						</div>
+						<input type="text" class="form-control" name="userId" th:value="${session.user.userId}">
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="aco">账号</span>
+						</div>
+						<input type="text" class="form-control" name="userAccount" th:value="${session.user.userAccount}" required="required">
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="psd">密码</span>
+						</div>
+						<input type="text" class="form-control" name="userPassword" th:value="${session.user.userPassword}" required="required">
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="name">姓名</span>
+						</div>
+						<input type="text" class="form-control" name="userName" th:value="${session.user.userName}" required="required">
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="age">年龄</span>
+						</div>
+						<input type="text" class="form-control" name="userAge" th:value="${session.user.userAge!=null ?session.user.userAge:''}" required="required">
+					</div>
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="sex">性别</label>
+						</div>
+						<select class="custom-select" id="sex" name="userSex" required="required">
+							<option th:if="${session.user.userSex!=null}" th:selected="${session.user.userSex}"  th:value="${session.user.userSex}" th:text="${session.user.userSex}"></option>
+							<option th:if="${session.user.userSex==null}"></option>
+							<option th:if="${session.user.userSex!='男'}">男</option>
+							<option th:if="${session.user.userSex!='女'}">女</option>
+						</select>
+					</div>
+
+				</div>
+				<div class="col-md-4 offset-1">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="tel">电话</span>
+						</div>
+						<input type="text" class="form-control" name="userTelephone" th:value="${session.user.userTelephone!=null ?session.user.userTelephone:''}" required="required">
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="email">邮箱</span>
+						</div>
+						<input type="text" class="form-control" name="userEmail" th:value="${session.user.userEmail!=null ?session.user.userEmail:''}" required="required">
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="address">住址</span>
+						</div>
+						<input type="text" class="form-control" name="userAddress" th:value="${session.user.userAddress!=null ?session.user.userAddress:''}" required="required">
+					</div>
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="exp">领养经历</label>
+						</div>
+						<select class="custom-select" id="exp" name="userState"  required="required">
+							<option th:if="${session.user.userState!=null}" th:selected="${session.user.userState}"  th:value="${session.user.userState}" th:text="${session.user.userState}"></option>
+							<option th:if="${session.user.userState==null}"></option>
+							<option th:if="${session.user.userState!='有'}">有</option>
+							<option th:if="${session.user.userState !='无'}">无</option>
+
+						</select>
+					</div>
+					<div class="alert alert-success" role="alert" th:if="${msg}">
+						保存成功！<a href="/index" class="alert-link">点击返回首页</a>。
+					</div>
+				</div>
+
+			</div>
+
+			<hr>
+			<br>
+			<button type="submit" class="btn btn-info" style="position: relative;left: 455px;width: 100px;">保存</button>
+
+			</form>
+		</div>
+	</div>
+
+	</body>
+</html>

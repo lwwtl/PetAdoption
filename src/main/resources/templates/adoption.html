@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<script src="/iconfont/iconfont.js"></script>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/bootstrap.bundle.min.js"></script>
+		<style type="text/css">
+			body {
+				/* background: #f3f3f3; */
+				background: url("/img/login/login-4.jpeg") no-repeat center center fixed;
+				background-size: cover;
+			}
+			
+			.icon {
+			  width: 1.5em;
+			  height: 1.5em;
+			  vertical-align: -0.35em;
+			  fill: currentColor;
+			  overflow: hidden;
+			}
+			div{
+				font-weight: 400;
+				font-size: 18px;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<!--导航条-->
+		<div th:insert="~{navigation::nav}"></div>
+
+		<div class="container">
+			<div class="jumbotron" style="margin-top: 50px;">
+				<div class="row">
+					<div class="col-md-6">
+						<img th:src="${pet.petPic}" alt="..." class="img-fluid w-100 rounded">
+					</div>
+
+					<div class="col-md-6">
+						<div>
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-chongwu"></use>
+							</svg>
+							&nbsp;名字：
+							<span th:text="${pet.petName}"></span>
+						</div>
+						<div>
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-xingbie--"></use>
+							</svg>
+							&nbsp;性别：
+							<span th:text="${pet.petSex}"></span>
+						</div>
+						<div>
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-gouliang"></use>
+							</svg>
+							&nbsp;种类：
+							<span th:text="${pet.petSub}"></span>
+						</div>
+						<div>
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-shuyem"></use>
+							</svg>
+							&nbsp;品种：
+							<span th:text="${pet.petType}"></span>
+						</div>
+						<div>
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-icon-test"></use>
+							</svg>
+							&nbsp;生日：
+							<span th:text="${pet.petBir}"></span>
+						</div>
+						<div>
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-chongwujiyang"></use>
+							</svg>
+							&nbsp;领养状态：
+							<span th:text="${pet.petState}"></span>
+						</div>
+						<div>
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-A"></use>
+							</svg>
+							&nbsp;宠物介绍4：
+							<span th:text="${pet.petDetail}"></span>
+						</div>
+
+						
+						<hr class="my-4">
+						<span th:if="${session.user.userTelephone==null}" >
+							<a href="/info" role="button" class="btn btn-outline-warning btn-lg">请先完善个人资料</a>
+						</span>
+						<span>
+							<a th:if="${session.user.userTelephone!=null}" class="btn btn-outline-info btn-lg"  th:href="@{'/Apply/save/'+${session.Id}+'/'+${pet.petName}}" role="button">申请领养</a>
+						</span>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

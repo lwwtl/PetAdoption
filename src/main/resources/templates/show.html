@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.bundle.min.js"></script>
+    <style type="text/css">
+		body{
+			/* background: #f3f3f3; */
+			background: url("/img/login/login-4.jpeg" ) no-repeat center center fixed;
+			background-size: cover;	
+		}
+	</style>
+</head>
+<body>
+<!--导航条-->
+<div th:insert="~{navigation::nav}"></div>
+
+
+  <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+                 <div class="card-columns">
+                     
+					 <div class="card" th:each="pet:${pets}">
+						 <!-- border属性去掉 -->
+						 <a href="#">
+                         <img th:src="${pet.petPic}"
+                             alt="" class="card-img-top">
+						</a>
+                        <div class=" card-body">
+                             <h5 class="card-title" th:text="${pet.petType}"></h5>
+                            <p style="overflow: hidden; text-overflow: ellipsis;word-break: keep-all;white-space: nowrap;">
+                                <span th:text="${pet.petDetail}"></span>
+                            </p>
+                             <a th:if="${session.Name==null}" href="/login" class="btn btn-primary">请先登录再进行操作</a>
+							 <a th:if="${session.Name!=null}" th:href="@{'/adoption/'+${pet.petId}}" class="btn btn-primary">想领养</a>
+                         </div>
+                     </div>
+<!--                     <div class="card ">-->
+<!--                         <img src="/img/slider/3.jpg"-->
+<!--                             alt="" class="card-img-top">-->
+<!--                         <div class=" card-body">-->
+<!--                            <h5 class="card-title">Card title</h5>-->
+<!--                             <p class="card-text">Thitextw as a naturalhitext below as a natu a naturalhitext below as a natu below as a naturalhitext belowbelow as a naturalhitext below as a naturalhitext below as a natural-->
+<!--                             </p>-->
+<!--							 <a href="#" class="btn btn-primary">Go somewhere</a>-->
+<!--                         </div>-->
+<!--                     </div>-->
+<!--                     <div class="card ">-->
+<!--                         <img src="/img/pet/QQ图片20201010100125.jpg"-->
+<!--                             alt="" class="card-img-top">-->
+<!--                         <div class=" card-body">-->
+<!--                            <h5 class="card-title">大橘</h5>-->
+<!--                             <p class="card-text">性格活泼好动-->
+<!--                             </p>-->
+<!--							 <a href="#" class="btn btn-primary">去看看</a>-->
+<!--                         </div>-->
+<!--                     </div>-->
+<!--                     <div class="card ">-->
+<!--                         <img src="/img/pet/QQ图片20201010100129.jpg"-->
+<!--                             alt="" class="card-img-top">-->
+<!--                         <div class=" card-body">-->
+<!--                            <h5 class="card-title">Card title</h5>-->
+<!--                             <p class="card-text">This isxt below as a naturalitextw as a naturalhitext below as a natu below as a naturalhitext below as a naturalhitext below-->
+<!--                             </p>-->
+<!--							 <a href="#" class="btn btn-primary">Go somewhere</a>-->
+<!--                         </div>-->
+<!--                     </div>-->
+<!--					 <div class="card ">-->
+<!--                         <img src="/img/pet/QQ图片20201010100138.jpg"-->
+<!--                             alt="" class="card-img-top">-->
+<!--                         <div class=" card-body">-->
+<!--                            <h5 class="card-title">Card title</h5>-->
+<!--                             <p class="card-text">This isxt below as a naturalitextw as a naturalhitext below as a natu below as a naturalhitext below as a naturalhitext below-->
+<!--                             </p>-->
+<!--							 <a href="#" class="btn btn-primary">Go somewhere</a>-->
+<!--                         </div>-->
+<!--                     </div>-->
+ 
+                 </div>
+             </div>
+         </div>
+     </div>
+ 
+</body>
+</html>

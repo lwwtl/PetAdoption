@@ -3,7 +3,6 @@ package com.pet.demo.service.Impl;
 import com.pet.demo.dao.UserDao;
 import com.pet.demo.entity.User;
 import com.pet.demo.service.UserService;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,11 +38,15 @@ public class UserServiceImpl implements UserService {
         return userDao.findAll();
     }
 
-//    @Override
-//    public User findOne(String id) {
-//        return userDao.findOne(id);
-//    }
+    @Override
+    public User findOne(String id) {
+        return userDao.findOne(id);
+    }
 
+    @Override
+    public User findByAccount(String Account) {
+        return userDao.findByAccount(Account);
+    }
     @Override
     public List<User> findByName(String userName) {
         return userDao.findByName(userName);
@@ -51,6 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(String userAccount, String userPassword) {
+
         return userDao.login(userAccount,userPassword);
     }
 

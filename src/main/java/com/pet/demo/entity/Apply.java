@@ -18,4 +18,5 @@ public class Apply {
     private String applyUserTelephone;
     private String applyUserState;
     private String applyTime;
+    private String applyState;
 }
