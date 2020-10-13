@@ -29,6 +29,10 @@ public class ApplyTestController {
     @Autowired
     private ApplyService applyService;
 
+//    @GetMapping("apply")
+//    public String apply(){
+//        return "apply";
+//    }
 
     @GetMapping("/findAll")
     public String findAll(Model model){
@@ -56,30 +60,19 @@ public class ApplyTestController {
         return "redirect:/index";
     }
 
-    @GetMapping("/findone")
-    public String findone( Model model){
-        Apply apply=applyService.findOne("1");
-        System.out.println(apply);
-        return "success";
-    }
 
-    @GetMapping("delete")
-    public String delete(String id){
-        applyService.delete("2");
-        return "success";
-    }
-
-    @GetMapping("update")
-    public String update(){
-        Apply apply=applyService.findOne("1");
-        apply.setApplyPetName("update");
-        apply.setApplyTime("update");
-        apply.setApplyUserAddress("update");
-        apply.setApplyUserSex("update");
-        apply.setApplyUserState("update");
-        apply.setApplyUserTelephone("update");
-        apply.setApplyUserName("update");
+    @GetMapping("/agree/{applyId}")
+    public String agree(@PathVariable(name = "applyId")String applyId){
+        Apply apply=applyService.findOne(applyId);
+        apply.setApplyState("同意领养");
         applyService.update(apply);
-        return "success";
+        return "redirect:/Apply/findAll";
+    }
+    @GetMapping("/disagree/{applyId}")
+    public String disagree(@PathVariable(name = "applyId")String applyId){
+        Apply apply=applyService.findOne(applyId);
+        apply.setApplyState("不同意领养");
+        applyService.update(apply);
+        return "redirect:/Apply/findAll";
     }
 }

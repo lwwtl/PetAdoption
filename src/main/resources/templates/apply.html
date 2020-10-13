@@ -199,11 +199,15 @@
                                             <td><span th:text="${apply.applyState}"></span></td>
                                             <td style="display: none"><span th:text="${apply.applyId}"></span></td>
                                             <td>
-                                                <button class="btn btn-primary">同意</button>
+                                                <button class="btn btn-primary">
+                                                    <a th:href="@{'/Apply/agree/'+${apply.applyId}}" style="text-decoration-line: none;color: white">
+                                                        同意
+                                                    </a>
+                                                </button>
                                                 <button class="btn btn-danger">
-<!--                                                    <a th:href="@{/front/delete(userId=${user.userId})}" style="text-decoration-line: none;color: white">-->
+                                                    <a th:href="@{'/Apply/disagree/'+${apply.applyId}}" style="text-decoration-line: none;color: white">
                                                         拒绝
-<!--                                                    </a>-->
+                                                    </a>
                                                 </button>
 
                                             </td>
