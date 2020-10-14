@@ -2,7 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.pet.demo.dao.ApplyDao">
     <select id="findAll" resultType="Apply">
-        select * from t_apply where applyState='审核中'
+        select * from t_apply where applyState=#{applyState}
+    </select>
+    <select id="findByName" parameterType="String" resultType="Apply">
+         select * from t_apply where applyUserName like #{applyUserName} and applyState=#{applyState}
     </select>
     <insert id="save" parameterType="Apply">
         insert into t_apply values(#{applyId},#{applyUserName},#{applyPetName},#{applyUserSex},#{applyUserAddress},#{applyUserTelephone},#{applyUserState},#{applyTime},#{applyState})

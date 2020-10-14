@@ -34,12 +34,12 @@
 
 
                 <!-- /.dropdown -->
-                <li class="dropdown">
+                <li class="dropdown"  th:if="${session.Name != null}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>用户名
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i>退出登录</a>
+                        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -54,7 +54,6 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 
-
                     <li>
                         <a href="/backstage/admin"><i class="fa fa-edit"></i>管理员信息管理 </a>
                     </li>
@@ -65,15 +64,14 @@
                         <a href="/PetTest/pet"><i class="fa fa-edit"></i>宠物信息管理</a>
                     </li>
                     <li>
-                        <a href="apply.html" class="active-menu"><i class="fa fa-list-ul"></i>领养信息审核</a>
+                        <a href="/Apply/find"  class="active-menu"><i class="fa fa-list-ul"></i>领养信息审核</a>
                     </li>
                     <li>
-                        <a href="agree.html"><i class="fa fa-check"></i>领养审核通过</a>
+                        <a href="/Apply/agreePage"><i class="fa fa-check"></i>领养审核通过</a>
                     </li>
                     <li>
-                        <a href="disagree.html"><i class="fa fa-ban"></i>领养审核未通过</a>
+                        <a href="/Apply/disagreePage"><i class="fa fa-ban"></i>领养审核未通过</a>
                     </li>
-
                 </ul>
 
             </div>
@@ -163,7 +161,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <div>
-                                    <form method="get" th:action="@{/front/user}" style="display: inline">
+                                    <form method="get" th:action="@{/Apply/find}" style="display: inline">
                                         <span style="margin-right: 50px;">用户信息表</span>
                                         <input type="text" class="form-control"  name="searchName" id="searchName" placeholder="输入姓名搜索" style="display: inline;width: 20%">
                                         <button type="submit" class="btn btn-info">搜索</button>
@@ -188,7 +186,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="apply:${applies}">
+                                        <tr th:each="apply:${applies.list}">
                                             <td><span th:text="${apply.applyUserName}"></span></td>
                                             <td><span th:text="${apply.applyPetName}"></span></td>
                                             <td><span th:text="${apply.applyUserSex}"></span></td>
@@ -216,31 +214,31 @@
                                     </table>
                                 </div>
                                 <nav>
-<!--                                    <ul class="pagination">-->
-<!--                                        &lt;!&ndash;											<li class="page-item" th:if="${users.pageNum!=1}">&ndash;&gt;-->
-<!--                                        <li class="page-item">-->
-<!--                                            <a  th:href="@{/front/user(pageNum=1)}" class="page-link">首页</a>-->
-<!--                                        </li>-->
-<!--                                        &lt;!&ndash;											<li class="page-item" th:if="${users.pageNum!=1}">&ndash;&gt;-->
-<!--                                        <li class="page-item" >-->
-<!--                                            <a th:href="@{/front/user(pageNum=${users.hasPreviousPage}?${users.prePage}:${users.pages})}" class="page-link">上一页</a>-->
-<!--                                        </li>-->
-<!--                                        &lt;!&ndash;											<li class="page-item"><a class="page-link"><span th:text="第+${users.pageNum}+页"></span></a></li>&ndash;&gt;-->
+                                    <ul class="pagination">
+                                        <!--											<li class="page-item" th:if="${users.pageNum!=1}">-->
+                                        <li class="page-item">
+                                            <a  th:href="@{/Apply/find(pageNum=1)}" class="page-link">首页</a>
+                                        </li>
+                                        <!--											<li class="page-item" th:if="${users.pageNum!=1}">-->
+                                        <li class="page-item" >
+                                            <a th:href="@{/Apply/find(pageNum=${applies.hasPreviousPage}?${applies.prePage}:${applies.pages})}" class="page-link">上一页</a>
+                                        </li>
+                                        <!--											<li class="page-item"><a class="page-link"><span th:text="第+${users.pageNum}+页"></span></a></li>-->
 
-<!--                                        <li class="page-item">-->
-<!--                                            <a class="page-link"  th:href="@{/front/user(pageNum=${users.pages}-1)}" >-->
-<!--                                                <span th:text="第+${users.pageNum}+页"></span></a>-->
-<!--                                        </li>-->
+                                        <li class="page-item">
+                                            <a class="page-link"  th:href="@{/Apply/find(pageNum=${applies.pages}-1)}" >
+                                                <span th:text="第+${applies.pageNum}+页"></span></a>
+                                        </li>
 
-<!--                                        &lt;!&ndash;											<li class="page-item" th:if="${users.pageNum!=users.pages}">&ndash;&gt;-->
-<!--                                        <li class="page-item">-->
-<!--                                            <a th:href="@{/front/user(pageNum=${users.hasNextPage}?${users.nextPage}:${users.pages})}" class="page-link">下一页</a>-->
-<!--                                        </li>-->
-<!--                                        &lt;!&ndash;											<li class="page-item" th:if="${users.pageNum!=users.pages}">&ndash;&gt;-->
-<!--                                        <li class="page-item">-->
-<!--                                            <a th:href="@{/front/user(pageNum=${users.pages})}" class="page-link">尾页</a>-->
-<!--                                        </li>-->
-<!--                                    </ul>-->
+                                        <!--											<li class="page-item" th:if="${users.pageNum!=users.pages}">-->
+                                        <li class="page-item">
+                                            <a th:href="@{/Apply/find(pageNum=${applies.hasNextPage}?${applies.nextPage}:${applies.pages})}" class="page-link">下一页</a>
+                                        </li>
+                                        <!--											<li class="page-item" th:if="${users.pageNum!=users.pages}">-->
+                                        <li class="page-item">
+                                            <a th:href="@{/Apply/find(pageNum=${applies.pages})}" class="page-link">尾页</a>
+                                        </li>
+                                    </ul>
                                 </nav>
                             </div>
                         </div>

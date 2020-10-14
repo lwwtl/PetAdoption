@@ -12,6 +12,7 @@ public interface ApplyDao {
     void save(Apply apply);
     void delete(String id);
     void update(Apply apply);
-    List<Apply> findAll();
+    List<Apply> findAll(String applyState);
     Apply findOne(String id);
+    List<Apply> findByName(String applyUserName,String applyState);
 }

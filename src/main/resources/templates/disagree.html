@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
 	<!-- Bootstrap Styles-->
-    <link href="../static/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
-    <link href="../static/css/font-awesome.css" rel="stylesheet" />
+    <link href="/css/font-awesome.css" rel="stylesheet" />
      <!-- Morris Chart Styles-->
         <!-- Custom Styles-->
-    <link href="../static/css/custom-styles.css" rel="stylesheet" />
+    <link href="/css/custom-styles.css" rel="stylesheet" />
      <!-- Google Fonts-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
      <!-- TABLE STYLES-->
-    <link href="../static/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div id="wrapper">
@@ -26,24 +27,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="manage.html"><strong>宠物领养后台管理 </strong></a>
+                <a class="navbar-brand" href="/manage"><strong>宠物领养后台管理 </strong></a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
 
 
                 <!-- /.dropdown -->
-                <li class="dropdown">
+                <li class="dropdown"  th:if="${session.Name != null}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -59,25 +55,24 @@
                 <ul class="nav" id="main-menu">
 
 
-
-					<li>
-					    <a href="admin.html"><i class="fa fa-edit"></i>管理员信息管理 </a>
-					</li>
-					<li>
-					    <a href="user.html"><i class="fa fa-edit"></i>用户信息管理 </a>
-					</li>
-					<li>
-					    <a href="pet.html"><i class="fa fa-edit"></i>宠物信息管理</a>
-					</li>
-					<li>
-					    <a href="apply.html" ><i class="fa fa-list-ul"></i>领养信息审核</a>
-					</li>
-					<li>
-					    <a href="agree.html" ><i class="fa fa-check"></i>领养审核通过</a>
-					</li>
-					<li>
-					    <a href="disagree.html" class="active-menu"><i class="fa fa-ban"></i>领养审核未通过</a>
-					</li>
+                    <li>
+                        <a href="/backstage/admin"><i class="fa fa-edit"></i>管理员信息管理 </a>
+                    </li>
+                    <li>
+                        <a href="/front/user" ><i class="fa fa-edit"></i>用户信息管理 </a>
+                    </li>
+                    <li>
+                        <a href="/PetTest/pet"><i class="fa fa-edit"></i>宠物信息管理</a>
+                    </li>
+                    <li>
+                        <a href="/Apply/find" ><i class="fa fa-list-ul"></i>领养信息审核</a>
+                    </li>
+                    <li>
+                        <a href="/Apply/agreePage"><i class="fa fa-check"></i>领养审核通过</a>
+                    </li>
+                    <li>
+                        <a href="/Apply/disagreePage" class="active-menu"><i class="fa fa-ban"></i>领养审核未通过</a>
+                    </li>
 
                 </ul>
 
@@ -85,89 +80,203 @@
 
         </nav>
         <!-- /. NAV SIDE  -->
-        <div id="page-wrapper" >
+        <div id="page-wrapper">
             <div id="page-inner">
-			 <div class="row">
+                <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                             <small></small>
+                            <small></small>
                         </h1>
                     </div>
-                </div> 
-                 <!-- /. ROW  -->
-				 <!--  Modals-->
-				 <!-- End Modals-->
-               
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Advanced Tables -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            	 审核未通过列表		
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>领养用户</th>
-                                            <th>领养宠物名</th>
-                                            <th>审核状态</th>
-                                            <th>领养时间</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="gradeC">
-                                            <td>小明</td>
-                                            <td>驴驴</td>
-                                            <td>未通过</td>
-                                            <td class="center">123456789</td> 
-                                        </tr>
-                                        <tr class="gradeU">
-                                            <td>小红</td>
-                                            <td>雪碧</td>
-                                            <td>未通过</td>
-                                            <td class="center">123456789</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <!--End Advanced Tables -->
                 </div>
-            </div>
+                <!-- /. ROW  -->
+                <!--  Modals-->
+
+                <div class="panel-body">
+
+
+
+
+<!--                    <form method="post" th:action="@{/front/save}" class="form-horizontal" role="form" id="myForm" onsubmit="return ">-->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+                             style="display: none;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style=" position:relative;left:60px;">
+<!--                                            <form class="form-horizontal" role="form">-->
+                                                <input type="hidden" class="form-control" name="applyId">
+                                                <div class="form-group">
+                                                    <label>申请用户</label>
+                                                    <input type="text" class="form-control" name="applyUserName" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>宠物名字</label>
+                                                    <input class="form-control" type="text" name="applyPetName" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>用户性别</label>
+                                                    <input class="form-control" type="text" name="applyUserSex" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>用户住址</label>
+                                                    <input class="form-control" type="text" name="applyUserAddress" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>用户电话</label>
+                                                    <input class="form-control" type="text" name="applyUserTelephone" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>领养经历</label>
+                                                    <input class="form-control" type="text" name="applyUserState">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>申请时间</label>
+                                                    <input class="form-control" type="text" name="applyTime">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>审核状态</label>
+                                                    <input class="form-control" type="text" name="applyState">
+                                                </div>
+
+<!--                                            </form>-->
+                                        </div>
+                                    </div>
+<!--                                    <div style="padding: 20px;position: relative;left: 420px;">-->
+<!--                                        <button type="reset" class="btn btn-default">重置</button>-->
+<!--                                        <button type="submit" class="btn btn-primary">保存</button>-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+<!--                    </form>-->
+                </div>
+
+                <!-- End Modals-->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Advanced Tables -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div>
+                                    <form method="get" th:action="@{/Apply/find}" style="display: inline">
+                                        <span style="margin-right: 50px;">用户信息表</span>
+                                        <input type="text" class="form-control"  name="searchName" id="searchName" placeholder="输入姓名搜索" style="display: inline;width: 20%">
+                                        <button type="submit" class="btn btn-info">搜索</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                        <tr>
+                                            <th>申请用户</th>
+                                            <th>宠物名字</th>
+                                            <th>用户性别</th>
+                                            <th>用户住址</th>
+                                            <th>用户电话</th>
+                                            <th>领养经历</th>
+                                            <th>申请时间</th>
+                                            <th>审核状态</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="apply:${applies.list}">
+                                            <td><span th:text="${apply.applyUserName}"></span></td>
+                                            <td><span th:text="${apply.applyPetName}"></span></td>
+                                            <td><span th:text="${apply.applyUserSex}"></span></td>
+                                            <td><span th:text="${apply.applyUserAddress}"></span></td>
+                                            <td><span th:text="${apply.applyUserTelephone}"></span></td>
+                                            <td><span th:text="${apply.applyUserState}"></span></td>
+                                            <td><span th:text="${apply.applyTime}"></span></td>
+                                            <td><span th:text="${apply.applyState}"></span></td>
+                                            <td style="display: none"><span th:text="${apply.applyId}"></span></td>
+                                            <td>
+                                                <button class="btn btn-primary">
+                                                    <a th:href="@{'/Apply/agree/'+${apply.applyId}}" style="text-decoration-line: none;color: white">
+                                                        同意
+                                                    </a>
+                                                </button>
+                                                <button class="btn btn-danger">
+                                                    <a th:href="@{'/Apply/disagree/'+${apply.applyId}}" style="text-decoration-line: none;color: white">
+                                                        拒绝
+                                                    </a>
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav>
+                                    <ul class="pagination">
+                                        <!--											<li class="page-item" th:if="${users.pageNum!=1}">-->
+                                        <li class="page-item">
+                                            <a  th:href="@{/Apply/find(pageNum=1)}" class="page-link">首页</a>
+                                        </li>
+                                        <!--											<li class="page-item" th:if="${users.pageNum!=1}">-->
+                                        <li class="page-item" >
+                                            <a th:href="@{/Apply/find(pageNum=${applies.hasPreviousPage}?${applies.prePage}:${applies.pages})}" class="page-link">上一页</a>
+                                        </li>
+                                        <!--											<li class="page-item"><a class="page-link"><span th:text="第+${users.pageNum}+页"></span></a></li>-->
+
+                                        <li class="page-item">
+                                            <a class="page-link"  th:href="@{/Apply/find(pageNum=${applies.pages}-1)}" >
+                                                <span th:text="第+${applies.pageNum}+页"></span></a>
+                                        </li>
+
+                                        <!--											<li class="page-item" th:if="${users.pageNum!=users.pages}">-->
+                                        <li class="page-item">
+                                            <a th:href="@{/Apply/find(pageNum=${applies.hasNextPage}?${applies.nextPage}:${applies.pages})}" class="page-link">下一页</a>
+                                        </li>
+                                        <!--											<li class="page-item" th:if="${users.pageNum!=users.pages}">-->
+                                        <li class="page-item">
+                                            <a th:href="@{/Apply/find(pageNum=${applies.pages})}" class="page-link">尾页</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <!--End Advanced Tables -->
+                    </div>
+                </div>
                 <!-- /. ROW  -->
 
-        </div>
-               <footer><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p></footer>
-    </div>
-             <!-- /. PAGE INNER  -->
             </div>
-         <!-- /. PAGE WRAPPER  -->
-     <!-- /. WRAPPER  -->
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+    <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
-    <script src="../static/js/jquery-1.10.2.js"></script>
-      <!-- Bootstrap Js -->
-    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->
-    <script src="../static/js/jquery.metisMenu.js"></script>
-     <!-- DATA TABLE SCRIPTS -->
-    <script src="../static/js/dataTables/jquery.dataTables.js"></script>
-    <script src="../static/js/dataTables/dataTables.bootstrap.js"></script>
-		<script>
-			$(document).ready(function() {
-				$('#dataTables-example').dataTable({
-					"ordering": false,
-					"searching": false
-				});
-			});
-		</script>
-         <!-- Custom Js -->
-    <script src="../static/js/custom-scripts.js"></script>
-    
-   
+    <script src="/js/jquery.metisMenu.js"></script>
+    <!-- DATA TABLE SCRIPTS -->
+    <script src="/js/dataTables/jquery.dataTables.js"></script>
+    <script src="/js/dataTables/dataTables.bootstrap.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dataTables-example').dataTable({
+                "ordering": false,
+                "searching": false
+            });
+        });
+
+    </script>
+    <!-- Custom Js -->
+    <script src="/js/custom-scripts.js"></script>
+
+
 </body>
 </html>
