@@ -1,5 +1,8 @@
 package com.pet.demo.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.pet.demo.entity.Apply;
 import com.pet.demo.entity.Log;
 import com.pet.demo.entity.Pet;
 import com.pet.demo.entity.User;
@@ -10,6 +13,7 @@ import com.pet.demo.utils.ValidateImageCodeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -37,9 +42,11 @@ public class IndexController {
         return "index";
     }
     @GetMapping("/manage")
-    public String manage(Model model){
-        List<Log> logs=logService.findFive();
-        model.addAttribute("logs",logs);
+    public String manage(Model model, @RequestParam(defaultValue = "1") Integer pageNum){
+        PageHelper.startPage(pageNum, 5);
+        List<Log> logs = logService.findALL();
+        PageInfo<Log> pageInfo = new PageInfo<>(logs);
+        model.addAttribute("logs", pageInfo);
         return "manage";
     }
     @GetMapping("/navigation")
@@ -74,6 +81,13 @@ public class IndexController {
         return "show";
     }
 
-
+    @GetMapping("/more")
+    public String findAll(Model model, @RequestParam(defaultValue = "1") Integer pageNum){
+        PageHelper.startPage(pageNum, 10);
+        List<Log> logs = logService.findALL();
+        PageInfo<Log> pageInfo = new PageInfo<>(logs);
+        model.addAttribute("logs", pageInfo);
+        return "manage";
+        }
 
 }
