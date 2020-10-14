@@ -1,7 +1,9 @@
 package com.pet.demo.controller;
 
+import com.pet.demo.entity.Log;
 import com.pet.demo.entity.Pet;
 import com.pet.demo.entity.User;
+import com.pet.demo.service.LogService;
 import com.pet.demo.service.PetService;
 import com.pet.demo.service.UserService;
 import com.pet.demo.utils.ValidateImageCodeUtils;
@@ -26,6 +28,8 @@ public class IndexController {
 
     @Autowired
     private PetService petService;
+    @Autowired
+    private LogService logService;
 
     @GetMapping("/index")
     public String index(){
@@ -33,8 +37,9 @@ public class IndexController {
         return "index";
     }
     @GetMapping("/manage")
-    public String manage(){
-
+    public String manage(Model model){
+        List<Log> logs=logService.findFive();
+        model.addAttribute("logs",logs);
         return "manage";
     }
     @GetMapping("/navigation")

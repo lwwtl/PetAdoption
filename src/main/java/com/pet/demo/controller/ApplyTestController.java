@@ -4,9 +4,11 @@ package com.pet.demo.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.pet.demo.entity.Apply;
+import com.pet.demo.entity.Log;
 import com.pet.demo.entity.Pet;
 import com.pet.demo.entity.User;
 import com.pet.demo.service.ApplyService;
+import com.pet.demo.service.LogService;
 import com.pet.demo.service.PetService;
 import com.pet.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 
@@ -33,6 +37,9 @@ public class ApplyTestController {
 
     @Autowired
     private ApplyService applyService;
+
+    @Autowired
+    private LogService logService;
 
     @GetMapping("/find")
     public String find(Model model, @RequestParam(defaultValue = "1") Integer pageNum,
@@ -110,17 +117,31 @@ public class ApplyTestController {
 
 
     @GetMapping("/agree/{applyId}")
-    public String agree(@PathVariable(name = "applyId") String applyId) {
+    public String agree(@PathVariable(name = "applyId") String applyId, HttpSession session) {
         Apply apply = applyService.findOne(applyId);
         apply.setApplyState("同意领养");
+        if(session.getAttribute("Name")!=null){
+            String logs=session.getAttribute("Name")+"进行了同意领养操作";
+            Log log=new Log();
+            log.setLog_time(new Date());
+            log.setLog_detail(logs);
+            logService.save(log);
+        }
         applyService.update(apply);
         return "redirect:/Apply/find";
     }
 
     @GetMapping("/disagree/{applyId}")
-    public String disagree(@PathVariable(name = "applyId") String applyId) {
+    public String disagree(@PathVariable(name = "applyId") String applyId,HttpSession session) {
         Apply apply = applyService.findOne(applyId);
         apply.setApplyState("不同意领养");
+        if(session.getAttribute("Name")!=null){
+            String logs=session.getAttribute("Name")+"进行了不同意领养操作";
+            Log log=new Log();
+            log.setLog_time(new Date());
+            log.setLog_detail(logs);
+            logService.save(log);
+        }
         applyService.update(apply);
         return "redirect:/Apply/find";
     }

@@ -99,32 +99,26 @@
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                任务面板
+                                日志列表
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">
-
-                                    <a href="form.html" class="list-group-item">
-                                        <span class="badge">今天</span>
-                                        <i class="fa fa-fw fa-comment"></i> 宠物领养信息审核
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">36 minutes ago</span>
-                                        <i class="fa fa-fw fa-globe"></i> 用户信息管理
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">1 hour ago</span>
-                                        <i class="fa fa-fw fa-user"></i> A new user has been added
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">1.23 hour ago</span>
-                                        <i class="fa fa-fw fa-user"></i> A new user has added
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">yesterday</span>
-                                        <i class="fa fa-fw fa-globe"></i> Saved the world
-                                    </a>
-                                </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                            <tr>
+                                                <th>时间</th>
+                                                <th>事件</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="log:${logs}">
+                                                <td><span th:text="${log.log_time}"></span></td>
+                                                <td><span th:text="${log.log_detail}"></span></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 <div class="text-right">
                                     <a href="#">More Tasks <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>

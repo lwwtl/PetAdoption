@@ -47,5 +47,10 @@ public class AdminServiceImpl implements AdminService {
         return adminDAO.loading(adminAccount, adminPassword);
     }
 
+    @Override
+    public Admin findOne(String id) {
+        return adminDAO.findOne(id);
+    }
+
 
 }

@@ -13,4 +13,5 @@ public interface AdminService {
     void update(Admin admin);
     List<Admin> findByName(String id);
     Admin loading(String adminAccount,String adminPassword);
+    Admin findOne(String id);
 }
