@@ -20,6 +20,10 @@
             select applyId,applyUserName,applyPetName,applyUserSex,applyUserAddress,applyUserTelephone,applyUserState,applyTime,applyState,applyUserId,applyPetId from t_apply
              where applyId=#{applyId}
     </select>
+    <select id="findApply" parameterType="String" resultType="String">
+            select applyUserName from t_apply
+             where applyId=#{applyId}
+    </select>
     <update id="update" parameterType="Apply" >
         update t_apply set applyId=#{applyId},applyUserName=#{applyUserName},applyPetName=#{applyPetName},applyUserSex=#{applyUserSex},applyUserAddress=#{applyUserAddress},applyUserTelephone=#{applyUserTelephone},applyUserState=#{applyUserState},applyTime=#{applyTime},applyState=#{applyState},applyUserId=#{applyUserId},applyPetId=#{applyPetId}
          where applyId=#{applyId}

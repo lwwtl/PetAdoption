@@ -54,6 +54,11 @@ public class ApplyServiceImpl implements ApplyService {
     }
 
     @Override
+    public String findApply(String applyId) {
+        return applyDao.findApply(applyId);
+    }
+
+    @Override
     public List<Apply> findByName(String applyUserName,String applyState) {
         return applyDao.findByName(applyUserName,applyState);
     }

@@ -14,5 +14,6 @@ public interface ApplyService {
     List<Apply> findAll(String applyState);
     List<Apply> findUser(String applyUserId);
     Apply findOne(String id);
+    String findApply(String applyId);
     List<Apply> findByName(String applyUserName,String applyState);
 }

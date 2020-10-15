@@ -2,6 +2,7 @@ package com.pet.demo.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.pet.demo.config.Log;
 import com.pet.demo.entity.User;
 import com.pet.demo.service.UserService;
 import com.pet.demo.utils.ValidateImageCodeUtils;
@@ -104,6 +105,7 @@ public class UserTestController {
         return "user";
 
     }
+
 
     @GetMapping("/delete")
     public String delete( String userId){

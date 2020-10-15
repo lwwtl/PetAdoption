@@ -89,7 +89,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            欢迎登录宠物领养后台管理系统 <small><span  th:text="${session.Name}"></span> </small>
+                            <span  th:text="${session.Name}"></span>  <small>欢迎登录宠物领养后台管理系统</small>
                         </h1>
 
                     </div>
@@ -98,31 +98,18 @@
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                任务面板
+                                操作记录
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">
 
-                                    <a href="form.html" class="list-group-item">
-                                        <span class="badge">今天</span>
-                                        <i class="fa fa-fw fa-comment"></i> 宠物领养信息审核
+                                    <a th:href="${logs.url}" class="list-group-item" th:each="logs:${logs}">
+                                        <span class="badge" th:text="${logs.createTime}"></span>
+                                        <i class="fa fa-fw fa-comment"></i>管理员<span th:text="${logs.AId}" style="color: red"></span>
+                                        <span th:text="${logs.adminAction}"></span>
+                                        用户<span th:text="${logs.object}" style="color:#007eff;"></span> 的领养请求
                                     </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">36 minutes ago</span>
-                                        <i class="fa fa-fw fa-globe"></i> 用户信息管理
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">1 hour ago</span>
-                                        <i class="fa fa-fw fa-user"></i> A new user has been added
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">1.23 hour ago</span>
-                                        <i class="fa fa-fw fa-user"></i> A new user has added
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">yesterday</span>
-                                        <i class="fa fa-fw fa-globe"></i> Saved the world
-                                    </a>
+
                                 </div>
                                 <div class="text-right">
                                     <a href="#">More Tasks <i class="fa fa-arrow-circle-right"></i></a>

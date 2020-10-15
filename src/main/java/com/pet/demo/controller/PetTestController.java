@@ -1,5 +1,6 @@
 package com.pet.demo.controller;
 
+import com.pet.demo.config.Log;
 import com.pet.demo.entity.Admin;
 import com.pet.demo.entity.Pet;
 import com.pet.demo.entity.User;
@@ -33,7 +34,7 @@ public class PetTestController {
     }
 
     @PostMapping("/save")
-    public String save(@RequestParam(value = "petPic") MultipartFile file,HttpServletRequest request){
+    public String savePet(@RequestParam(value = "petPic") MultipartFile file,HttpServletRequest request){
 //        if (file.isEmpty()) {
 //            System.out.println("文件为空空");
 //        }
@@ -74,7 +75,7 @@ public class PetTestController {
 
 
     @GetMapping("/delete")
-    public String delete(String petId){
+    public String deletePet(String petId){
         petService.delete(petId);
         return "redirect:/PetTest/pet";
     }

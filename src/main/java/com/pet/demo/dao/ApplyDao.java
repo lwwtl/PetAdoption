@@ -15,6 +15,7 @@ public interface ApplyDao {
     void modify(String applyPetId,String applyState);
     List<Apply> findAll(String applyState);
     List<Apply> findUser(String applyUserId);
+    String findApply(String applyId);
     Apply findOne(String id);
     List<Apply> findByName(String applyUserName,String applyState);
 }

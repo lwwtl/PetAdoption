@@ -15,6 +15,7 @@ public interface AdminDao {
     void delete(String id);
     void update(Admin admin);
     List<Admin> findByName(String id);
+    String findName(String id);
     Admin loading(@Param("Account")String adminAccount, @Param("Password")String adminPassword);
 
 }

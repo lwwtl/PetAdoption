@@ -38,9 +38,15 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<Admin> findByName(String id){
-        return adminDAO.findByName(id);
+    public List<Admin> findByName(String searchName){
+        return adminDAO.findByName(searchName);
     }
+
+    @Override
+    public String findName(String id) {
+        return adminDAO.findName(id);
+    }
+
 
     @Override
     public Admin loading(String adminAccount, String adminPassword) {

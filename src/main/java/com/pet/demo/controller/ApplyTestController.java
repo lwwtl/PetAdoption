@@ -3,6 +3,7 @@ package com.pet.demo.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.pet.demo.config.Log;
 import com.pet.demo.entity.Apply;
 import com.pet.demo.entity.Pet;
 import com.pet.demo.entity.User;
@@ -115,6 +116,7 @@ public class ApplyTestController {
         return msg;
     }
 
+    @Log
     @Transactional
     @GetMapping("/agree/{applyId}/{petId}")
     public String agree(@PathVariable(name = "applyId") String applyId,
@@ -129,6 +131,7 @@ public class ApplyTestController {
         return "redirect:/Apply/find";
     }
 
+    @Log
     @GetMapping("/disagree/{applyId}")
     public String disagree(@PathVariable(name = "applyId") String applyId) {
         Apply apply = applyService.findOne(applyId);

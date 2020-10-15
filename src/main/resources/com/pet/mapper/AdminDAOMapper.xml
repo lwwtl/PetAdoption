@@ -11,8 +11,8 @@
     <delete id="delete" parameterType="String">
         delete from t_admin where adminId=#{adminId}
     </delete>
-    <select id="findOne" parameterType="String" resultType="Admin">
-            select adminId,adminAccount,adminPassword,adminName,adminAge,adminSex,adminTelephone,adminEmail from t_admin
+    <select id="findName" parameterType="String" resultType="String">
+            select adminName from t_admin
              where adminId=#{adminId}
     </select>
     <update id="update" parameterType="Admin" >

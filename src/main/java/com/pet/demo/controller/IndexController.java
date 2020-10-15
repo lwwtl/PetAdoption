@@ -1,10 +1,9 @@
 package com.pet.demo.controller;
 
-import com.pet.demo.entity.Apply;
-import com.pet.demo.entity.Pet;
-import com.pet.demo.entity.User;
+import com.pet.demo.entity.*;
 import com.pet.demo.service.ApplyService;
 import com.pet.demo.service.PetService;
+import com.pet.demo.service.SysLogService;
 import com.pet.demo.service.UserService;
 import com.pet.demo.utils.ValidateImageCodeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +29,8 @@ public class IndexController {
     private PetService petService;
     @Autowired
     private ApplyService applyService;
+    @Autowired
+    private SysLogService sysLogService;
 
     @GetMapping("/index")
     public String index(){
@@ -37,8 +38,9 @@ public class IndexController {
         return "index";
     }
     @GetMapping("/manage")
-    public String manage(){
-
+    public String manage(Model model){
+        List<SysLog> sysLogs=sysLogService.findAll();
+        model.addAttribute("logs",sysLogs);
         return "manage";
     }
     @GetMapping("/navigation")
