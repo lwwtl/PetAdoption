@@ -1,9 +1,9 @@
 package com.pet.demo.config;
 
+import com.pet.demo.entity.Pet;
 import com.pet.demo.entity.SysLog;
-import com.pet.demo.service.AdminService;
-import com.pet.demo.service.ApplyService;
-import com.pet.demo.service.SysLogService;
+import com.pet.demo.entity.UserLog;
+import com.pet.demo.service.*;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
@@ -31,6 +31,12 @@ public class LogAsPect {
     private AdminService adminService;
     @Autowired
     private ApplyService applyService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private UserLogService userLogService;
+    @Autowired
+    private PetService petService;
 
     @Autowired
     private HttpSession session;
@@ -63,7 +69,7 @@ public class LogAsPect {
             MethodSignature signature = (MethodSignature)point.getSignature();
             Method method = signature.getMethod();
             SysLog sys_log = new SysLog();
-
+            UserLog userLog = new UserLog();
             Log userAction = method.getAnnotation(Log.class);
             if (userAction != null) {
                 // 注解上的描述
@@ -82,7 +88,7 @@ public class LogAsPect {
 //            String []value = args.substring();
             //从session中获取当前登陆人id
 
-    		String adminId = (String) session.getAttribute("Id");
+    		String Id = (String) session.getAttribute("Id");
 
 
 //            sys_log.setAdminAction(methodName);
@@ -90,26 +96,39 @@ public class LogAsPect {
 
 
             if(methodName=="agree"){
-                String Name = adminService.findName(adminId);
+                String Name = adminService.findName(Id);
                 sys_log.setAId(Name);
                 String value = applyService.findApply(args.substring(1,37));
                 sys_log.setObject(value);
                 sys_log.setAdminAction("同意");
                 sys_log.setUrl("/Apply/agreePage");
+                sys_log.setCreateTime(time);
+                sysLogService.insertLog(sys_log);
             }else if(methodName=="disagree"){
-                String Name = adminService.findName(adminId);
+                String Name = adminService.findName(Id);
                 sys_log.setAId(Name);
                 String value = applyService.findApply(args.substring(1,37));
                 sys_log.setObject(value);
                 sys_log.setAdminAction("不同意");
                 sys_log.setUrl("/Apply/disagreePage");
+                sys_log.setCreateTime(time);
+                sysLogService.insertLog(sys_log);
+            }else if(methodName=="save"){
+                String Name = userService.findName(Id);
+                userLog.setUserId(Name);
+                String value = petService.findName(args.substring(39,75));
+                userLog.setPetId(value);
+                userLog.setUserAction("申请领养");
+                userLog.setUrl("/Apply/find");
+                userLog.setCreateTime(time);
+                userLogService.insertLog(userLog);
             }
 
 
-            sys_log.setCreateTime(time);
 
-            log.info("当前登陆人：{},类名:{},方法名:{},参数：{},执行时间：{}",adminId, className, methodName, args, time);
 
-            sysLogService.insertLog(sys_log);
+            log.info("当前登陆人：{},类名:{},方法名:{},参数：{},执行时间：{}",Id, className, methodName, args, time);
+
+
         }
 }

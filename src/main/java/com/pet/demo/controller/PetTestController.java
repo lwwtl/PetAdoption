@@ -1,5 +1,7 @@
 package com.pet.demo.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.pet.demo.config.Log;
 import com.pet.demo.entity.Admin;
 import com.pet.demo.entity.Pet;
@@ -27,10 +29,24 @@ public class PetTestController {
     private PetService petService;
 
     @GetMapping("/pet")
-    public String findAll(Model model){
-        List<Pet> pets=petService.findAll();
-        model.addAttribute("pets",pets);
-        return "pet";
+    public String findAll(Model model, @RequestParam(defaultValue = "1") Integer pageNum,
+                          @RequestParam(name = "searchName", required = false) String searchName){
+        if(StringUtils.isEmpty(searchName)){
+            PageHelper.startPage(pageNum,5);
+            List<Pet> pets=petService.findAll();
+            PageInfo<Pet> pageInfo = new PageInfo<>(pets);
+            model.addAttribute("pets",pageInfo);
+            return "pet";
+        }
+        else {
+            String name='%'+searchName+'%';
+            PageHelper.startPage(pageNum,5);
+            List<Pet> pets=petService.findByName(name);
+            PageInfo<Pet> pageInfo = new PageInfo<>(pets);
+            model.addAttribute("pets",pageInfo);
+            return "pet";
+        }
+
     }
 
     @PostMapping("/save")

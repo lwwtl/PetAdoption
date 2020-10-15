@@ -5,6 +5,9 @@
     <select id="findAll" resultType="User">
         select * from t_user
     </select>
+    <select id="findName" parameterType="String" resultType="String">
+        select userName from t_user where userId=#{userId}
+    </select>
     <!--保存员工-->
     <insert id="save" parameterType="User">
         insert into t_user values(#{userId},#{userAccount},#{userPassword},#{userName},#{userAge},#{userSex},#{userTelephone},#{userEmail},#{userAddress},#{userState})

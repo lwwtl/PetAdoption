@@ -11,6 +11,7 @@ public interface UserService {
     void update(User user);
     List<User> findAll();
     User findOne(String id);
+    String findName(String id);
     User findByAccount(String Account);
     List<User> findByName(String userName);
     User login(String userAccount,String userPassword);

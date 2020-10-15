@@ -92,7 +92,7 @@ public class ApplyTestController {
         }
     }
 
-
+    @Log
     @GetMapping("/save/{id}/{petId}")
     @ResponseBody
     public String save(@PathVariable(name = "id") String id,

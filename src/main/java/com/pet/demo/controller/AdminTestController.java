@@ -3,6 +3,7 @@ package com.pet.demo.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.pet.demo.entity.Admin;
+import com.pet.demo.entity.Apply;
 import com.pet.demo.entity.User;
 import com.pet.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +29,22 @@ public class AdminTestController {
 
 
     @GetMapping("/admin")
-    public String findAll(Model model){
-//        PageHelper.startPage(pageNum,5);
-        List<Admin> admins=adminService.findAll();
-//        PageInfo<Admin> pageInfo = new PageInfo<>(admins);
-//        model.addAttribute("admins",pageInfo);
-        model.addAttribute("admins",admins);
-        return "admin";
-
+    public String findAll(Model model, @RequestParam(defaultValue = "1") Integer pageNum,
+            @RequestParam(name = "searchName",required = false) String searchName){
+        if (StringUtils.isEmpty(searchName)) {
+            PageHelper.startPage(pageNum, 5);
+            List<Admin> admins=adminService.findAll();
+            PageInfo<Admin> pageInfo = new PageInfo<>(admins);
+            model.addAttribute("admins", pageInfo);
+            return "admin";
+        } else {
+            String name = '%' + searchName + '%';
+            PageHelper.startPage(pageNum, 5);
+            List<Admin> admins=adminService.findByName(name);
+            PageInfo<Admin> pageInfo = new PageInfo<>(admins);
+            model.addAttribute("admins", pageInfo);
+            return "admin";
+        }
     }
 
     @PostMapping("/save")
@@ -58,13 +67,13 @@ public class AdminTestController {
     }
 
 
-    @GetMapping("/findByName")
-    public String findByName(Model model,@RequestParam(name = "searchName",required = false) String searchName){
-        String name='%'+searchName+'%';
-        List<Admin> admins=adminService.findByName(name);
-        model.addAttribute("admins",admins);
-        return "admin";
-    }
+//    @GetMapping("/findByName")
+//    public String findByName(Model model,@RequestParam(name = "searchName",required = false) String searchName){
+//        String name='%'+searchName+'%';
+//        List<Admin> admins=adminService.findByName(name);
+//        model.addAttribute("admins",admins);
+//        return "admin";
+//    }
     @GetMapping("/delete")
     public String findByName(String adminId){
         adminService.delete(adminId);

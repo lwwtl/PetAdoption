@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pet.demo.dao.UserLogDao">
+    <select id="findAll" resultType="UserLog">
+        select userId,userAction,petId,createTime,url from t_userlog order by createTime desc limit 10
+    </select>
+
+    <insert id="insertLog" parameterType="UserLog">
+        insert into t_userlog values(#{id},#{userId},#{userAction},#{petId},#{createTime},#{url})
+    </insert>
+
+</mapper>

@@ -47,6 +47,11 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
+    public String findName(String id) {
+        return petDao.findName(id);
+    }
+
+    @Override
     public List<Pet> findByName(String petName) {
         return petDao.findByName(petName);
     }
