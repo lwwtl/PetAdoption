@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 public interface PetDao {
     List<Pet> findAll();
+    List<Pet> findPet(String petState);
     void save(Pet pet);
     void delete(String id);
     void update(Pet pet);

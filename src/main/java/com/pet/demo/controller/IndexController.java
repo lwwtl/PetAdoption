@@ -1,7 +1,9 @@
 package com.pet.demo.controller;
 
+import com.pet.demo.entity.Apply;
 import com.pet.demo.entity.Pet;
 import com.pet.demo.entity.User;
+import com.pet.demo.service.ApplyService;
 import com.pet.demo.service.PetService;
 import com.pet.demo.service.UserService;
 import com.pet.demo.utils.ValidateImageCodeUtils;
@@ -26,6 +28,8 @@ public class IndexController {
 
     @Autowired
     private PetService petService;
+    @Autowired
+    private ApplyService applyService;
 
     @GetMapping("/index")
     public String index(){
@@ -46,6 +50,12 @@ public class IndexController {
     public String userInfo(){
         return "info";
     }
+    @PostMapping("/getList")
+    public String getList(String applyUserId,Model model){
+        List<Apply> list = applyService.findUser(applyUserId);
+        model.addAttribute("list",list);
+        return "info::tb1";
+    }
     @GetMapping("/adoption/{id}")
     public String petAdoption(@PathVariable(name = "id")String id,Model model)
     {
@@ -57,7 +67,7 @@ public class IndexController {
 
     @GetMapping("/show")
     public String showPet(Model model){
-        List<Pet> pets=petService.findAll();
+        List<Pet> pets=petService.findPet("未领养");
         model.addAttribute("pets",pets);
         return "show";
     }

@@ -174,8 +174,9 @@
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead>
                                         <tr>
-                                            <th>申请用户</th>
+
                                             <th>宠物名字</th>
+                                            <th>申请用户</th>
                                             <th>用户性别</th>
                                             <th>用户住址</th>
                                             <th>用户电话</th>
@@ -187,8 +188,9 @@
                                         </thead>
                                         <tbody>
                                         <tr th:each="apply:${applies.list}">
-                                            <td><span th:text="${apply.applyUserName}"></span></td>
+
                                             <td><span th:text="${apply.applyPetName}"></span></td>
+                                            <td><span th:text="${apply.applyUserName}"></span></td>
                                             <td><span th:text="${apply.applyUserSex}"></span></td>
                                             <td><span th:text="${apply.applyUserAddress}"></span></td>
                                             <td><span th:text="${apply.applyUserTelephone}"></span></td>
@@ -196,12 +198,14 @@
                                             <td><span th:text="${apply.applyTime}"></span></td>
                                             <td><span th:text="${apply.applyState}"></span></td>
                                             <td style="display: none"><span th:text="${apply.applyId}"></span></td>
+                                            <td style="display: none"><span th:text="${apply.applyPetId}"></span></td>
                                             <td>
                                                 <button class="btn btn-primary">
-                                                    <a th:href="@{'/Apply/agree/'+${apply.applyId}}" style="text-decoration-line: none;color: white">
+                                                    <a th:href="@{'/Apply/agree/'+${apply.applyId}+'/'+${apply.applyPetId}}" style="text-decoration-line: none;color: white">
                                                         同意
                                                     </a>
                                                 </button>
+
                                                 <button class="btn btn-danger">
                                                     <a th:href="@{'/Apply/disagree/'+${apply.applyId}}" style="text-decoration-line: none;color: white">
                                                         拒绝

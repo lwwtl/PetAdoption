@@ -20,6 +20,11 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
+    public List<Pet> findPet(String petState) {
+        return petDao.findPet(petState);
+    }
+
+    @Override
     public void save(Pet pet) {
         pet.setPetId(UUID.randomUUID().toString());
         petDao.save(pet);

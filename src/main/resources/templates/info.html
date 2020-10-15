@@ -12,6 +12,45 @@
 				background: url("/img/login/login-4.jpeg") no-repeat center center fixed;
 				background-size: cover;
 			}
+
+            #getVerifyCode{cursor: pointer; outline: none;}
+            .alert {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                min-width: 200px;
+                margin-left: -100px;
+                z-index: 99999;
+                padding: 15px;
+                border: 1px solid transparent;
+                border-radius: 4px;
+            }
+
+            .alert-success {
+                color: #3c763d;
+                background-color: #dff0d8;
+                border-color: #d6e9c6;
+            }
+
+            .alert-info {
+                color: #31708f;
+                background-color: #d9edf7;
+                border-color: #bce8f1;
+            }
+
+            .alert-warning {
+                color: #8a6d3b;
+                background-color: #fcf8e3;
+                border-color: #faebcc;
+            }
+
+            .alert-danger {
+                color: #a94442;
+                background-color: #f2dede;
+                border-color: #ebccd1;
+            }
+
 		</style>
 	</head>
 	<body>
@@ -19,103 +58,213 @@
 	<div th:insert="~{navigation::nav}"></div>
 
 	<div class="container">
-		<div class="jumbotron" style="margin-top: 38px;">
-			<h2 class="offset-1">个人资料</h2>
-			<hr>
-			<br>
-			<form  method="post" th:action="@{/front/infoUpdate}">
-			<div class="row">
-				<div class="col-md-4 offset-1">
-					<div class="input-group mb-3" style="display: none;">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="uid">id</span>
-						</div>
-						<input type="text" class="form-control" name="userId" th:value="${session.user.userId}">
-					</div>
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="aco">账号</span>
-						</div>
-						<input type="text" class="form-control" name="userAccount" th:value="${session.user.userAccount}" required="required">
-					</div>
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="psd">密码</span>
-						</div>
-						<input type="text" class="form-control" name="userPassword" th:value="${session.user.userPassword}" required="required">
-					</div>
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="name">姓名</span>
-						</div>
-						<input type="text" class="form-control" name="userName" th:value="${session.user.userName}" required="required">
-					</div>
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="age">年龄</span>
-						</div>
-						<input type="text" class="form-control" name="userAge" th:value="${session.user.userAge!=null ?session.user.userAge:''}" required="required">
-					</div>
+		<div class="jumbotron" style="margin-top: 50px;height: 580px">
 
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<label class="input-group-text" for="sex">性别</label>
-						</div>
-						<select class="custom-select" id="sex" name="userSex" required="required">
-							<option th:if="${session.user.userSex!=null}" th:selected="${session.user.userSex}"  th:value="${session.user.userSex}" th:text="${session.user.userSex}"></option>
-							<option th:if="${session.user.userSex==null}"></option>
-							<option th:if="${session.user.userSex!='男'}">男</option>
-							<option th:if="${session.user.userSex!='女'}">女</option>
-						</select>
-					</div>
 
+<!--				垂直导航-->
+				<div class="row">
+					<div class="col-3">
+						<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+							<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">个人资料</a>
+							<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">修改密码</a>
+							<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">领养信息</a>
+						</div>
+					</div>
+					<div class="col-9">
+						<div class="tab-content" id="v-pills-tabContent">
+							<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                <form  method="post" th:action="@{/front/infoUpdate}">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="input-group mb-3" style="display: none;">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="uid">id</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="userId" th:value="${session.user.userId}">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="aco">账号</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="userAccount" th:value="${session.user.userAccount}" required="required">
+                                        </div>
+                                        <input type="hidden" class="form-control" name="userPassword" th:value="${session.user.userPassword}">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="name">姓名</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="userName" th:value="${session.user.userName}" required="required">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="age">年龄</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="userAge" th:value="${session.user.userAge!=null ?session.user.userAge:''}" required="required">
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="sex">性别</label>
+                                            </div>
+                                            <select class="custom-select" id="sex" name="userSex" required="required">
+                                                <option th:if="${session.user.userSex!=null}" th:selected="${session.user.userSex}"  th:value="${session.user.userSex}" th:text="${session.user.userSex}"></option>
+                                                <option th:if="${session.user.userSex==null}"></option>
+                                                <option th:if="${session.user.userSex!='男'}">男</option>
+                                                <option th:if="${session.user.userSex!='女'}">女</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-5 offset-1">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="tel">电话</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="userTelephone" th:value="${session.user.userTelephone!=null ?session.user.userTelephone:''}" required="required">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="email">邮箱</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="userEmail" th:value="${session.user.userEmail!=null ?session.user.userEmail:''}" required="required">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="address">住址</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="userAddress" th:value="${session.user.userAddress!=null ?session.user.userAddress:''}" required="required">
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="exp">领养经历</label>
+                                            </div>
+                                            <select class="custom-select" id="exp" name="userState"  required="required">
+                                                <option th:if="${session.user.userState!=null}" th:selected="${session.user.userState}"  th:value="${session.user.userState}" th:text="${session.user.userState}"></option>
+                                                <option th:if="${session.user.userState==null}"></option>
+                                                <option th:if="${session.user.userState!='有'}">有</option>
+                                                <option th:if="${session.user.userState !='无'}">无</option>
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <hr>
+                                <br>
+                                <button type="submit" class="btn btn-info" style="position: relative;left: 300px;width: 100px;">保存</button>
+<!--                                    <div class="alert alert-primary" role="alert" th:if="${message}">-->
+<!--                                        保存成功！<a href="/index" class="alert-link">点击返回首页</a>。-->
+<!--                                    </div>-->
+                                    <input type="hidden" id="al" th:value="${message}">
+                                    <div class="alert"></div>
+
+                                </form>
+                            </div>
+							<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                <div class="row col-md-5">
+<!--                                    <form method="post" th:action="@{/front/updatePsd}">-->
+                                        <input type="hidden" class="form-control" name="userId" id="psdId" th:value="${session.user.userId}">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" >旧密码</span>
+                                        </div>
+                                        <input type="password" class="form-control" name="oldPassword" id="oldPassword" required="required">
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">新密码</span>
+                                        </div>
+                                        <input type="password" class="form-control" name="newPassword" id="newPassword" required="required">
+                                    </div>
+
+
+                                    <button type="button" class="btn btn-info" style="width: 100px;"  onclick="updatePsd()">确认修改</button>
+<!--                                    </form>-->
+<!--                                    <div class="alert alert-success" role="alert" th:if="${session.status}">-->
+
+                                    <div class="alert"></div>
+<!--                                    </div>-->
+                                </div>
+                            </div>
+							<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                <input type="hidden" id="aid" th:value="${session.user.userId}">
+                                <button type="button" id="get" class="btn btn-outline-primary">点击查询</button>
+<!--                                th:fragment是刚才controller返回的容器,通过ajax把数据给到这个容器*,然后通过thymeleaf渲染即可-->
+                                <table class="table" id="tb1" th:fragment="tb1">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">申请用户</th>
+                                        <th scope="col">领养宠物</th>
+                                        <th scope="col">申请时间</th>
+                                        <th scope="col">审核状态</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="aply:${list}">
+                                        <td th:text="${aply.applyUserName}"></td>
+                                        <td th:text="${aply.applyPetName}"></td>
+                                        <td th:text="${aply.applyTime}"></td>
+                                        <td th:text="${aply.applyState}"></td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+						</div>
+					</div>
 				</div>
-				<div class="col-md-4 offset-1">
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="tel">电话</span>
-						</div>
-						<input type="text" class="form-control" name="userTelephone" th:value="${session.user.userTelephone!=null ?session.user.userTelephone:''}" required="required">
-					</div>
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="email">邮箱</span>
-						</div>
-						<input type="text" class="form-control" name="userEmail" th:value="${session.user.userEmail!=null ?session.user.userEmail:''}" required="required">
-					</div>
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="address">住址</span>
-						</div>
-						<input type="text" class="form-control" name="userAddress" th:value="${session.user.userAddress!=null ?session.user.userAddress:''}" required="required">
-					</div>
+				<!--				垂直导航-->
 
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<label class="input-group-text" for="exp">领养经历</label>
-						</div>
-						<select class="custom-select" id="exp" name="userState"  required="required">
-							<option th:if="${session.user.userState!=null}" th:selected="${session.user.userState}"  th:value="${session.user.userState}" th:text="${session.user.userState}"></option>
-							<option th:if="${session.user.userState==null}"></option>
-							<option th:if="${session.user.userState!='有'}">有</option>
-							<option th:if="${session.user.userState !='无'}">无</option>
 
-						</select>
-					</div>
-					<div class="alert alert-success" role="alert" th:if="${msg}">
-						保存成功！<a href="/index" class="alert-link">点击返回首页</a>。
-					</div>
-				</div>
 
-			</div>
-
-			<hr>
-			<br>
-			<button type="submit" class="btn btn-info" style="position: relative;left: 455px;width: 100px;">保存</button>
-
-			</form>
 		</div>
 	</div>
 
 	</body>
+    <script type="text/javascript">
+
+        $(function () {
+            if($("#al").val()=="保存成功"){
+                $('.alert').html('保存成功').addClass('alert-success').show().delay(2500).fadeOut();
+            }
+            $("#get").click(function () {
+                $.ajax({
+                    url:"/getList",
+                    data: {"applyUserId":$("#aid").val()},
+                    type:"post",
+                    success:function (data) {
+                        $("#tb1").html(data);
+                    }
+                });
+            });
+        })
+
+
+        function updatePsd() {
+            $.post({
+                url:"/front/updatePsd",
+                data:{"oldPassword":$("#oldPassword").val(),
+                    "newPassword":$("#newPassword").val(),
+                    "psdId":$("#psdId").val()},
+                success:function (data) {
+                    if(data.toString()=='修改失败'){
+                        $("#oldPassword").val('');
+                        $("#newPassword").val('');
+                        $('.alert').html('密码修改失败').addClass('alert-danger').show().delay(2500).fadeOut();
+                    }else if(data.toString()=='0'){
+                        $('.alert').html('请输入密码').addClass('alert-warning').show().delay(2500).fadeOut();
+                    }
+                    else{
+                        $("#oldPassword").val('');
+                        $("#newPassword").val('');
+                        $('.alert').html('密码修改成功').addClass('alert-success').show().delay(2500).fadeOut();
+                    }
+
+                }
+            });
+        }
+    </script>
 </html>

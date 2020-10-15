@@ -14,10 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -33,6 +30,11 @@ public class ApplyTestController {
 
     @Autowired
     private ApplyService applyService;
+
+    @Autowired
+    private PetService petService;
+
+
 
     @GetMapping("/find")
     public String find(Model model, @RequestParam(defaultValue = "1") Integer pageNum,
@@ -78,42 +80,52 @@ public class ApplyTestController {
             List<Apply> applies = applyService.findAll("不同意领养");
             PageInfo<Apply> pageInfo = new PageInfo<>(applies);
             model.addAttribute("applies", pageInfo);
-            return "agree";
+            return "disagree";
         } else {
             String name = '%' + searchName + '%';
             PageHelper.startPage(pageNum, 5);
             List<Apply> applies = applyService.findByName(name,"不同意领养");
             PageInfo<Apply> pageInfo = new PageInfo<>(applies);
             model.addAttribute("applies", pageInfo);
-            return "agree";
+            return "disagree";
         }
     }
 
 
-    @GetMapping("/save/{id}/{pet}")
+    @GetMapping("/save/{id}/{petId}")
+    @ResponseBody
     public String save(@PathVariable(name = "id") String id,
-                       @PathVariable(name = "pet") String petName) {
+                       @PathVariable(name = "petId") String petId) {
         User user = userService.findOne(id);
+        Pet pet = petService.findOne(petId);
         Apply apply = new Apply();
         apply.setApplyUserName(user.getUserName());
         apply.setApplyUserSex(user.getUserSex());
         apply.setApplyUserAddress(user.getUserAddress());
         apply.setApplyUserTelephone(user.getUserTelephone());
         apply.setApplyUserState(user.getUserState());
+        apply.setApplyUserId(id);
+        apply.setApplyPetId(petId);
         String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         apply.setApplyTime(now);
-        apply.setApplyPetName(petName);
+        apply.setApplyPetName(pet.getPetName());
         apply.setApplyState("审核中");
         applyService.save(apply);
-        return "redirect:/index";
+        String msg = "ok";
+        return msg;
     }
 
-
-    @GetMapping("/agree/{applyId}")
-    public String agree(@PathVariable(name = "applyId") String applyId) {
+    @Transactional
+    @GetMapping("/agree/{applyId}/{petId}")
+    public String agree(@PathVariable(name = "applyId") String applyId,
+                        @PathVariable(name = "petId") String petId) {
         Apply apply = applyService.findOne(applyId);
         apply.setApplyState("同意领养");
         applyService.update(apply);
+        Pet pet = petService.findOne(petId);
+        pet.setPetState("已被领养");
+        petService.update(pet);
+        applyService.modify(petId,"审核中");
         return "redirect:/Apply/find";
     }
 

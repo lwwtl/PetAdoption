@@ -4,22 +4,29 @@
     <select id="findAll" resultType="Apply">
         select * from t_apply where applyState=#{applyState}
     </select>
+    <select id="findUser" resultType="Apply">
+        select * from t_apply where applyUserId=#{applyUserId}
+    </select>
     <select id="findByName" parameterType="String" resultType="Apply">
          select * from t_apply where applyUserName like #{applyUserName} and applyState=#{applyState}
     </select>
     <insert id="save" parameterType="Apply">
-        insert into t_apply values(#{applyId},#{applyUserName},#{applyPetName},#{applyUserSex},#{applyUserAddress},#{applyUserTelephone},#{applyUserState},#{applyTime},#{applyState})
+        insert into t_apply values(#{applyId},#{applyUserName},#{applyPetName},#{applyUserSex},#{applyUserAddress},#{applyUserTelephone},#{applyUserState},#{applyTime},#{applyState},#{applyUserId},#{applyPetId})
     </insert>
     <delete id="delete" parameterType="String">
         delete from t_apply where applyId=#{applyId}
     </delete>
     <select id="findOne" parameterType="String" resultType="Apply">
-            select applyId,applyUserName,applyPetName,applyUserSex,applyUserAddress,applyUserTelephone,applyUserState,applyTime,applyState from t_apply
+            select applyId,applyUserName,applyPetName,applyUserSex,applyUserAddress,applyUserTelephone,applyUserState,applyTime,applyState,applyUserId,applyPetId from t_apply
              where applyId=#{applyId}
     </select>
     <update id="update" parameterType="Apply" >
-        update t_apply set applyId=#{applyId},applyUserName=#{applyUserName},applyPetName=#{applyPetName},applyUserSex=#{applyUserSex},applyUserAddress=#{applyUserAddress},applyUserTelephone=#{applyUserTelephone},applyUserState=#{applyUserState},applyTime=#{applyTime},applyState=#{applyState}
+        update t_apply set applyId=#{applyId},applyUserName=#{applyUserName},applyPetName=#{applyPetName},applyUserSex=#{applyUserSex},applyUserAddress=#{applyUserAddress},applyUserTelephone=#{applyUserTelephone},applyUserState=#{applyUserState},applyTime=#{applyTime},applyState=#{applyState},applyUserId=#{applyUserId},applyPetId=#{applyPetId}
          where applyId=#{applyId}
+    </update>
+    <update id="modify" parameterType="String" >
+        update t_apply set applyState='不同意领养'
+         where applyPetId=#{applyPetId} and applyState=#{applyState}
     </update>
 
 </mapper>

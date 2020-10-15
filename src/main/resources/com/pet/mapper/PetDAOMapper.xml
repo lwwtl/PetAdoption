@@ -4,6 +4,9 @@
     <select id="findAll" resultType="Pet">
         select * from t_pet
     </select>
+    <select id="findPet" resultType="Pet">
+        select * from t_pet where petState=#{petState}
+    </select>
     <insert id="save" parameterType="Pet">
         insert into t_pet values(#{petId},#{petName},#{petSex},#{petSub},#{petType},#{petBir},#{petDetail},#{petPic},#{petState})
     </insert>

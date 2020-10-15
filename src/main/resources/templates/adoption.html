@@ -40,6 +40,7 @@
 					</div>
 
 					<div class="col-md-6">
+
 						<div>
 							<svg class="icon" aria-hidden="true">
 							  <use xlink:href="#icon-chongwu"></use>
@@ -90,14 +91,18 @@
 							<span th:text="${pet.petDetail}"></span>
 						</div>
 
-						
+						<input type="hidden" id="uid" th:value="${session.Id}">
+						<input type="hidden" id="pid" th:value="${pet.petId}">
 						<hr class="my-4">
 						<span th:if="${session.user.userTelephone==null}" >
 							<a href="/info" role="button" class="btn btn-outline-warning btn-lg">请先完善个人资料</a>
 						</span>
-						<span>
-							<a th:if="${session.user.userTelephone!=null}" class="btn btn-outline-info btn-lg"  th:href="@{'/Apply/save/'+${session.Id}+'/'+${pet.petName}}" role="button">申请领养</a>
+						<span id="al2">
+							<a th:if="${session.user.userTelephone!=null}" class="btn btn-outline-info btn-lg"  onclick="apply()" role="button">申请领养</a>
 						</span>
+						<div class="alert alert-primary" role="alert" id="al1" style="display: none">
+							申请成功！前往个人中心查看<a href="/info" class="alert-link">审核状态</a>。
+						</div>
 					</div>
 
 
@@ -106,4 +111,19 @@
 		</div>
 
 	</body>
+<script type="text/javascript">
+	function apply() {
+		var uid = $("#uid").val();
+		var pid = $("#pid").val();
+		$.ajax({
+			url:"/Apply/save/"+uid+"/"+pid,
+			success:function (data) {
+				if(data.toString()=='ok'){
+					$("#al1").show();
+					$("#al2").hide();
+				}
+			}
+		});
+	}
+</script>
 </html>

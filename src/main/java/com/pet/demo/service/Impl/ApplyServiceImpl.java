@@ -33,8 +33,18 @@ public class ApplyServiceImpl implements ApplyService {
     }
 
     @Override
+    public void modify(String applyPetId, String applyState) {
+        applyDao.modify(applyPetId,applyState);
+    }
+
+    @Override
     public List<Apply> findAll(String applyState) {
         return applyDao.findAll(applyState);
+    }
+
+    @Override
+    public List<Apply> findUser(String applyUserId) {
+        return applyDao.findUser(applyUserId);
     }
 
 

@@ -232,9 +232,7 @@
                                         <td style="display: none"><span th:text="${pet.petId}"></span></td>
 
                                         <td>
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"
-                                                    onclick="edit_pet(this)">修改
-                                            </button>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="edit_pet(this)">修改</button>
                                             <button class="btn btn-danger">
                                                 <a th:href="@{/PetTest/delete(petId=${pet.petId})}"
                                                    style="text-decoration-line: none;color: white">删除</a>

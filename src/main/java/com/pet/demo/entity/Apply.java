@@ -19,4 +19,6 @@ public class Apply {
     private String applyUserState;
     private String applyTime;
     private String applyState;
+    private String applyUserId;
+    private String applyPetId;
 }

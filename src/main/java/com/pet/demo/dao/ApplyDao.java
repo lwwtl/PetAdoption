@@ -12,7 +12,9 @@ public interface ApplyDao {
     void save(Apply apply);
     void delete(String id);
     void update(Apply apply);
+    void modify(String applyPetId,String applyState);
     List<Apply> findAll(String applyState);
+    List<Apply> findUser(String applyUserId);
     Apply findOne(String id);
     List<Apply> findByName(String applyUserName,String applyState);
 }
