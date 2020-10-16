@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
+//这个注解表示将当前类视为一个切面类
 @Aspect
 @Component
 public class LogAsPect {
@@ -37,7 +38,6 @@ public class LogAsPect {
     private UserLogService userLogService;
     @Autowired
     private PetService petService;
-
     @Autowired
     private HttpSession session;
 
@@ -123,8 +123,6 @@ public class LogAsPect {
                 userLog.setCreateTime(time);
                 userLogService.insertLog(userLog);
             }
-
-
 
 
             log.info("当前登陆人：{},类名:{},方法名:{},参数：{},执行时间：{}",Id, className, methodName, args, time);

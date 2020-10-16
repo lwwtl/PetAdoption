@@ -15,5 +15,6 @@ public interface PetDao {
     void update(Pet pet);
     Pet findOne(String id);
     String findName(String id);
-    List<Pet> findByName(String username);
+    List<Pet> findByName(String petName);
+    List<Pet> findByNameWithState(String petName);
 }

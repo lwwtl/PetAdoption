@@ -56,5 +56,10 @@ public class PetServiceImpl implements PetService {
         return petDao.findByName(petName);
     }
 
+    @Override
+    public List<Pet> findByNameWithState(String petName) {
+        return petDao.findByNameWithState(petName);
+    }
+
 
 }

@@ -14,4 +14,5 @@ public interface PetService {
     Pet findOne(String id);
     String findName(String id);
     List<Pet> findByName(String petName);
+    List<Pet> findByNameWithState(String petName);
 }

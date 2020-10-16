@@ -22,6 +22,7 @@
   <div class="container">
          <div class="row">
              <div class="col-md-12">
+<!--                 瀑布流布局-->
                  <div class="card-columns">
                      
 					 <div class="card" th:each="pet:${pets}">
@@ -39,47 +40,7 @@
 							 <a th:if="${session.Name!=null}" th:href="@{'/adoption/'+${pet.petId}}" class="btn btn-primary">想领养</a>
                          </div>
                      </div>
-<!--                     <div class="card ">-->
-<!--                         <img src="/img/slider/3.jpg"-->
-<!--                             alt="" class="card-img-top">-->
-<!--                         <div class=" card-body">-->
-<!--                            <h5 class="card-title">Card title</h5>-->
-<!--                             <p class="card-text">Thitextw as a naturalhitext below as a natu a naturalhitext below as a natu below as a naturalhitext belowbelow as a naturalhitext below as a naturalhitext below as a natural-->
-<!--                             </p>-->
-<!--							 <a href="#" class="btn btn-primary">Go somewhere</a>-->
-<!--                         </div>-->
-<!--                     </div>-->
-<!--                     <div class="card ">-->
-<!--                         <img src="/img/pet/QQ图片20201010100125.jpg"-->
-<!--                             alt="" class="card-img-top">-->
-<!--                         <div class=" card-body">-->
-<!--                            <h5 class="card-title">大橘</h5>-->
-<!--                             <p class="card-text">性格活泼好动-->
-<!--                             </p>-->
-<!--							 <a href="#" class="btn btn-primary">去看看</a>-->
-<!--                         </div>-->
-<!--                     </div>-->
-<!--                     <div class="card ">-->
-<!--                         <img src="/img/pet/QQ图片20201010100129.jpg"-->
-<!--                             alt="" class="card-img-top">-->
-<!--                         <div class=" card-body">-->
-<!--                            <h5 class="card-title">Card title</h5>-->
-<!--                             <p class="card-text">This isxt below as a naturalitextw as a naturalhitext below as a natu below as a naturalhitext below as a naturalhitext below-->
-<!--                             </p>-->
-<!--							 <a href="#" class="btn btn-primary">Go somewhere</a>-->
-<!--                         </div>-->
-<!--                     </div>-->
-<!--					 <div class="card ">-->
-<!--                         <img src="/img/pet/QQ图片20201010100138.jpg"-->
-<!--                             alt="" class="card-img-top">-->
-<!--                         <div class=" card-body">-->
-<!--                            <h5 class="card-title">Card title</h5>-->
-<!--                             <p class="card-text">This isxt below as a naturalitextw as a naturalhitext below as a natu below as a naturalhitext below as a naturalhitext below-->
-<!--                             </p>-->
-<!--							 <a href="#" class="btn btn-primary">Go somewhere</a>-->
-<!--                         </div>-->
-<!--                     </div>-->
- 
+
                  </div>
              </div>
          </div>

@@ -20,6 +20,7 @@
     <select id="findName" parameterType="String" resultType="String">
         select petName from t_pet where petId=#{petId}
     </select>
+
     <update id="update" parameterType="Pet" >
         update t_pet set petId=#{petId},petName=#{petName},petSex=#{petSex},petSub=#{petSub},petType=#{petType},petBir=#{petBir},petDetail=#{petDetail},petPic=#{petPic},petState=#{petState}
          where petId=#{petId}
@@ -27,6 +28,9 @@
     <!--根据Name模糊查找-->
     <select id="findByName" parameterType="String" resultType="Pet">
          select * from t_pet where petName like #{petName} or petType like #{petName} or petSub like #{petName}
+    </select>
+    <select id="findByNameWithState" parameterType="String" resultType="Pet">
+         select * from t_pet where petName like #{petName} or petType like #{petName} or petSub like #{petName} and petState='未领养'
     </select>
 
 </mapper>

@@ -77,7 +77,7 @@ public class IndexController {
     @GetMapping("/search")
     public String search(Model model,@RequestParam(name = "searchName",required = false) String key){
         String name='%'+key+'%';
-        List<Pet> pets=petService.findByName(name);
+        List<Pet> pets=petService.findByNameWithState(name);
         model.addAttribute("pets",pets);
         return "show";
     }
