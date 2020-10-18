@@ -142,8 +142,8 @@
                                             <select class="custom-select" id="exp" name="userState"  required="required">
                                                 <option th:if="${session.user.userState!=null}" th:selected="${session.user.userState}"  th:value="${session.user.userState}" th:text="${session.user.userState}"></option>
                                                 <option th:if="${session.user.userState==null}"></option>
-                                                <option th:if="${session.user.userState!='有'}">有</option>
-                                                <option th:if="${session.user.userState !='无'}">无</option>
+                                                <option th:if="${session.user.userState!='有'}">有领养经历</option>
+                                                <option th:if="${session.user.userState !='无'}">无领养经历</option>
 
                                             </select>
                                         </div>
