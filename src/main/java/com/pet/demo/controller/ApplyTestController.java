@@ -36,7 +36,7 @@ public class ApplyTestController {
     private PetService petService;
 
 
-
+// 待审核信息的展示
     @GetMapping("/find")
     public String find(Model model, @RequestParam(defaultValue = "1") Integer pageNum,
                        @RequestParam(name = "searchName", required = false) String searchName) {
@@ -55,6 +55,7 @@ public class ApplyTestController {
             return "apply";
         }
     }
+//    同意的领养申请
     @GetMapping("/agreePage")
     public String agreePage(Model model, @RequestParam(defaultValue = "1") Integer pageNum,
                        @RequestParam(name = "searchName", required = false) String searchName) {
@@ -73,6 +74,7 @@ public class ApplyTestController {
             return "agree";
         }
     }
+//    不同意的领养申请
     @GetMapping("/disagreePage")
     public String disagreePage(Model model, @RequestParam(defaultValue = "1") Integer pageNum,
                        @RequestParam(name = "searchName", required = false) String searchName) {
@@ -91,7 +93,7 @@ public class ApplyTestController {
             return "disagree";
         }
     }
-
+//Log是自定义注解，执行AOP操作
     @Log
     @GetMapping("/save/{id}/{petId}")
     @ResponseBody
@@ -116,6 +118,8 @@ public class ApplyTestController {
         return msg;
     }
 
+    //加上事务注解
+//    同意其中一个用户的申请时，自动拒绝其他用户对该宠物的申请
     @Log
     @Transactional
     @GetMapping("/agree/{applyId}/{petId}")

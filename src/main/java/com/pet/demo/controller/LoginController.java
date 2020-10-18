@@ -41,6 +41,8 @@ public class LoginController {
         String sessionCode = (String) session.getAttribute("code");
         if(sessionCode.equalsIgnoreCase(code)){
             if(role.equals("管理员")){
+// ==是判断两个变量或实例是不是指向同一个内存空间，equals是判断两个变量或实例所指向的内存空间的值是不是相同
+
                 if(adminService.loading(Account,Password)==null){
                     model.addAttribute("error","该用户不存在");
                     return "/login";
@@ -79,13 +81,13 @@ public class LoginController {
         }
 
     }
-
+//  退出登录
     @GetMapping("logout")
     private String logout(HttpSession session){
         session.removeAttribute("Name");
         return "redirect:/index";
     }
-
+//注册
     @PostMapping("register")
     public  String Register(String code, HttpSession session,
                             @RequestParam("Account") String Account,
@@ -95,6 +97,7 @@ public class LoginController {
                             Model model){
         String sessionCode = (String) session.getAttribute("code");
         if(sessionCode.equalsIgnoreCase(code)){
+//            如果用户不存在方可注册
             if(userService.findByAccount(Account)==null){
                 user.setUserAccount(Account);
                 user.setUserName(Name);

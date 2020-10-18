@@ -94,7 +94,7 @@ public class LogAsPect {
 //            sys_log.setAdminAction(methodName);
 
 
-
+//将日志插入到数据库中
             if(methodName=="agree"){
                 String Name = adminService.findName(Id);
                 sys_log.setAId(Name);

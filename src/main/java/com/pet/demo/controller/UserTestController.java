@@ -59,6 +59,7 @@ public class UserTestController {
         }
         return "redirect:/front/user";
     }
+//    RedirectAttributes 重定向之后仍能携带参数
     @PostMapping("/infoUpdate")
     public String infoUpdate(User user, HttpSession session, RedirectAttributes attributes){
         userService.update(user);
@@ -86,14 +87,6 @@ public class UserTestController {
         return msg;
     }
 
-//    @GetMapping("/findone")
-//    public String findone( Model model){
-//        User user=userService.findOne("fe7bdb28-dafb-4ea9-9add-9ba1210e8895");
-//        System.out.println(user);
-//        return "pet/success";
-//    }
-
-
     @GetMapping("/findByName")
     public String findByName( Model model, @RequestParam(defaultValue = "1") Integer pageNum,
             @RequestParam(name = "searchName",required = false) String searchName){
@@ -105,7 +98,6 @@ public class UserTestController {
         return "user";
 
     }
-
 
     @GetMapping("/delete")
     public String delete( String userId){

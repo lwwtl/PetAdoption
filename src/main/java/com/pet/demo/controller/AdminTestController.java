@@ -27,17 +27,21 @@ public class AdminTestController {
     @Autowired
     private AdminService adminService;
 
-
+    //后台管理员模块的搜索和展示
     @GetMapping("/admin")
     public String findAll(Model model, @RequestParam(defaultValue = "1") Integer pageNum,
             @RequestParam(name = "searchName",required = false) String searchName){
+        //required：是否包含该参数，默认为true，表示该请求路径中必须包含该参数，如果不包含就报错
+        //defaultValue:默认参数
         if (StringUtils.isEmpty(searchName)) {
             PageHelper.startPage(pageNum, 5);
             List<Admin> admins=adminService.findAll();
+//            将所有结果放在admins，再把admins放入pageInfo
             PageInfo<Admin> pageInfo = new PageInfo<>(admins);
             model.addAttribute("admins", pageInfo);
             return "admin";
         } else {
+//            模糊查找
             String name = '%' + searchName + '%';
             PageHelper.startPage(pageNum, 5);
             List<Admin> admins=adminService.findByName(name);
@@ -46,7 +50,7 @@ public class AdminTestController {
             return "admin";
         }
     }
-
+//管理员的增加和修改
     @PostMapping("/save")
     public String save(HttpServletRequest request,Admin admin){
         admin.setAdminAccount(request.getParameter("adminAccount"));
@@ -66,14 +70,7 @@ public class AdminTestController {
 
     }
 
-
-//    @GetMapping("/findByName")
-//    public String findByName(Model model,@RequestParam(name = "searchName",required = false) String searchName){
-//        String name='%'+searchName+'%';
-//        List<Admin> admins=adminService.findByName(name);
-//        model.addAttribute("admins",admins);
-//        return "admin";
-//    }
+//删除管理员
     @GetMapping("/delete")
     public String findByName(String adminId){
         adminService.delete(adminId);

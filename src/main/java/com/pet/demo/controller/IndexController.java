@@ -30,12 +30,13 @@ public class IndexController {
     private SysLogService sysLogService;
     @Autowired
     private UserLogService userLogService;
-
+//首页
     @GetMapping("/index")
     public String index(){
 
         return "index";
     }
+//    后台管理页面
     @GetMapping("/manage")
     public String manage(Model model){
         List<SysLog> sysLogs=sysLogService.findAll();
@@ -44,11 +45,12 @@ public class IndexController {
         model.addAttribute("userLogs",userLogs);
         return "manage";
     }
+//    导航条
     @GetMapping("/navigation")
     public String nav(){
-
         return "navigation";
     }
+//    个人信息页面
     @GetMapping("/info")
     public String userInfo(){
         return "info";
@@ -59,6 +61,7 @@ public class IndexController {
         model.addAttribute("list",list);
         return "info::tb1";
     }
+//    宠物信息展示
     @GetMapping("/adoption/{id}")
     public String petAdoption(@PathVariable(name = "id")String id,Model model)
     {
@@ -67,13 +70,14 @@ public class IndexController {
         return "adoption";
 
     }
-
+//宠物列表
     @GetMapping("/show")
     public String showPet(Model model){
         List<Pet> pets=petService.findPet("未领养");
         model.addAttribute("pets",pets);
         return "show";
     }
+//    宠物的搜索
     @GetMapping("/search")
     public String search(Model model,@RequestParam(name = "searchName",required = false) String key){
         String name='%'+key+'%';
