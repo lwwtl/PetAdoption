@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<nav th:fragment="pag">
+    <ul class="pagination">
+        <!--											<li class="page-item" th:if="${users.pageNum!=1}">-->
+        <li class="page-item">
+            <a  th:href="@{${url}(pageNum=1)}" class="page-link">首页</a>
+        </li>
+        <!--											<li class="page-item" th:if="${users.pageNum!=1}">-->
+        <li class="page-item" >
+            <a th:href="@{${url}(pageNum=${pagelist.hasPreviousPage}?${pagelist.prePage}:${pagelist.pages})}" class="page-link">上一页</a>
+        </li>
+        <!--											<li class="page-item"><a class="page-link"><span th:text="第+${users.pageNum}+页"></span></a></li>-->
+
+        <li class="page-item">
+            <a class="page-link"  th:href="@{${url}(pageNum=${pagelist.pages}-1)}" >
+                <span th:text="第+${pagelist.pageNum}+页"></span></a>
+        </li>
+
+        <!--											<li class="page-item" th:if="${users.pageNum!=users.pages}">-->
+        <li class="page-item">
+            <a th:href="@{${url}(pageNum=${pagelist.hasNextPage}?${pagelist.nextPage}:${pagelist.pages})}" class="page-link">下一页</a>
+        </li>
+        <!--											<li class="page-item" th:if="${users.pageNum!=users.pages}">-->
+        <li class="page-item">
+            <a th:href="@{${url}(pageNum=${pagelist.pages})}" class="page-link">尾页</a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

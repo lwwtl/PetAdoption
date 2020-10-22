@@ -31,11 +31,12 @@ public class PetTestController {
     @GetMapping("/pet")
     public String findAll(Model model, @RequestParam(defaultValue = "1") Integer pageNum,
                           @RequestParam(name = "searchName", required = false) String searchName){
+        model.addAttribute("url", "/PetTest/pet");
         if(StringUtils.isEmpty(searchName)){
             PageHelper.startPage(pageNum,5);
             List<Pet> pets=petService.findAll();
             PageInfo<Pet> pageInfo = new PageInfo<>(pets);
-            model.addAttribute("pets",pageInfo);
+            model.addAttribute("pagelist",pageInfo);
             return "pet";
         }
         else {
@@ -43,7 +44,7 @@ public class PetTestController {
             PageHelper.startPage(pageNum,5);
             List<Pet> pets=petService.findByName(name);
             PageInfo<Pet> pageInfo = new PageInfo<>(pets);
-            model.addAttribute("pets",pageInfo);
+            model.addAttribute("pagelist",pageInfo);
             return "pet";
         }
 

@@ -32,11 +32,12 @@ public class UserTestController {
     @GetMapping("/user")
     public String findAll(Model model, @RequestParam(defaultValue = "1") Integer pageNum,
                           @RequestParam(name = "searchName",required = false) String searchName){
+        model.addAttribute("url", "/front/user");
         if(StringUtils.isEmpty(searchName)){
             PageHelper.startPage(pageNum,5);
             List<User> userList=userService.findAll();
             PageInfo<User> pageInfo = new PageInfo<>(userList);
-            model.addAttribute("users",pageInfo);
+            model.addAttribute("pagelist",pageInfo);
             return "user";
         }
         else {
@@ -44,7 +45,7 @@ public class UserTestController {
             PageHelper.startPage(pageNum,5);
             List<User> users=userService.findByName(name);
             PageInfo<User> pageInfo = new PageInfo<>(users);
-            model.addAttribute("users",pageInfo);
+            model.addAttribute("pagelist",pageInfo);
             return "user";
         }
     }

@@ -193,7 +193,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="admin:${admins.list}">
+                                    <tr th:each="admin:${pagelist.list}">
                                         <td><span th:text="${admin.adminAccount}"></span></td>
                                         <td><span th:text="${admin.adminName}"></span></td>
                                         <td><span th:text="${admin.adminAge}"></span></td>
@@ -212,33 +212,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <nav>
-                                <ul class="pagination">
-                                    <!--											<li class="page-item" th:if="${users.pageNum!=1}">-->
-                                    <li class="page-item">
-                                        <a  th:href="@{/backstage/admin(pageNum=1)}" class="page-link">首页</a>
-                                    </li>
-                                    <!--											<li class="page-item" th:if="${users.pageNum!=1}">-->
-                                    <li class="page-item" >
-                                        <a th:href="@{/backstage/admin(pageNum=${admins.hasPreviousPage}?${admins.prePage}:${admins.pages})}" class="page-link">上一页</a>
-                                    </li>
-                                    <!--											<li class="page-item"><a class="page-link"><span th:text="第+${users.pageNum}+页"></span></a></li>-->
+<!--                            引入分页-->
+                            <div th:replace="~{pagination::pag}"></div>
 
-                                    <li class="page-item">
-                                        <a class="page-link"  th:href="@{/backstage/admin(pageNum=${admins.pages}-1)}" >
-                                            <span th:text="第+${admins.pageNum}+页"></span></a>
-                                    </li>
-
-                                    <!--											<li class="page-item" th:if="${users.pageNum!=users.pages}">-->
-                                    <li class="page-item">
-                                        <a th:href="@{/backstage/admin(pageNum=${admins.hasNextPage}?${admins.nextPage}:${admins.pages})}" class="page-link">下一页</a>
-                                    </li>
-                                    <!--											<li class="page-item" th:if="${users.pageNum!=users.pages}">-->
-                                    <li class="page-item">
-                                        <a th:href="@{/backstage/admin(pageNum=${admins.pages})}" class="page-link">尾页</a>
-                                    </li>
-                                </ul>
-                            </nav>
                         </div>
                     </div>
                     <!--End Advanced Tables -->

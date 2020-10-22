@@ -202,7 +202,7 @@
 												</tr>
 											</thead>
 											<tbody>
-												<tr th:each="user:${users.list}">
+												<tr th:each="user:${pagelist.list}">
 												    <td><span th:text="${user.userAccount}"></span></td>
 													<td><span th:text="${user.userName}"></span></td>
 													<td><span th:text="${user.userAge}"></span></td>
@@ -224,33 +224,8 @@
 											</tbody>
 										</table>
 									</div>
-									<nav>
-										<ul class="pagination">
-<!--											<li class="page-item" th:if="${users.pageNum!=1}">-->
-											<li class="page-item">
-												<a  th:href="@{/front/user(pageNum=1)}" class="page-link">首页</a>
-											</li>
-<!--											<li class="page-item" th:if="${users.pageNum!=1}">-->
-											<li class="page-item" >
-												<a th:href="@{/front/user(pageNum=${users.hasPreviousPage}?${users.prePage}:${users.pages})}" class="page-link">上一页</a>
-											</li>
-<!--											<li class="page-item"><a class="page-link"><span th:text="第+${users.pageNum}+页"></span></a></li>-->
-
-											<li class="page-item">
-												<a class="page-link"  th:href="@{/front/user(pageNum=${users.pages}-1)}" >
-													<span th:text="第+${users.pageNum}+页"></span></a>
-											</li>
-
-<!--											<li class="page-item" th:if="${users.pageNum!=users.pages}">-->
-											<li class="page-item">
-												<a th:href="@{/front/user(pageNum=${users.hasNextPage}?${users.nextPage}:${users.pages})}" class="page-link">下一页</a>
-											</li>
-<!--											<li class="page-item" th:if="${users.pageNum!=users.pages}">-->
-											<li class="page-item">
-												<a th:href="@{/front/user(pageNum=${users.pages})}" class="page-link">尾页</a>
-											</li>
-										</ul>
-									</nav>
+									<!--                            引入分页-->
+									<div th:replace="~{pagination::pag}"></div>
 								</div>
 							</div>
 							<!--End Advanced Tables -->

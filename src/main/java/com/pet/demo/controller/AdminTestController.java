@@ -33,12 +33,13 @@ public class AdminTestController {
             @RequestParam(name = "searchName",required = false) String searchName){
         //required：是否包含该参数，默认为true，表示该请求路径中必须包含该参数，如果不包含就报错
         //defaultValue:默认参数
+        model.addAttribute("url", "/backstage/admin");
         if (StringUtils.isEmpty(searchName)) {
             PageHelper.startPage(pageNum, 5);
             List<Admin> admins=adminService.findAll();
 //            将所有结果放在admins，再把admins放入pageInfo
             PageInfo<Admin> pageInfo = new PageInfo<>(admins);
-            model.addAttribute("admins", pageInfo);
+            model.addAttribute("pagelist", pageInfo);
             return "admin";
         } else {
 //            模糊查找
@@ -46,7 +47,7 @@ public class AdminTestController {
             PageHelper.startPage(pageNum, 5);
             List<Admin> admins=adminService.findByName(name);
             PageInfo<Admin> pageInfo = new PageInfo<>(admins);
-            model.addAttribute("admins", pageInfo);
+            model.addAttribute("pagelist", pageInfo);
             return "admin";
         }
     }

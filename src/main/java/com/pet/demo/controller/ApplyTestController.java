@@ -40,18 +40,19 @@ public class ApplyTestController {
     @GetMapping("/find")
     public String find(Model model, @RequestParam(defaultValue = "1") Integer pageNum,
                        @RequestParam(name = "searchName", required = false) String searchName) {
+        model.addAttribute("url", "/Apply/find");
         if (StringUtils.isEmpty(searchName)) {
             PageHelper.startPage(pageNum, 5);
             List<Apply> applies = applyService.findAll("审核中");
             PageInfo<Apply> pageInfo = new PageInfo<>(applies);
-            model.addAttribute("applies", pageInfo);
+            model.addAttribute("pagelist", pageInfo);
             return "apply";
         } else {
             String name = '%' + searchName + '%';
             PageHelper.startPage(pageNum, 5);
             List<Apply> applies = applyService.findByName(name,"审核中");
             PageInfo<Apply> pageInfo = new PageInfo<>(applies);
-            model.addAttribute("applies", pageInfo);
+            model.addAttribute("pagelist", pageInfo);
             return "apply";
         }
     }
@@ -59,18 +60,19 @@ public class ApplyTestController {
     @GetMapping("/agreePage")
     public String agreePage(Model model, @RequestParam(defaultValue = "1") Integer pageNum,
                        @RequestParam(name = "searchName", required = false) String searchName) {
+        model.addAttribute("url", "/Apply/agreePage");
         if (StringUtils.isEmpty(searchName)) {
             PageHelper.startPage(pageNum, 5);
             List<Apply> applies = applyService.findAll("同意领养");
             PageInfo<Apply> pageInfo = new PageInfo<>(applies);
-            model.addAttribute("applies", pageInfo);
+            model.addAttribute("pagelist", pageInfo);
             return "agree";
         } else {
             String name = '%' + searchName + '%';
             PageHelper.startPage(pageNum, 5);
             List<Apply> applies = applyService.findByName(name,"同意领养");
             PageInfo<Apply> pageInfo = new PageInfo<>(applies);
-            model.addAttribute("applies", pageInfo);
+            model.addAttribute("pagelist", pageInfo);
             return "agree";
         }
     }
@@ -78,18 +80,19 @@ public class ApplyTestController {
     @GetMapping("/disagreePage")
     public String disagreePage(Model model, @RequestParam(defaultValue = "1") Integer pageNum,
                        @RequestParam(name = "searchName", required = false) String searchName) {
+        model.addAttribute("url", "/Apply/disagreePage");
         if (StringUtils.isEmpty(searchName)) {
             PageHelper.startPage(pageNum, 5);
             List<Apply> applies = applyService.findAll("不同意领养");
             PageInfo<Apply> pageInfo = new PageInfo<>(applies);
-            model.addAttribute("applies", pageInfo);
+            model.addAttribute("pagelist", pageInfo);
             return "disagree";
         } else {
             String name = '%' + searchName + '%';
             PageHelper.startPage(pageNum, 5);
             List<Apply> applies = applyService.findByName(name,"不同意领养");
             PageInfo<Apply> pageInfo = new PageInfo<>(applies);
-            model.addAttribute("applies", pageInfo);
+            model.addAttribute("pagelist", pageInfo);
             return "disagree";
         }
     }
