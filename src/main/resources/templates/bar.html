@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<nav class="navbar navbar-default top-navbar" role="navigation" th:fragment="topbar">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/manage"><strong>宠物领养后台管理 </strong></a>
+    </div>
+
+    <ul class="nav navbar-top-links navbar-right">
+
+
+        <!-- /.dropdown -->
+        <li class="dropdown"  th:if="${session.Name != null}">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+                <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
+                </li>
+            </ul>
+            <!-- /.dropdown-user -->
+        </li>
+        <!-- /.dropdown -->
+    </ul>
+    <!-- /.dropdown-tasks -->
+
+</nav>
+<!--/. NAV TOP  -->
+<nav class="navbar-default navbar-side" role="navigation" th:fragment="sidebar">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+
+
+
+
+            <li>
+                <a href="/backstage/admin"
+                   th:class="${activeUri=='/backstage/admin'?'active-menu':''}"><i class="fa fa-edit"></i>管理员信息管理 </a>
+            </li>
+            <li>
+                <a href="/front/user"
+                   th:class="${activeUri=='/front/user'?'active-menu':''}"><i class="fa fa-edit"></i>用户信息管理 </a>
+            </li>
+            <li>
+                <a href="/PetTest/pet"
+                   th:class="${activeUri=='/PetTest/pet'?'active-menu':''}"><i class="fa fa-edit"></i>宠物信息管理</a>
+            </li>
+            <li>
+                <a href="/Apply/find"
+                   th:class="${activeUri=='/Apply/find'?'active-menu':''}"><i class="fa fa-list-ul"></i>领养信息审核</a>
+            </li>
+            <li>
+                <a href="/Apply/agreePage"
+                   th:class="${activeUri=='/Apply/agreePage'?'active-menu':''}"><i class="fa fa-check"></i>领养审核通过</a>
+            </li>
+            <li>
+                <a href="/Apply/disagreePage"
+                   th:class="${activeUri=='/Apply/disagreePage'?'active-menu':''}"><i class="fa fa-ban"></i>领养审核未通过</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+</body>
+</html>

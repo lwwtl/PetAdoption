@@ -19,66 +19,10 @@
 </head>
 <body>
     <div id="wrapper">
-        <nav class="navbar navbar-default top-navbar" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/manage"><strong>宠物领养后台管理 </strong></a>
-            </div>
-
-            <ul class="nav navbar-top-links navbar-right">
-
-
-                <!-- /.dropdown -->
-                <li class="dropdown"  th:if="${session.Name != null}">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-                    <!-- /.dropdown-tasks -->
-
-        </nav>
-        <!--/. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
-
-
-                    <li>
-                        <a href="/backstage/admin"><i class="fa fa-edit"></i>管理员信息管理 </a>
-                    </li>
-                    <li>
-                        <a href="/front/user" ><i class="fa fa-edit"></i>用户信息管理 </a>
-                    </li>
-                    <li>
-                        <a href="/PetTest/pet"><i class="fa fa-edit"></i>宠物信息管理</a>
-                    </li>
-                    <li>
-                        <a href="/Apply/find" ><i class="fa fa-list-ul"></i>领养信息审核</a>
-                    </li>
-                    <li>
-                        <a href="/Apply/agreePage"><i class="fa fa-check"></i>领养审核通过</a>
-                    </li>
-                    <li>
-                        <a href="/Apply/disagreePage" class="active-menu"><i class="fa fa-ban"></i>领养审核未通过</a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </nav>
+        <!--topbar-->
+        <div th:replace="bar::topbar"></div>
+        <!--    sidebar-->
+        <div th:replace="bar::sidebar(activeUri='/Apply/disagreePage')"></div>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">
