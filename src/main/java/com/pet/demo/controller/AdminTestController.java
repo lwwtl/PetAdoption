@@ -51,7 +51,9 @@ public class AdminTestController {
             return "admin";
         }
     }
+
 //管理员的增加和修改
+//    待优化---修改的回显功能可以优化为查出对应id放入model回显，而不是通过前端js回显、
     @PostMapping("/save")
     public String save(HttpServletRequest request,Admin admin){
         admin.setAdminAccount(request.getParameter("adminAccount"));
