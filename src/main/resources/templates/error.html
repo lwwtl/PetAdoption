@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+<!--导航条-->
+<div th:insert="~{navigation::nav}"></div>
+<div class="container">
+    <div class="jumbotron" style="margin-top: 50px; height: 550px;">
+        <div class="row">
+            <div style="position: relative;left: 400px;top: 150px;">
+            <h2>出错啦！</h2>
+            <p th:text="${message}">请稍后再试</p>
+            <a class="btn btn-outline-primary btn-lg"  href="/index" role="button">回到主页</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

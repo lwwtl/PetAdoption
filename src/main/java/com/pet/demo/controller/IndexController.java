@@ -1,6 +1,8 @@
 package com.pet.demo.controller;
 
 import com.pet.demo.entity.*;
+import com.pet.demo.exception.CustomizeErrorCode;
+import com.pet.demo.exception.CustomizeException;
 import com.pet.demo.service.*;
 import com.pet.demo.utils.ValidateImageCodeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +68,9 @@ public class IndexController {
     public String petAdoption(@PathVariable(name = "id")String id,Model model)
     {
         Pet pet=petService.findOne(id);
+        if(pet==null){
+            throw new CustomizeException(CustomizeErrorCode.PET_NOT_FOUND);
+        }
         model.addAttribute("pet",pet);
         return "adoption";
 
