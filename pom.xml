@@ -15,7 +15,7 @@
     <description>this is ems Spring Boot</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>1.8</java.version>
         <kotlin.version>1.4.0</kotlin.version>
     </properties>
 
