@@ -1,42 +1,36 @@
-### 项目概述
-*一个基于springboot的宠物领养管理系统*  
-项目地址http://117.50.5.166
-### 开发环境
-|工具|版本|
+# 宠物领养管理系统
+
+**2020 年课程设计，已停止维护。** 仓库已归档，只保留当时的代码，并补了一份建表脚本，方便在本地跑起来。不再回复运行问题，也不会再改功能。
+
+原来的线上演示地址，以及 README 里的截图、ER 图，都放在已经过期的对象存储链接上，这里不再保留。
+
+## 这是什么
+
+一个基于 Spring Boot 的宠物领养管理系统。
+
+- 用户可以注册、登录、修改个人资料，并提交领养申请
+- 管理员可以在后台管理宠物和用户，并审批领养申请
+
+## 当时的开发环境
+
+| 工具 | 版本 |
 |-|-|
-|os|Windows 10|
-|jdk|1.8|
-|IDE|IntelliJ IDEA 2020.2|
-|Boostrap|4|
-|MySql|5.1.47|
-|Maven|3.6.0|
+| 操作系统 | Windows 10 |
+| JDK | 1.8 |
+| IDE | IntelliJ IDEA 2020.2 |
+| Bootstrap | 4 |
+| MySQL 驱动 | 5.1.47 |
+| Maven | 3.6.0 |
+| Spring Boot | 2.3.3 |
 
-### 功能介绍
-- 用户可以注册登录修改个人资料，在网站上进行宠物的领养申请操作
-- 管理员可以登录后台对宠物、用户的信息进行CRUD。同时对申请的领养信息进行审批。
+## 本地运行
 
-### 项目截图
-- *登录页面*
-![用户登录](http://rlw.cn-bj.ufileos.com/%2FpetAdoption%2Flogin.PNG?UCloudPublicKey=3xeS246CmmzEiKl4GZUEKG2BBLDOssOzPyT3yvJFy&Signature=EbFksOhPW5%2Fh1L0Yu2u%2FhAs6s6g%3D&Expires=1603025981)  
-- *主页*
-![主页](http://rlw.cn-bj.ufileos.com/%2FpetAdoption%2Findex.PNG?UCloudPublicKey=3xeS246CmmzEiKl4GZUEKG2BBLDOssOzPyT3yvJFy&Signature=zFFCUDRWcau9I5MdJwJK2r%2BECQo%3D&Expires=1603026372)
-- *个人资料*
-![个人资料](http://rlw.cn-bj.ufileos.com/%2FpetAdoption%2Finfo.PNG?UCloudPublicKey=3xeS246CmmzEiKl4GZUEKG2BBLDOssOzPyT3yvJFy&Signature=iuptE%2BvxfzCbeif5%2BpXyoAZSymc%3D&Expires=1603026397)
-- *宠物列表*
-![宠物列表](http://rlw.cn-bj.ufileos.com/%2FpetAdoption%2Fshow.PNG?UCloudPublicKey=3xeS246CmmzEiKl4GZUEKG2BBLDOssOzPyT3yvJFy&Signature=KvIvSulYekva6%2FZJJMe8zQeLZjU%3D&Expires=1603026426)
-- *宠物信息*
-![宠物领养](http://rlw.cn-bj.ufileos.com/%2FpetAdoption%2Fadoption.PNG?UCloudPublicKey=3xeS246CmmzEiKl4GZUEKG2BBLDOssOzPyT3yvJFy&Signature=dObXzuu0DprQkOYqMquWZ8noXLU%3D&Expires=1603026443)
-- *后台管理（管理员身份登录）*
-![后台管理](http://rlw.cn-bj.ufileos.com/%2FpetAdoption%2Fmanage.PNG?UCloudPublicKey=3xeS246CmmzEiKl4GZUEKG2BBLDOssOzPyT3yvJFy&Signature=HaAMPq7HF7JeHKANO8bEeokBxFc%3D&Expires=1603026459)
-- *用户的CRUD*
-![user](http://rlw.cn-bj.ufileos.com/%2FpetAdoption%2Fuser.PNG?UCloudPublicKey=3xeS246CmmzEiKl4GZUEKG2BBLDOssOzPyT3yvJFy&Signature=1lSLsri8hY%2F%2F7zg%2FFhGZq3yWIOs%3D&Expires=1603026476)
-- *增加用户*
-![adduser](http://rlw.cn-bj.ufileos.com/%2FpetAdoption%2Fadduser.PNG?UCloudPublicKey=3xeS246CmmzEiKl4GZUEKG2BBLDOssOzPyT3yvJFy&Signature=GNsCP1bc%2FANjq2BFPS1bt2IeW0A%3D&Expires=1603026496)
-- *宠物的CRUD*
-![pet](http://rlw.cn-bj.ufileos.com/%2FpetAdoption%2Fpet.PNG?UCloudPublicKey=3xeS246CmmzEiKl4GZUEKG2BBLDOssOzPyT3yvJFy&Signature=RIMJK3V4EPrMR%2Bs05Ae4qh%2BBLDk%3D&Expires=1603026513)
-- *申请领养*
-![adoption](http://rlw.cn-bj.ufileos.com/%2FpetAdoption%2Fapply.PNG?UCloudPublicKey=3xeS246CmmzEiKl4GZUEKG2BBLDOssOzPyT3yvJFy&Signature=E%2BE1bx%2F7Fd6GPcWWS140Ls95k0g%3D&Expires=1603026533)
+1. 安装 JDK 8、Maven 3.6 或更高版本，以及 MySQL 5.6 或 5.7。
+2. 在 MySQL 里执行仓库根目录的 [`schema.sql`](schema.sql)。它会创建库 `petadoption` 和当年 Mapper 用到的表。
+3. 默认数据源是 `localhost:3306`，用户名和密码都是 `root`，写在 `src/main/resources/application.properties`。本机不一样就改这个文件。
+4. 在项目根目录执行 `mvn spring-boot:run`，浏览器打开 http://localhost:8885 。
+5. 示例管理员账号是 `admin`，密码是 `admin`，登录时选择「管理员」。普通用户在登录页自行注册。
 
-### ER图
-*(数据表之间没有约束关系，数据类型上也偷懒了)*
-![ER图](http://rlw.cn-bj.ufileos.com/%2FpetAdoption%2FER%E5%9B%BE.PNG?UCloudPublicKey=3xeS246CmmzEiKl4GZUEKG2BBLDOssOzPyT3yvJFy&Signature=DDJ1d62J3vFsGV0puseHV8wTMYU%3D&Expires=1603026878)
+表结构按 MyBatis 的 `insert into ... values(...)` 字段顺序补出，表之间没有外键，和当年的实现一致。宠物状态用 `未领养`、`已被领养`；申请状态用 `审核中`、`同意领养`、`不同意领养`。
+
+图片上传原来走 UCloud。密钥已经从配置里删掉，这项功能不能再直接使用。不配置对象存储时，其余页面仍可以在本地使用。
